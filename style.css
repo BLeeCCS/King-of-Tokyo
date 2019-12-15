@@ -1,0 +1,84 @@
+html,body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: black;
+}
+
+#map {
+    width:40%;
+    height: 66%;
+    position: absolute;
+    top:1%;
+    left:30%;
+}
+
+#map > :first-child{
+    background-image: url(./assets/Map/Map.png);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: top;
+    width:100%;
+    height: 100%;
+    margin: auto;
+}
+
+.monster {
+    width:100%;
+    height: 32%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-bottom:1%;
+}
+
+#leftContainer,#rightContainer {
+    width:30%;
+    height: 100%;
+    margin:0;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 1%;
+}
+
+#leftContainer {
+    left:0;
+}
+
+#rightContainer {
+    right:0;
+}
+
+#alienoid_s {
+    background-image: url(./assets/M_Stats/Alienoid_Stats.png);
+}
+
+#cyberkitty_s {
+    background-image: url(./assets/M_Stats/Cyber_kitty_Stats.png);
+}
+
+#gigazaur_s {
+    background-image: url(./assets/M_Stats/Gigazaur_Stats.png);
+}
+
+#mekadragon_s {
+    background-image: url(./assets/M_Stats/Meka_Dragon_Stats.png);
+}
+
+#spacepenquin_s {
+    background-image: url(./assets/M_Stats/Space_Penguin_Stats.png);
+}
+
+#theking_s {
+    background-image: url(./assets/M_Stats/The_king_Stats.png);
+}
+
+#cardContainer {
+    width: 32%;
+    height:30%;
+    background-color: white;
+    position: absolute;
+    bottom:1.5%;
+    left: 34%;
+}
