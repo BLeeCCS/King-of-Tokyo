@@ -23,7 +23,6 @@ html,body {
     height: 40%;
     position: absolute;
     margin: 0;
-    top:5%;
 }
 
 #map > :nth-child(2){
@@ -130,9 +129,10 @@ html,body {
 
 #tokyoCity {
     background-image: url(./assets/M_Fig/SpacePenguin.png);
-    top:20%;
+    top:40%;
 }
 
 #tokyoBay {
     background-image: url(./assets/M_Fig/Alienoid.png);
+    top:20%;
 }
