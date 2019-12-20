@@ -6,9 +6,10 @@ function appStart() {
 }
 
 function selectionScreen() {
+    var display = "visible";
     var changefont = setInterval(()=>{
-        $("#text").css("font-size",changeFontSize());
-      },100);
+        $("#text").css("visibility",fontFlash(display));
+      },200);
 
     $("#mekadragon").hover(moveLeft,moveCenter);
     $("#alienoid").hover(moveLeft,moveCenter);
@@ -57,7 +58,14 @@ function selectionScreen() {
     function moveRight() {
         $(this).css("background-position","right");
     }
-    function changeFontSize(size) {
-        return Math.floor(Math.random(2) * 2 + 30) + "px";
+    
+    function fontFlash(text) {
+        var flash = text;
+        if ( flash === "visible"){
+            display = "hidden";
+            return "visible";
+        }
+        display = "visible";
+        return "hidden";
       }
 }
