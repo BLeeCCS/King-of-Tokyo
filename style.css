@@ -187,6 +187,7 @@ html,body {
 #text {
     height: 100%;
     text-align: center;
+    font-size: 2rem;
     color: green;
     text-shadow: 3px 2px black;
 }
