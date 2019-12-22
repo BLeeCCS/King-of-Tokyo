@@ -2,7 +2,6 @@ $(document).ready(appStart);
 
 function appStart() {
     selectionScreen();
-    console.log("app start");
 }
 
 function selectionScreen() {
