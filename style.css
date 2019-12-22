@@ -76,30 +76,6 @@ html,body {
     right:0;
 }
 
-#alienoid_s {
-    background-image: url(./assets/M_Stat/Alienoid_Stats.png);
-}
-
-#cyberkitty_s {
-    background-image: url(./assets/M_Stat/Cyber_kitty_Stats.png);
-}
-
-#gigazaur_s {
-    background-image: url(./assets/M_Stat/Gigazaur_Stats.png);
-}
-
-#mekadragon_s {
-    background-image: url(./assets/M_Stat/Meka_Dragon_Stats.png);
-}
-
-#spacepenquin_s {
-    background-image: url(./assets/M_Stat/Space_Penguin_Stats.png);
-}
-
-#theking_s {
-    background-image: url(./assets/M_Stat/The_king_Stats.png);
-}
-
 #cardContainer {
     width: 32%;
     height:30%;
@@ -119,18 +95,6 @@ html,body {
     background-size: cover;
 }
 
-#card1 {
-    background-image: url(./assets/Cards/card.png);
-}
-
-#card2 {
-    background-image: url(./assets/Cards/card.png);
-}
-
-#card3 {
-    background-image: url(./assets/Cards/card.png);
-}
-
 .tokyo {
     background-repeat: no-repeat;
     background-position: center;
@@ -143,12 +107,10 @@ html,body {
 }
 
 #tokyoCity {
-    background-image: url(./assets/M_Fig/SpacePenguin.png);
     top:40%;
 }
 
 #tokyoBay {
-    background-image: url(./assets/M_Fig/Alienoid.png);
     top:20%;
 }
 
@@ -160,30 +122,6 @@ html,body {
     background-color: rgb(229, 229, 233);
 }
 
-#alienoid {
-    background-image: url(./assets/M_Fig/Alienoid.png);
-}
-
-#cyberkitty {
-    background-image: url(./assets/M_Fig/CyberKitty.png);
-}
-
-#gigazaur {
-    background-image: url(./assets/M_Fig/Gigazaur.png);
-}
-
-#mekadragon {
-    background-image: url(./assets/M_Fig/MekaDragon.png);
-}
-
-#spacepenquin {
-    background-image: url(./assets/M_Fig/SpacePenguin.png);
-}
-
-#theking {
-    background-image: url(./assets/M_Fig/TheKing.png);
-}
-
 #text {
     height: 100%;
     text-align: center;
@@ -191,3 +129,122 @@ html,body {
     color: green;
     text-shadow: 3px 2px black;
 }
+
+.victory, .energy, .heart {
+    width: 6.5%;
+    height: 3.5%;
+    position: absolute;
+    text-align: center;
+    font-size: 100%;
+}
+
+#cyberkitty_s > #victory {
+    top:0.6%;
+    left: 32%;
+}
+
+#cyberkitty_s > #energy {
+    top:11.9%;
+    left: 39.5%;
+}
+
+#cyberkitty_s > #heart {
+    top:28%;
+    left:73.5%;
+}
+
+#gigazaur_s > #victory {
+    top:33.2%;
+    left: 32.5%;
+}
+
+#gigazaur_s > #energy {
+    top:43.8%;
+    left: 36%;
+}
+
+#gigazaur_s > #heart {
+    top:60.3%;
+    left:73%;
+}
+
+#spacepenquin_s > #victory {
+    top:65.8%;
+    left: 31.8%;
+}
+
+#spacepenquin_s > #energy {
+    top:86.3%;
+    left: 71.8%;
+}
+
+#spacepenquin_s > #heart {
+    top:92.8%;
+    left:73.2%;
+}
+
+#mekadragon_s > #victory {
+    top:0.6%;
+    left: 32%;
+}
+
+#mekadragon_s > #energy {
+    top:11.8%;
+    left: 37.5%;
+}
+
+#mekadragon_s > #heart {
+    top:28%;
+    left:72.4%;
+}
+
+#alienoid_s > #victory {
+    top:33.4%;
+    left: 31%;
+}
+
+#alienoid_s > #energy {
+    top:43.8%;
+    left: 37.5%;
+}
+
+#alienoid_s > #heart {
+    top:60.4%;
+    left:73.5%;
+}
+
+#theking_s > #victory {
+    top:65.8%;
+    left: 33%;
+}
+
+#theking_s > #energy {
+    top:86%;
+    left: 71.8%;
+}
+
+#theking_s > #heart {
+    top:92.6%;
+    left:74%;
+}
+
+#alienoid_s {background-image: url(./assets/M_Stat/Alienoid_Stats.png);}
+#cyberkitty_s {background-image: url(./assets/M_Stat/Cyber_kitty_Stats.png);}
+#gigazaur_s {background-image: url(./assets/M_Stat/Gigazaur_Stats.png);}
+#mekadragon_s {background-image: url(./assets/M_Stat/Meka_Dragon_Stats.png);}
+#spacepenquin_s {background-image: url(./assets/M_Stat/Space_Penguin_Stats.png);}
+#theking_s {background-image: url(./assets/M_Stat/The_king_Stats.png);}
+
+#alienoid {background-image: url(./assets/M_Fig/Alienoid.png);}
+#cyberkitty {background-image: url(./assets/M_Fig/CyberKitty.png);}
+#gigazaur {background-image: url(./assets/M_Fig/Gigazaur.png);}
+#mekadragon {background-image: url(./assets/M_Fig/MekaDragon.png);}
+#spacepenquin {background-image: url(./assets/M_Fig/SpacePenguin.png);}
+#theking {background-image: url(./assets/M_Fig/TheKing.png);}
+
+#card1 {background-image: url(./assets/Cards/card.png);}
+#card2 {background-image: url(./assets/Cards/card.png);}
+#card3 {background-image: url(./assets/Cards/card.png);}
+
+#tokyoCity {background-image: url(./assets/M_Fig/SpacePenguin.png);}
+#tokyoBay {background-image: url(./assets/M_Fig/Alienoid.png);}
