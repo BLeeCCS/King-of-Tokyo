@@ -138,6 +138,21 @@ html,body {
     font-size: 100%;
 }
 
+.diceContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 26%;
+    height:10%;
+    position: absolute;
+}
+
+.diceContainer > * {
+    width: 20%;
+    height: 30%;
+    margin:5%;
+    background-size: cover;
+}
+
 #cyberkitty_s > #victory {
     top:0.6%;
     left: 32%;
@@ -151,6 +166,11 @@ html,body {
 #cyberkitty_s > #heart {
     top:28%;
     left:73.5%;
+}
+
+#cyberkitty_s > #diceContainer {
+    top:16.6%;
+    left:56%;
 }
 
 #gigazaur_s > #victory {
@@ -168,6 +188,11 @@ html,body {
     left:73%;
 }
 
+#gigazaur_s > #diceContainer {
+    top:49.2%;
+    left:56.2%;
+}
+
 #spacepenquin_s > #victory {
     top:65.8%;
     left: 31.8%;
@@ -181,6 +206,11 @@ html,body {
 #spacepenquin_s > #heart {
     top:92.8%;
     left:73.2%;
+}
+
+#spacepenquin_s > #diceContainer {
+    top:76.5%;
+    left:18%;
 }
 
 #mekadragon_s > #victory {
@@ -198,6 +228,11 @@ html,body {
     left:72.4%;
 }
 
+#mekadragon_s > #diceContainer {
+    top:17%;
+    left:56%;
+}
+
 #alienoid_s > #victory {
     top:33.4%;
     left: 31%;
@@ -213,6 +248,11 @@ html,body {
     left:73.5%;
 }
 
+#alienoid_s > #diceContainer {
+    top:49%;
+    left:56.2%;
+}
+
 #theking_s > #victory {
     top:65.8%;
     left: 33%;
@@ -226,6 +266,23 @@ html,body {
 #theking_s > #heart {
     top:92.6%;
     left:74%;
+}
+
+#theking_s > #diceContainer {
+    top:76%;
+    left:18%;
+}
+
+#diceChoice {
+    width:10%;
+    height:10%;
+    background-color: white;
+    z-index: 2;
+    position: absolute;
+    border: black solid 2px;
+    left:45%;
+    top:28%;
+    text-align: center;
 }
 
 #alienoid_s {background-image: url(./assets/M_Stat/Alienoid_Stats.png);}
