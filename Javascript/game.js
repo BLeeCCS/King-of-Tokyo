@@ -47,62 +47,63 @@ class game {
     }
 
     gameTurn() {
-        while (this.playerMonster.alive != false || this.playerMonster.victoryPoint != 20) {
-            $("#"+this.player+"_s > #victory").text(this.playerMonster.victoryPoint);
-            $("#"+this.player+"_s > #energy").text(this.playerMonster.energyPoint);
-            $("#"+this.player+"_s > #heart").text(this.playerMonster.lifePoint);
-        
-            for (let i = 0; i < this.monsters.length; i++) {
-                switch(this.monsters[i]) {
-                    case "mekadragon":
-                        $("#mekadragon_s > #victory").text(this.mekadragon.victoryPoint);
-                        $("#mekadragon_s > #energy").text(this.mekadragon.energyPoint);
-                        $("#mekadragon_s > #heart").text(this.mekadragon.lifePoint);
-                        break;
-                    case "alienoid":
-                        $("#alienoid_s > #victory").text(this.alienoid.victoryPoint);
-                        $("#alienoid_s  > #energy").text(this.alienoid.energyPoint);
-                        $("#alienoid_s  > #heart").text(this.alienoid.lifePoint);
-                        break;
-                    case "theking":
-                        $("#theking_s > #victory").text(this.theking.victoryPoint);
-                        $("#theking_s > #energy").text(this.theking.energyPoint);
-                        $("#theking_s > #heart").text(this.theking.lifePoint);
-                        break;
-                    case "cyberkitty":
-                        $("#cyberkitty_s > #victory").text(this.cyberkitty.victoryPoint);
-                        $("#cyberkitty_s > #energy").text(this.cyberkitty.energyPoint);
-                        $("#cyberkitty_s > #heart").text(this.cyberkitty.lifePoint);
-                        break;
-                    case "gigazaur":
-                        $("#gigazaur_s > #victory").text(this.gigazaur.victoryPoint);
-                        $("#gigazaur_s > #energy").text(this.gigazaur.energyPoint);
-                        $("#gigazaur_s > #heart").text(this.gigazaur.lifePoint);
-                        break;
-                    case "spacepenquin":
-                        $("#spacepenquin_s > #victory").text(this.spacepenquin.victoryPoint);
-                        $("#spacepenquin_s > #energy").text(this.spacepenquin.energyPoint);
-                        $("#spacepenquin_s > #heart").text(this.spacepenquin.lifePoint);
-                        break;
-                }
+            this.renderMonsterStat();
+            //this.playerMonster.rollDice();
+
+            if (this.playerMonster.count < 3) {
+                $("#diceChoice").css("visibility","visible");
+                $("#yes").on("click",()=>{
+                    this.playerMonster.dice = [];
+                    this.playerMonster.rollDice();
+
+                    if (this.playerMonster.count == 3) {
+                        $("#diceChoice").css("visibility","hidden");
+                    }
+                })
+                $("#no").on("click",()=>{
+                    $("#diceChoice").css("visibility","hidden");
+                })
             }
-            this.playerMonster.rollDice();
-
-            debugger;
-            $("#diceChoice").css("visibility","visible");
-            $("#yes").on("click",()=>{
-                alert("roll again?");
-            })
-            $("#no").on("click",()=>{
-                this.playerMonster.rollAgain = false;
-                this.playerMonster.count = 3;
-                $("#diceChoice").css("visibility","hidden");
-            })
-
-            
-            this.playerMonster.alive = false;
-            this.playerMonster.victoryPoint = 20;
-        }
-
     }
+
+    renderMonsterStat() {
+        $("#"+this.player+"_s > #victory").text(this.playerMonster.victoryPoint);
+        $("#"+this.player+"_s > #energy").text(this.playerMonster.energyPoint);
+        $("#"+this.player+"_s > #heart").text(this.playerMonster.lifePoint);
+    
+        for (let i = 0; i < this.monsters.length; i++) {
+            switch(this.monsters[i]) {
+                case "mekadragon":
+                    $("#mekadragon_s > #victory").text(this.mekadragon.victoryPoint);
+                    $("#mekadragon_s > #energy").text(this.mekadragon.energyPoint);
+                    $("#mekadragon_s > #heart").text(this.mekadragon.lifePoint);
+                    break;
+                case "alienoid":
+                    $("#alienoid_s > #victory").text(this.alienoid.victoryPoint);
+                    $("#alienoid_s  > #energy").text(this.alienoid.energyPoint);
+                    $("#alienoid_s  > #heart").text(this.alienoid.lifePoint);
+                    break;
+                case "theking":
+                    $("#theking_s > #victory").text(this.theking.victoryPoint);
+                    $("#theking_s > #energy").text(this.theking.energyPoint);
+                    $("#theking_s > #heart").text(this.theking.lifePoint);
+                    break;
+                case "cyberkitty":
+                    $("#cyberkitty_s > #victory").text(this.cyberkitty.victoryPoint);
+                    $("#cyberkitty_s > #energy").text(this.cyberkitty.energyPoint);
+                    $("#cyberkitty_s > #heart").text(this.cyberkitty.lifePoint);
+                    break;
+                case "gigazaur":
+                    $("#gigazaur_s > #victory").text(this.gigazaur.victoryPoint);
+                    $("#gigazaur_s > #energy").text(this.gigazaur.energyPoint);
+                    $("#gigazaur_s > #heart").text(this.gigazaur.lifePoint);
+                    break;
+                case "spacepenquin":
+                    $("#spacepenquin_s > #victory").text(this.spacepenquin.victoryPoint);
+                    $("#spacepenquin_s > #energy").text(this.spacepenquin.energyPoint);
+                    $("#spacepenquin_s > #heart").text(this.spacepenquin.lifePoint);
+                    break;
+            }
+        }
+    } 
 }   
