@@ -88,6 +88,17 @@ class game {
             }
             this.playerMonster.rollDice();
 
+            debugger;
+            $("#diceChoice").css("visibility","visible");
+            $("#yes").on("click",()=>{
+                alert("roll again?");
+            })
+            $("#no").on("click",()=>{
+                this.playerMonster.rollAgain = false;
+                this.playerMonster.count = 3;
+                $("#diceChoice").css("visibility","hidden");
+            })
+
             
             this.playerMonster.alive = false;
             this.playerMonster.victoryPoint = 20;
