@@ -86,10 +86,12 @@ class game {
                         break;
                 }
             }
+            this.playerMonster.rollDice();
 
+            
             this.playerMonster.alive = false;
             this.playerMonster.victoryPoint = 20;
         }
-        this.playerMonster.rollDice();
+
     }
 }   
