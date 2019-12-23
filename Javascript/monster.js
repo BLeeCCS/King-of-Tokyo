@@ -39,8 +39,8 @@ class monster {
                         $("#"+this.name+"_s > #diceContainer > :nth-child("+ (i+1) +")").css({"background-image":"url(./assets/Dice/victory.png)"});
                     break;
             }
-            this.count++;
         }
+        this.count++;
     }
 
     resolveDice() {
