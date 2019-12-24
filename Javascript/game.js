@@ -18,26 +18,21 @@ class game {
         for (let i = this.monsters.length; i > 0; i--) {
             var random = Math.floor(Math.random(i) * i);
             var monsterZ = this.monsters.splice(random,1);
-            this.turnOrder.push(monsterZ);
+            this.turnOrder.push(monsterZ + "");
+        }
+
+        for (let i = 0; i < this.turnOrder.length; i++) {
+            this.monsters.push(this.turnOrder[i]);
         }
 
         for (let i = 0; i < this.numOfPlayers; i++) {
-            if (this.player === this.turnOrder[i]) {
+            if (this.player == this.turnOrder[i]) {
                 this.turnOrder.splice(i,1);
             }
         }
         this.playerMonster = new monster(this.player);
 
-        console.log(this.turnOrder);
-
-        for (let i = 0; i < this.turnOrder.length; i++) {
-            this.monsters.push(this.turnOrder[i]);
-        }
-        
-        console.log(this.playerMonster);
-        console.log(this.monsters);
-
-        for (let i = 0; i < this.monsters.length; i++) {
+        for (var i = 0; i < this.monsters.length; i++) {
             switch(this.monsters[i]) {
                 case "mekadragon":
                     this.mekadragon = new monster("mekadragon");
@@ -66,20 +61,40 @@ class game {
     gameTurn() {
         this.renderMonsterStat();
 
-        for (let i = 0; i < this.turnOrder.length; i++) {
-            if (this.player === this.turnOrder[i]) {
+        let start = null;
+        let enemyStart = null;
+        let next = 0;
 
+        start = setInterval(() => {
+            if (this.player === this.monsters[next]) {
+                clearInterval(start);
+                this.monsterTurn(this.player);
+                
+                enemyStart = setInterval(() => {
+                    this.monsterTurn(this.monsters[next]);
+                    next++;
+                    
+                    if(next == this.numOfPlayers) {
+                        clearInterval(enemyStart);
+                    }
+                }, 4000);
             } else {
-
+                this.monsterTurn(this.monsters[next]); 
+                
+                if(next == this.numOfPlayers) {
+                    clearInterval(enemyStart);
+                }
             }
-        }
+            next++;
+        },4000);
     }
 
     renderMonsterStat() {
         $("#"+this.player+"_s > #victory").text(this.playerMonster.victoryPoint);
         $("#"+this.player+"_s > #energy").text(this.playerMonster.energyPoint);
         $("#"+this.player+"_s > #heart").text(this.playerMonster.lifePoint);
-        //debugger;
+        
+        
         for (var i = 0; i < this.monsters.length; i++) {
             switch(this.monsters[i]) {
                 case "mekadragon":
@@ -116,7 +131,28 @@ class game {
         }
     }
     
-    monsterTurn() {
+    monsterTurn(name) {
+        switch(name) {
+            case "mekadragon":
+                this.mekadragon.rollDice();
+                break;
+            case "alienoid":
+                this.alienoid.rollDice();
+                break;
+            case "theking":
+                this.theking.rollDice();
+                break;
+            case "cyberkitty":
+                this.cyberkitty.rollDice();
+                break;
+            case "gigazaur":
+                this.gigazaur.rollDice();
+                break;
+            case "spacepenquin":
+                this.spacepenquin.rollDice();
+                break;
+        }
+
         //this.playerMonster.rollDice();
 
         // if (this.playerMonster.count < 3) {
@@ -136,26 +172,26 @@ class game {
         //     })
         // }
 
-        var start = setInterval(()=>{
-            console.log("turn");
-            this.renderMonsterStat();
-            //this.playerMonster.rollDice();
-            if (this.playerMonster.count < 3) {
-                clearInterval(start);
-                $("#diceChoice").css("visibility","visible");
-                $("#yes").on("click",()=>{
-                    this.playerMonster.dice = [];
-                    this.playerMonster.rollDice();
+        // var start = setInterval(()=>{
+        //     console.log("turn");
+        //     this.renderMonsterStat();
+        //     //this.playerMonster.rollDice();
+        //     if (this.playerMonster.count < 3) {
+        //         clearInterval(start);
+        //         $("#diceChoice").css("visibility","visible");
+        //         $("#yes").on("click",()=>{
+        //             this.playerMonster.dice = [];
+        //             this.playerMonster.rollDice();
                     
-                    if (this.playerMonster.count == 3) {
-                        $("#diceChoice").css("visibility","hidden");
-                    }
-                    console.log(this.playerMonster.count);
-                })
-                $("#no").on("click",()=>{
-                    $("#diceChoice").css("visibility","hidden");
-                })
-            }
-        },1000);
+        //             if (this.playerMonster.count == 3) {
+        //                 $("#diceChoice").css("visibility","hidden");
+        //             }
+        //             console.log(this.playerMonster.count);
+        //         })
+        //         $("#no").on("click",()=>{
+        //             $("#diceChoice").css("visibility","hidden");
+        //         })
+        //     }
+        // },1000);
     }
 }   
