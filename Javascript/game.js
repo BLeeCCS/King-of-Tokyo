@@ -7,6 +7,7 @@ class game {
                          "gigazaur",
                          "spacepenquin"];
         this.numOfPlayers = this.monsters.length;
+        this.turnOrder = [];
         this.player = name;
         this.tokyoCity = false;
         this.tokyoBay = false;
@@ -14,12 +15,27 @@ class game {
     }
 
     gameStart() {
+        for (let i = this.monsters.length; i > 0; i--) {
+            var random = Math.floor(Math.random(i) * i);
+            var monsterZ = this.monsters.splice(random,1);
+            this.turnOrder.push(monsterZ);
+        }
+
         for (let i = 0; i < this.numOfPlayers; i++) {
-            if (this.player === this.monsters[i]) {
-                this.monsters.splice(i,1);
+            if (this.player === this.turnOrder[i]) {
+                this.turnOrder.splice(i,1);
             }
         }
         this.playerMonster = new monster(this.player);
+
+        console.log(this.turnOrder);
+
+        for (let i = 0; i < this.turnOrder.length; i++) {
+            this.monsters.push(this.turnOrder[i]);
+        }
+        
+        console.log(this.playerMonster);
+        console.log(this.monsters);
 
         for (let i = 0; i < this.monsters.length; i++) {
             switch(this.monsters[i]) {
@@ -43,35 +59,28 @@ class game {
                     break;
             }
         }
+
         this.gameTurn();
     }
 
     gameTurn() {
-            this.renderMonsterStat();
-            //this.playerMonster.rollDice();
+        this.renderMonsterStat();
 
-            if (this.playerMonster.count < 3) {
-                $("#diceChoice").css("visibility","visible");
-                $("#yes").on("click",()=>{
-                    this.playerMonster.dice = [];
-                    this.playerMonster.rollDice();
+        for (let i = 0; i < this.turnOrder.length; i++) {
+            if (this.player === this.turnOrder[i]) {
 
-                    if (this.playerMonster.count == 3) {
-                        $("#diceChoice").css("visibility","hidden");
-                    }
-                })
-                $("#no").on("click",()=>{
-                    $("#diceChoice").css("visibility","hidden");
-                })
+            } else {
+
             }
+        }
     }
 
     renderMonsterStat() {
         $("#"+this.player+"_s > #victory").text(this.playerMonster.victoryPoint);
         $("#"+this.player+"_s > #energy").text(this.playerMonster.energyPoint);
         $("#"+this.player+"_s > #heart").text(this.playerMonster.lifePoint);
-    
-        for (let i = 0; i < this.monsters.length; i++) {
+        //debugger;
+        for (var i = 0; i < this.monsters.length; i++) {
             switch(this.monsters[i]) {
                 case "mekadragon":
                     $("#mekadragon_s > #victory").text(this.mekadragon.victoryPoint);
@@ -105,5 +114,48 @@ class game {
                     break;
             }
         }
-    } 
+    }
+    
+    monsterTurn() {
+        //this.playerMonster.rollDice();
+
+        // if (this.playerMonster.count < 3) {
+        //     $("#diceChoice").css("visibility","visible");
+        //     $("#yes").on("click",()=>{
+        //         this.playerMonster.dice = [];
+        //         this.playerMonster.rollDice();
+
+        //         if (this.playerMonster.count == 3) {
+        //             $("#diceChoice").css("visibility","hidden");
+        //         }
+
+        //         continue;
+        //     })
+        //     $("#no").on("click",()=>{
+        //         $("#diceChoice").css("visibility","hidden");
+        //     })
+        // }
+
+        var start = setInterval(()=>{
+            console.log("turn");
+            this.renderMonsterStat();
+            //this.playerMonster.rollDice();
+            if (this.playerMonster.count < 3) {
+                clearInterval(start);
+                $("#diceChoice").css("visibility","visible");
+                $("#yes").on("click",()=>{
+                    this.playerMonster.dice = [];
+                    this.playerMonster.rollDice();
+                    
+                    if (this.playerMonster.count == 3) {
+                        $("#diceChoice").css("visibility","hidden");
+                    }
+                    console.log(this.playerMonster.count);
+                })
+                $("#no").on("click",()=>{
+                    $("#diceChoice").css("visibility","hidden");
+                })
+            }
+        },1000);
+    }
 }   
