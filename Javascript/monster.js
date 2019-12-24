@@ -13,7 +13,7 @@ class monster {
     rollDice() {
         const diceSet = ["1","2","3","heart","energy","victory"];
         
-        for (let i = 0; i < 6; i ++) {
+        for (let i = 0; i < 6; i++) {
             var random = Math.floor(Math.random(6) * 6 + 1);
             this.dice.push(diceSet[random-1]);
         }
@@ -40,6 +40,7 @@ class monster {
                     break;
             }
         }
+
         this.count++;
     }
 
