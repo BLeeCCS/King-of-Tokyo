@@ -273,7 +273,7 @@ html,body {
     left:18%;
 }
 
-#diceChoice {
+#choice {
     width:10%;
     height:10%;
     background-color: white;
@@ -284,6 +284,17 @@ html,body {
     top:28%;
     text-align: center;
     visibility: hidden;
+}
+
+.button {
+    visibility: hidden;
+}
+
+#textChoice {
+    color: black;
+    line-height: 10vh;
+    width: 100%;
+    height: 100%;
 }
 
 #alienoid_s {background-image: url(./assets/M_Stat/Alienoid_Stats.png);}

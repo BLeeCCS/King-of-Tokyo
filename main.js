@@ -1,6 +1,7 @@
 $(document).ready(appStart);
 
 function appStart() {
+    var newGame = null;
     selectionScreen();
 }
 
@@ -20,51 +21,59 @@ function selectionScreen() {
     $("#mekadragon").on("click",()=>{
         $("#modal").css("display","none");
         clearInterval(changefont);
-        var newGame = new game("mekadragon");
+        newGame = new game("mekadragon");
+        newGame.gameStart();
     })
     $("#alienoid").on("click",()=>{
         $("#modal").css("display","none");
         clearInterval(changefont);
-        var newGame = new game("alienoid");
+        newGame = new game("alienoid");
+        newGame.gameStart();
     })
     $("#theking").on("click",()=>{
         $("#modal").css("display","none");
         clearInterval(changefont);
-        var newGame = new game("theking");
+        newGame = new game("theking");
+        newGame.gameStart();
     })
     $("#cyberkitty").on("click",()=>{
         $("#modal").css("display","none");
         clearInterval(changefont);
-        var newGame = new game("cyberkitty");
+        newGame = new game("cyberkitty");
+        newGame.gameStart();
     })
     $("#gigazaur").on("click",()=>{
         $("#modal").css("display","none");
         clearInterval(changefont);
-        var newGame = new game("gigazaur");
+        newGame = new game("gigazaur");
+        newGame.gameStart();
     })
     $("#spacepenquin").on("click",()=>{
         $("#modal").css("display","none");
         clearInterval(changefont);
-        var newGame = new game("spacepenquin");
+        newGame = new game("spacepenquin");
+        newGame.gameStart();
     })
-
-    function moveLeft() {
-        $(this).css("background-position","left");
-    }
-    function moveCenter() {
-        $(this).css("background-position","center");
-    }
-    function moveRight() {
-        $(this).css("background-position","right");
-    }
-    
-    function fontFlash(text) {
-        var flash = text;
-        if ( flash === "visible"){
-            display = "hidden";
-            return "visible";
-        }
-        display = "visible";
-        return "hidden";
-      }
 }
+
+function moveLeft() {
+    $(this).css("background-position","left");
+}
+
+function moveCenter() {
+    $(this).css("background-position","center");
+}
+
+function moveRight() {
+    $(this).css("background-position","right");
+}
+
+function fontFlash(text) {
+    var flash = text;
+    if ( flash === "visible"){
+        display = "hidden";
+        return "visible";
+    }
+    display = "visible";
+    return "hidden";
+  }

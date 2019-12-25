@@ -11,7 +11,7 @@ class game {
         this.player = name;
         this.tokyoCity = false;
         this.tokyoBay = false;
-        this.gameStart();
+        this.round = 1;
     }
 
     gameStart() {
@@ -55,38 +55,76 @@ class game {
             }
         }
 
+        this.renderMonsterStat();
         this.gameTurn();
     }
 
     gameTurn() {
-        this.renderMonsterStat();
-
         let start = null;
         let enemyStart = null;
         let next = 0;
 
+        $("#choice").css("visibility","visible");
+        $("#textChoice").text("Round " + this.round);
         start = setInterval(() => {
             if (this.player === this.monsters[next]) {
                 clearInterval(start);
+                $("#choice").css("visibility","visible");
+                $("#textChoice").text("Player Turn!");
                 this.monsterTurn(this.player);
                 
-                enemyStart = setInterval(() => {
-                    this.monsterTurn(this.monsters[next]);
-                    next++;
-                    
-                    if(next == this.numOfPlayers) {
-                        clearInterval(enemyStart);
-                    }
-                }, 4000);
+                if (this.playerMonster.count < 3) {
+                    setTimeout(() => {
+                        $("#choice").css("visibility","visible");
+                        $(".button").css("visibility","visible");
+                        $("#textChoice").text("Roll again?");
+                    }, 3500);
+                    $("#yes").on("click",()=>{
+                        this.playerMonster.dice = [];
+                        this.playerMonster.rollDice();
+
+                        if (this.playerMonster.count == 3) {
+                                $("#choice").css("visibility","hidden");
+                                $(".button").css("visibility","hidden");
+                                enemyStart = setInterval(() => {
+                                    $("#choice").css("visibility","visible");
+                                    $("#textChoice").text(this.monsters[next].toUpperCase());
+                                this.monsterTurn(this.monsters[next]);
+                                next++;
+                                if(next == this.numOfPlayers) {
+                                    clearInterval(enemyStart);
+                                    $("#choice").css("visibility","hidden");
+                                }
+                            }, 4000);
+                        }
+                    })
+                    $("#no").on("click",()=>{
+                            $("#choice").css("visibility","hidden");
+                            $(".button").css("visibility","hidden");
+                            enemyStart = setInterval(() => {
+                            $("#choice").css("visibility","visible");
+                            $("#textChoice").text(this.monsters[next].toUpperCase());
+                            this.monsterTurn(this.monsters[next]);
+                            next++;
+                            if(next == this.numOfPlayers) {
+                                clearInterval(enemyStart);
+                                $("#choice").css("visibility","hidden");
+                            }
+                        }, 4000);
+                    })
+                }
             } else {
+                $("#choice").css("visibility","visible");
+                $("#textChoice").text(this.monsters[next].toUpperCase());
                 this.monsterTurn(this.monsters[next]); 
-                
                 if(next == this.numOfPlayers) {
                     clearInterval(enemyStart);
                 }
             }
             next++;
         },4000);
+
+        this.round++;
     }
 
     renderMonsterStat() {
@@ -152,46 +190,5 @@ class game {
                 this.spacepenquin.rollDice();
                 break;
         }
-
-        //this.playerMonster.rollDice();
-
-        // if (this.playerMonster.count < 3) {
-        //     $("#diceChoice").css("visibility","visible");
-        //     $("#yes").on("click",()=>{
-        //         this.playerMonster.dice = [];
-        //         this.playerMonster.rollDice();
-
-        //         if (this.playerMonster.count == 3) {
-        //             $("#diceChoice").css("visibility","hidden");
-        //         }
-
-        //         continue;
-        //     })
-        //     $("#no").on("click",()=>{
-        //         $("#diceChoice").css("visibility","hidden");
-        //     })
-        // }
-
-        // var start = setInterval(()=>{
-        //     console.log("turn");
-        //     this.renderMonsterStat();
-        //     //this.playerMonster.rollDice();
-        //     if (this.playerMonster.count < 3) {
-        //         clearInterval(start);
-        //         $("#diceChoice").css("visibility","visible");
-        //         $("#yes").on("click",()=>{
-        //             this.playerMonster.dice = [];
-        //             this.playerMonster.rollDice();
-                    
-        //             if (this.playerMonster.count == 3) {
-        //                 $("#diceChoice").css("visibility","hidden");
-        //             }
-        //             console.log(this.playerMonster.count);
-        //         })
-        //         $("#no").on("click",()=>{
-        //             $("#diceChoice").css("visibility","hidden");
-        //         })
-        //     }
-        // },1000);
     }
 }   
