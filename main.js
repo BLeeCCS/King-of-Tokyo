@@ -54,6 +54,16 @@ function selectionScreen() {
         newGame = new game("spacepenquin");
         newGame.gameStart();
     })
+
+    function fontFlash(text) {
+        var flash = text;
+        if ( flash === "visible"){
+            display = "hidden";
+            return "visible";
+        }
+        display = "visible";
+        return "hidden";
+      }
 }
 
 function moveLeft() {
@@ -67,13 +77,3 @@ function moveCenter() {
 function moveRight() {
     $(this).css("background-position","right");
 }
-
-function fontFlash(text) {
-    var flash = text;
-    if ( flash === "visible"){
-        display = "hidden";
-        return "visible";
-    }
-    display = "visible";
-    return "hidden";
-  }

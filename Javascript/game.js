@@ -108,7 +108,6 @@ class game {
                             next++;
                             if(next == this.numOfPlayers) {
                                 clearInterval(enemyStart);
-                                $("#choice").css("visibility","hidden");
                             }
                         }, 4000);
                     })
@@ -122,9 +121,14 @@ class game {
                 }
             }
             next++;
+            
         },4000);
 
         this.round++;
+
+        setTimeout(() => {
+            this.gameTurn();
+        }, 34000);
     }
 
     renderMonsterStat() {
@@ -172,21 +176,27 @@ class game {
     monsterTurn(name) {
         switch(name) {
             case "mekadragon":
+                this.mekadragon.dice = [];
                 this.mekadragon.rollDice();
                 break;
             case "alienoid":
+                this.alienoid.dice = [];
                 this.alienoid.rollDice();
                 break;
             case "theking":
+                this.theking.dice = [];
                 this.theking.rollDice();
                 break;
             case "cyberkitty":
+                this.cyberkitty.dice = [];
                 this.cyberkitty.rollDice();
                 break;
             case "gigazaur":
+                this.gigazaur.dice = [];
                 this.gigazaur.rollDice();
                 break;
             case "spacepenquin":
+                this.spacepenquin.dice = [];
                 this.spacepenquin.rollDice();
                 break;
         }
