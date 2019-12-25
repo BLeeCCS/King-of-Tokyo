@@ -7,7 +7,7 @@ class monster {
         this.alive = true;
         this.dice = [];
         this.rollAgain = true;
-        this.count = 0;
+        this.count = 1;
     }
 
     rollDice() {
@@ -42,6 +42,10 @@ class monster {
                     break;
             }
             diceCount++;
+
+            if (diceCount == this.dice.length){
+                clearInterval(diceStart);
+            }
         }, 500);
 
         this.count++;
