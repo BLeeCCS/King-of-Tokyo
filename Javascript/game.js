@@ -65,13 +65,13 @@ class game {
         let enemyStart = null;
         let next = 0;
 
+        this.renderMonsterStat();
         clearTimeout(startAgain);
 
         $("#choice").css("visibility","visible");
         $("#textChoice").text("Round " + this.round);
         start = setInterval(() => {
             if (this.player === this.monsters[next]) {
-                console.log(next);
                 clearInterval(start);
                 clearTimeout(startAgain);
                 $("#choice").css("visibility","visible");
@@ -111,7 +111,6 @@ class game {
                         this.playerMonster.dice = [];
                         this.playerMonster.rollDice();
                         this.playerMonster.count++;
-                        console.log(this.playerMonster.count);
 
                         if (this.playerMonster.count == 3) {
                                 $("#choice").css("visibility","hidden");
@@ -127,11 +126,20 @@ class game {
                             }, 4000);
                             $("#yes").off("click");
 
+                            this.playerMonster.resolveDice(this.monsters);
+                            
+                            if (!this.tokyoBay) {
+                                this.playerMonster.enterTokyo(this.tokyoBay,this.monsters);
+                                this.tokyoBay = true;
+                            } else if (!this.tokyoCity) {
+                                this.playerMonster.enterTokyo(this.tokyoCity,this.monsters);
+                                this.tokyoCity = true;
+                            }
+                        
                             startAgain = setTimeout(() => {
                                 this.clearDice();
                                 this.playerMonster.count = 1;
                                 this.gameTurn();
-                                console.log("Speed is ", speed);
                             }, speed);
                         }
                     })
@@ -149,11 +157,20 @@ class game {
                         }, 4000);
                         $("#no").off("click");
 
+                        this.playerMonster.resolveDice(this.monsters);
+                        
+                        if (!this.tokyoBay) {
+                            this.playerMonster.enterTokyo(this.tokyoBay,this.monsters);
+                            this.tokyoBay = true;
+                        } else if (!this.tokyoCity) {
+                            this.playerMonster.enterTokyo(this.tokyoCity,this.monsters);
+                            this.tokyoCity = true;
+                        }
+
                         startAgain = setTimeout(() => {
                             this.clearDice();
                             this.playerMonster.count = 1;
                             this.gameTurn();
-                            console.log("Speed is ", speed);
                         }, speed);
                     })
                 }
@@ -221,26 +238,74 @@ class game {
             case "mekadragon":
                 this.mekadragon.dice = [];
                 this.mekadragon.rollDice();
+                debugger
+                if (!this.tokyoBay) {
+                    this.mekadragon.enterTokyo(this.tokyoBay,this.monsters);
+                    this.tokyoBay = true;
+                } else if (!this.tokyoCity) {
+                    this.mekadragon.enterTokyo(this.tokyoCity,this.monsters);
+                    this.tokyoCity = true;
+                }
                 break;
             case "alienoid":
                 this.alienoid.dice = [];
                 this.alienoid.rollDice();
+                debugger
+                if (!this.tokyoBay) {
+                    this.alienoid.enterTokyo(this.tokyoBay,this.monsters);
+                    this.tokyoBay = true;
+                } else if (!this.tokyoCity) {
+                    this.alienoid.enterTokyo(this.tokyoCity,this.monsters);
+                    this.tokyoCity = true;
+                }
                 break;
             case "theking":
                 this.theking.dice = [];
                 this.theking.rollDice();
+                debugger
+                if (!this.tokyoBay) {
+                    this.theking.enterTokyo(this.tokyoBay,this.monsters);
+                    this.tokyoBay = true;
+                } else if (!this.tokyoCity) {
+                    this.theking.enterTokyo(this.tokyoCity,this.monsters);
+                    this.tokyoCity = true;
+                }
                 break;
             case "cyberkitty":
                 this.cyberkitty.dice = [];
                 this.cyberkitty.rollDice();
+                debugger
+                if (!this.tokyoBay) {
+                    this.cyberkitty.enterTokyo(this.tokyoBay,this.monsters);
+                    this.tokyoBay = true;
+                } else if (!this.tokyoCity) {
+                    this.cyberkitty.enterTokyo(this.tokyoCity,this.monsters);
+                    this.tokyoCity = true;
+                }
                 break;
             case "gigazaur":
                 this.gigazaur.dice = [];
                 this.gigazaur.rollDice();
+                debugger
+                if (!this.tokyoBay) {
+                    this.gigazaur.enterTokyo(this.tokyoBay,this.monsters);
+                    this.tokyoBay = true;
+                } else if (!this.tokyoCity) {
+                    this.gigazaur.enterTokyo(this.tokyoCity,this.monsters);
+                    this.tokyoCity = true;
+                }
                 break;
             case "spacepenquin":
                 this.spacepenquin.dice = [];
                 this.spacepenquin.rollDice();
+                debugger
+                if (!this.tokyoBay) {
+                    this.spacepenquin.enterTokyo(this.tokyoBay,this.monsters);
+                    this.tokyoBay = true;
+                } else if (!this.tokyoCity) {
+                    this.spacepenquin.enterTokyo(this.tokyoCity,this.monsters);
+                    this.tokyoCity = true;
+                }
                 break;
         }
     }
