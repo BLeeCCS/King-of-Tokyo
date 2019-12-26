@@ -8,6 +8,9 @@ class monster {
         this.dice = [];
         this.rollAgain = true;
         this.count = 1;
+        this.inTokyo = false;
+        this.inBay = false;
+        this.monsters = [];
     }
 
     rollDice() {
@@ -62,16 +65,115 @@ class monster {
             if (diceCount == this.dice.length){
                 clearInterval(diceStart);
             }
-        }, 500);
-        
+        }, 500);  
     }
 
-    resolveDice() {
+    resolveDice(monsters) {
+        let heal = 0;
+        let damage = 0;
+        let energyPts = 0;
+        let oneCount = 0;
+        let twoCount = 0;
+        let threeCount = 0;
 
+        console.log(monsters);
+        this.monsters = monsters;
+
+        console.log(this.monsters);
+
+        for (let i = 0; i < this.dice.length; i++) {
+            switch(this.dice[i]) {
+                case "one":
+                    oneCount++;
+                    break;
+                case "two":
+                    twoCount++;
+                    break;
+                case "three":
+                    threeCount++;
+                    break;
+                case "heart":
+                    heal++;
+                    break;
+                case "energy":
+                    energyPts++;
+                    break;
+                case "smash":
+                    damage++;
+                    break;
+            }
+        }
+
+        if (oneCount >= 3) {
+            this.victoryPoint += 1;
+            if ((oneCount - 3) > 0) {
+                this.victoryPoint += (oneCount - 3);
+            }
+        }
+
+        if (twoCount >= 3) {
+            this.victoryPoint += 2;
+            if ((twoCount - 3) > 0) {
+                this.victoryPoint += (twoCount - 3);
+            }
+        }
+
+        if (threeCount >= 3) {
+            this.victoryPoint += 1;
+            if ((threeCount - 3) > 0) {
+                this.victoryPoint += (threeCount - 3);
+            }
+        }
+
+        if (energyPts > 0) {
+            this.energyPoint += energyPts;
+        }
+
+        if (!this.inTokyo || !this.inBay) {
+            for (let i = 0; i < this.monsters.length; i++) {
+                if (this.monsters[i] != this.name){
+                    if(this.monsters[i].inTokyo || this.monsters[i].inBay) {
+                        this.monsters[i].lifePoint -= damage;
+                    }
+                    if (this.monsters[i].lifePoint <= 0) {
+                        this.monsters[i].alive = false;
+                    }
+                }
+            }
+        } else {
+            for (let i = 0; i < this.monsters.length; i++) {
+                if (this.monsters[i] != this.name){
+                    if(!this.monsters[i].inTokyo || !this.monsters[i].inBay) {
+                        this.monsters[i].lifePoint -= damage;
+                    }
+                    if (this.monsters[i].lifePoint <= 0) {
+                        this.monsters[i].alive = false;
+                    }
+                }
+            }
+        }
+
+        if (this.alive && this.lifePoint < 10) {
+            for (let i = heal; i > 0; i--) {
+                if (this.lifePoint != 10) {
+                    this.life++;
+                }
+            }
+        }
     }
 
-    enterTokyo() {
+    enterTokyo(inCity,monsters) {
+        debugger
+        if (!inCity && (monsters.length >= 5) ) {
+            this.inBay = true;
+            $("#tokyoBay").css({"background-image": "url(./assets/M_Fig/"+ this.name +".png)"});
+            return;
+        }
 
+        if(!inCity) {
+            this.inTokyo = true;
+            $("#tokyoCity").css({"background-image": "url(./assets/M_Fig/"+ this.name +".png)"});
+        }
     }
 
     buyPowerCards() {
