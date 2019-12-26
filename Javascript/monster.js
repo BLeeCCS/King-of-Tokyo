@@ -11,7 +11,7 @@ class monster {
     }
 
     rollDice() {
-        const diceSet = ["1","2","3","heart","energy","victory"];
+        const diceSet = ["one","two","three","heart","energy","smash"];
         let diceStart = null;
         let diceCount = 0;
         
@@ -20,35 +20,50 @@ class monster {
             this.dice.push(diceSet[random-1]);
         }
 
+        var animation = setInterval(()=>{
+            let random = Math.floor(Math.random(6) * 6);
+            $("#"+this.name+"_s > #diceContainer > :nth-child(1)").css({"background-image":"url(./assets/Dice/"+ diceSet[random] +".png)"});
+        },50);
+
         diceStart = setInterval(() => {
-                switch(this.dice[diceCount]) {
-                case "1":
+            switch(this.dice[diceCount]) {
+                case "one":
+                    clearInterval(animation);
                     $("#"+this.name+"_s > #diceContainer > :nth-child("+ (diceCount+1) +")").css({"background-image":"url(./assets/Dice/one.png)"});
                     break;
-                case "2":
-                        $("#"+this.name+"_s > #diceContainer > :nth-child("+ (diceCount+1) +")").css({"background-image":"url(./assets/Dice/two.png)"});
+                case "two":
+                    clearInterval(animation);
+                    $("#"+this.name+"_s > #diceContainer > :nth-child("+ (diceCount+1) +")").css({"background-image":"url(./assets/Dice/two.png)"});
                     break;
-                case "3":
-                        $("#"+this.name+"_s > #diceContainer > :nth-child("+ (diceCount+1) +")").css({"background-image":"url(./assets/Dice/three.png)"});
+                case "three":
+                    clearInterval(animation);
+                    $("#"+this.name+"_s > #diceContainer > :nth-child("+ (diceCount+1) +")").css({"background-image":"url(./assets/Dice/three.png)"});
                     break;
                 case "heart":
-                        $("#"+this.name+"_s > #diceContainer > :nth-child("+ (diceCount+1) +")").css({"background-image":"url(./assets/Dice/heart.png)"});
+                    clearInterval(animation);
+                    $("#"+this.name+"_s > #diceContainer > :nth-child("+ (diceCount+1) +")").css({"background-image":"url(./assets/Dice/heart.png)"});
                     break;
                 case "energy":
-                        $("#"+this.name+"_s > #diceContainer > :nth-child("+ (diceCount+1) +")").css({"background-image":"url(./assets/Dice/energy.png)"});
+                    clearInterval(animation);
+                    $("#"+this.name+"_s > #diceContainer > :nth-child("+ (diceCount+1) +")").css({"background-image":"url(./assets/Dice/energy.png)"});
                     break;
-                case "victory":
-                        $("#"+this.name+"_s > #diceContainer > :nth-child("+ (diceCount+1) +")").css({"background-image":"url(./assets/Dice/victory.png)"});
+                case "smash":
+                    clearInterval(animation);
+                    $("#"+this.name+"_s > #diceContainer > :nth-child("+ (diceCount+1) +")").css({"background-image":"url(./assets/Dice/smash.png)"});
                     break;
             }
             diceCount++;
+
+            animation = setInterval(()=>{
+                let random = Math.floor(Math.random(6) * 6);
+                $("#"+this.name+"_s > #diceContainer > :nth-child("+(diceCount+1)+")").css({"background-image":"url(./assets/Dice/"+ diceSet[random] +".png)"});
+            },50);
 
             if (diceCount == this.dice.length){
                 clearInterval(diceStart);
             }
         }, 500);
-
-        this.count++;
+        
     }
 
     resolveDice() {

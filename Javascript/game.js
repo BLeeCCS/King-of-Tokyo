@@ -61,27 +61,57 @@ class game {
 
     gameTurn() {
         let start = null;
+        let startAgain = null;
         let enemyStart = null;
         let next = 0;
+
+        clearTimeout(startAgain);
 
         $("#choice").css("visibility","visible");
         $("#textChoice").text("Round " + this.round);
         start = setInterval(() => {
             if (this.player === this.monsters[next]) {
+                console.log(next);
                 clearInterval(start);
+                clearTimeout(startAgain);
                 $("#choice").css("visibility","visible");
                 $("#textChoice").text("Player Turn!");
                 this.monsterTurn(this.player);
                 
+                var speed = null;
+                switch(next) {
+                    case 0:
+                        speed = 45000;
+                        break;
+                    case 1:
+                        speed = 37500;
+                        break;
+                    case 2:
+                        speed = 30000;
+                        break;
+                    case 3:
+                        speed = 22500;
+                        break;
+                    case 4:
+                        speed = 15000;
+                        break;
+                    case 5:
+                        speed = 7500;
+                        break;
+                }
+
                 if (this.playerMonster.count < 3) {
                     setTimeout(() => {
                         $("#choice").css("visibility","visible");
                         $(".button").css("visibility","visible");
                         $("#textChoice").text("Roll again?");
                     }, 3500);
+
                     $("#yes").on("click",()=>{
                         this.playerMonster.dice = [];
                         this.playerMonster.rollDice();
+                        this.playerMonster.count++;
+                        console.log(this.playerMonster.count);
 
                         if (this.playerMonster.count == 3) {
                                 $("#choice").css("visibility","hidden");
@@ -93,9 +123,16 @@ class game {
                                 next++;
                                 if(next == this.numOfPlayers) {
                                     clearInterval(enemyStart);
-                                    $("#choice").css("visibility","hidden");
                                 }
                             }, 4000);
+                            $("#yes").off("click");
+
+                            startAgain = setTimeout(() => {
+                                this.clearDice();
+                                this.playerMonster.count = 1;
+                                this.gameTurn();
+                                console.log("Speed is ", speed);
+                            }, speed);
                         }
                     })
                     $("#no").on("click",()=>{
@@ -110,25 +147,27 @@ class game {
                                 clearInterval(enemyStart);
                             }
                         }, 4000);
+                        $("#no").off("click");
+
+                        startAgain = setTimeout(() => {
+                            this.clearDice();
+                            this.playerMonster.count = 1;
+                            this.gameTurn();
+                            console.log("Speed is ", speed);
+                        }, speed);
                     })
                 }
             } else {
                 $("#choice").css("visibility","visible");
                 $("#textChoice").text(this.monsters[next].toUpperCase());
-                this.monsterTurn(this.monsters[next]); 
-                if(next == this.numOfPlayers) {
-                    clearInterval(enemyStart);
-                }
+                this.monsterTurn(this.monsters[next]);
+                $("#yes").off("click"); 
+                $("#no").off("click");
             }
             next++;
-            
         },4000);
 
         this.round++;
-
-        setTimeout(() => {
-            this.gameTurn();
-        }, 34000);
     }
 
     renderMonsterStat() {
@@ -173,6 +212,10 @@ class game {
         }
     }
     
+    clearDice() {
+        $(".diceContainer > div").css({"background-image":""});
+    }
+
     monsterTurn(name) {
         switch(name) {
             case "mekadragon":
