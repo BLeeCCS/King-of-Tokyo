@@ -151,6 +151,8 @@ class game {
                             }, 4000);
                             
                             this.playerMonster.resolveDice(this.monsterObj);
+                            this.renderMonsterStat();
+                            this.playerMonster.yield();
 
                             if (!this.tokyoBay) {
                                 if (!this.playerMonster.inBay) {
@@ -193,6 +195,8 @@ class game {
                     }, 4000);
                         
                         this.playerMonster.resolveDice(this.monsterObj);
+                        this.renderMonsterStat();
+                        this.playerMonster.yield();
                         
                         if (!this.tokyoBay) {
                             if (!this.playerMonster.inBay) {
@@ -228,6 +232,7 @@ class game {
     }
 
     renderMonsterStat() {
+        debugger
         $("#"+this.player+"_s > #victory").text(this.playerMonster.victoryPoint);
         $("#"+this.player+"_s > #energy").text(this.playerMonster.energyPoint);
         $("#"+this.player+"_s > #heart").text(this.playerMonster.lifePoint);
@@ -308,6 +313,7 @@ class game {
                     this.mekadragon.dice = [];
                     this.mekadragon.rollDice();
                     this.mekadragon.resolveDice(this.monsterObj);
+                    this.renderMonsterStat();
 
                     if (!this.tokyoBay) {
                         this.mekadragon.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
@@ -315,6 +321,13 @@ class game {
                     } else if (!this.tokyoCity) {
                         this.mekadragon.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
                         this.tokyoCity = true;
+                    }
+
+                    if (this.tokyoBay == true) {
+                        this.tokyoBay = this.mekadragon.yield();
+                    }
+                    if (this.tokyoCity == true) {
+                        this.tokyoCity = this.mekadragon.yield();
                     }
                 }
                 break;
@@ -327,6 +340,7 @@ class game {
                     this.alienoid.dice = [];
                     this.alienoid.rollDice();
                     this.alienoid.resolveDice(this.monsterObj);
+                    this.renderMonsterStat();
     
                     if (!this.tokyoBay) {
                         this.alienoid.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
@@ -334,6 +348,13 @@ class game {
                     } else if (!this.tokyoCity) {
                         this.alienoid.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
                         this.tokyoCity = true;
+                    }
+
+                    if (this.tokyoBay == true) {
+                        this.tokyoBay = this.alienoid.yield();
+                    }
+                    if (this.tokyoCity == true) {
+                        this.tokyoCity = this.alienoid.yield();
                     }
                 }
                 break;
@@ -346,6 +367,14 @@ class game {
                     this.theking.dice = [];
                     this.theking.rollDice();
                     this.theking.resolveDice(this.monsterObj);
+                    this.renderMonsterStat();
+
+                    if (this.tokyoBay == true) {
+                        this.tokyoBay = this.theking.yield();
+                    }
+                    if (this.tokyoCity == true) {
+                        this.tokyoCity = this.theking.yield();
+                    }
 
                     if (!this.tokyoBay) {
                         this.theking.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
@@ -365,6 +394,7 @@ class game {
                     this.cyberkitty.dice = [];
                     this.cyberkitty.rollDice();
                     this.cyberkitty.resolveDice(this.monsterObj);
+                    this.renderMonsterStat();
             
                     if (!this.tokyoBay) {
                         this.cyberkitty.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
@@ -372,6 +402,13 @@ class game {
                     } else if (!this.tokyoCity) {
                         this.cyberkitty.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
                         this.tokyoCity = true;
+                    }
+
+                    if (this.tokyoBay == true) {
+                        this.tokyoBay = this.cyberkitty.yield();
+                    }
+                    if (this.tokyoCity == true) {
+                        this.tokyoCity = this.cyberkitty.yield();
                     }
                 }
                 break;
@@ -384,6 +421,7 @@ class game {
                     this.gigazaur.dice = [];
                     this.gigazaur.rollDice();
                     this.gigazaur.resolveDice(this.monsterObj);
+                    this.renderMonsterStat();
 
                     if (!this.tokyoBay) {
                         this.gigazaur.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
@@ -391,6 +429,13 @@ class game {
                     } else if (!this.tokyoCity) {
                         this.gigazaur.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
                         this.tokyoCity = true;
+                    }
+
+                    if (this.tokyoBay == true) {
+                        this.tokyoBay = this.gigazaur.yield();
+                    }
+                    if (this.tokyoCity == true) {
+                        this.tokyoCity = this.gigazaur.yield();
                     }
                 }
                 break;
@@ -403,6 +448,7 @@ class game {
                     this.spacepenguin.dice = [];
                     this.spacepenguin.rollDice();
                     this.spacepenguin.resolveDice(this.monsterObj);
+                    this.renderMonsterStat();
     
                     if (!this.tokyoBay) {
                         this.spacepenguin.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
@@ -410,6 +456,13 @@ class game {
                     } else if (!this.tokyoCity) {
                         this.spacepenguin.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
                         this.tokyoCity = true;
+                    }
+
+                    if (this.tokyoBay == true) {
+                        this.tokyoBay = this.spacepenguin.yield();
+                    }
+                    if (this.tokyoCity == true) {
+                        this.tokyoCity = this.spacepenguin.yield();
                     }
                 }
                 break;

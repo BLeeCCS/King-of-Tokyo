@@ -158,7 +158,6 @@ class monster {
                             }
                         }
                     }
-                    this.yield();
                 } 
 
                 if (this.AI) {
@@ -195,7 +194,37 @@ class monster {
     }
 
     yield() {
+        if (this.player && this.lifePoint < 10) {
+            $("#textChoice").text("Yield?");
+            $("#choice").css("visibility","visible");
+            $(".button").css("visibility","visible");
 
+            $("#yes").on("click",()=>{
+                $("#yes").off("click");
+                this.inBay = false;
+                this.inTokyo = false;
+                $("#tokyoBay").css({"background-image": ""});
+                $("#textChoice").text("");
+                $("#choice").css("visibility","hidden");
+                $(".button").css("visibility","hidden");
+                return false;
+            })
+
+            $("#no").on("click",()=>{
+                $("#no").off("click");
+                $("#textChoice").text("");
+                $("#choice").css("visibility","hidden");
+                $(".button").css("visibility","hidden");
+                return true;
+            })
+        }
+
+        if (this.AI && this.lifePoint < 6) {
+            this.inBay = false;
+            this.inTokyo = false;
+            $("#tokyoBay").css({"background-image": ""});
+            return false;
+        }
     }
 
     enterTokyo(bay,tokyo,monsters) {
