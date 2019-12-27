@@ -84,6 +84,7 @@ class monster {
         let oneCount = 0;
         let twoCount = 0;
         let threeCount = 0;
+        let firstTurn = true;
 
         for (let i = 0; i < this.dice.length; i++) {
             switch(this.dice[i]) {
@@ -141,119 +142,55 @@ class monster {
             }
         }
 
-        debugger
-        if (damage > 0) {
-            if (this.inBay) {
-                for (let i = 0; i < monsters.length; i++) {
-                    if (monsters[i] != this.name){
-                        if(monsters[i].inTokyo || monsters[i].inBay) {
-                            monsters[i].lifePoint -= damage;
-                        }
-                        if (monsters[i].lifePoint <= 0) {
-                            monsters[i].alive = false;
-                        }
-                    }
-                }
-            } else if (this.inTokyo) {
-                for (let i = 0; i < monsters.length; i++) {
-                    if (monsters[i] != this.name){
-                        if(monsters[i].inTokyo || monsters[i].inBay) {
-                            monsters[i].lifePoint -= damage;
-                        }
-                        if (monsters[i].lifePoint <= 0) {
-                            monsters[i].alive = false;
-                        }
-                    }
-                }
-            } else {
-                for (let i = 0; i < monsters.length; i++) {
-                    if (this.name == monsters[i].name && this.player) {
-                        if (monsters[i].inBay || monsters[i].inTokyo) {
-                            for(let i = 0; i < monsters.length; i++) {
-                                if (monsters[i].name != this.name){
-                                    if(!monsters[i].inTokyo || !monsters[i].inBay) {
-                                        monsters[i].lifePoint -= damage;
-                                    }
-                                }
-                            }
-                        } else {
-                            for(let i = 0; i < monsters.length; i++) {
-                                if (monsters[i].name != this.name){
-                                    if(monsters[i].inTokyo || monsters[i].inBay) {
-                                        monsters[i].lifePoint -= damage;
-                                    }
-                                }
-                            }
-                        }
-                    }
-    
-                    if (monsters[i].name != this.name){
-                        if(!monsters[i].inTokyo || !monsters[i].inBay) {
-                            monsters[i].lifePoint -= damage;
-                        }
-                        if (monsters[i].lifePoint <= 0) {
-                            monsters[i].alive = false;
-                        }
-                    }
-                }
-            }
+        for (let i = 0; i < monsters.length; i++) {
+            if (monsters[i].inBay || monsters[i].inTokyo) {
+                firstTurn = false;
+            } 
         }
 
+        if (damage > 0 && !firstTurn) {
+            if (this.inBay || this.inTokyo) {
+                if (this.player) {
+                    for (let i = 0; i < monsters.length; i++) {
+                        if (monsters[i].name != this.name){
+                            if (!monsters[i].inTokyo || !monsters[i].inBay) {
+                                monsters[i].lifePoint -= damage;
+                            }
+                        }
+                    }
+                } 
 
-        // if (this.inBay) {
-        //     for (let i = 0; i < monsters.length; i++) {
-        //         if (monsters[i] != this.name){
-        //             if(monsters[i].inTokyo || monsters[i].inBay) {
-        //                 monsters[i].lifePoint -= damage;
-        //             }
-        //             if (monsters[i].lifePoint <= 0) {
-        //                 monsters[i].alive = false;
-        //             }
-        //         }
-        //     }
-        // } else if (this.inTokyo) {
-        //     for (let i = 0; i < monsters.length; i++) {
-        //         if (monsters[i] != this.name){
-        //             if(monsters[i].inTokyo || monsters[i].inBay) {
-        //                 monsters[i].lifePoint -= damage;
-        //             }
-        //             if (monsters[i].lifePoint <= 0) {
-        //                 monsters[i].alive = false;
-        //             }
-        //         }
-        //     }
-        // } else {
-        //     for (let i = 0; i < monsters.length; i++) {
-        //         if (this.name == monsters[i].name && this.player) {
-        //             if (monsters[i].inBay || monsters[i].inTokyo) {
-        //                 for(let i = 0; i < monsters.length; i++) {
-        //                     if (monsters[i].name != this.name){
-        //                         if(!monsters[i].inTokyo || !monsters[i].inBay) {
-        //                             monsters[i].lifePoint -= damage;
-        //                         }
-        //                     }
-        //                 }
-        //             } else {
-        //                 for(let i = 0; i < monsters.length; i++) {
-        //                     if (monsters[i].name != this.name){
-        //                         if(monsters[i].inTokyo || monsters[i].inBay) {
-        //                             monsters[i].lifePoint -= damage;
-        //                         }
-        //                     }
-        //                 }
-        //             }
-        //         }
+                if (this.ai) {
+                    for (let i = 0; i < monsters.length; i++) {
+                        if (monsters[i].name != this.name){
+                            if (!monsters[i].inTokyo || !monsters[i].inBay) {
+                                monsters[i].lifePoint -= damage;
+                            }
+                        }
+                    }
+                } 
+            } else {
+                if (this.player) {
+                    for (let i = 0; i < monsters.length; i++) {
+                        if (monsters[i].name != this.name){
+                            if (monsters[i].inTokyo || monsters[i].inBay) {
+                                monsters[i].lifePoint -= damage;
+                            }
+                        }
+                    }
+                } 
 
-        //         if (monsters[i].name != this.name){
-        //             if(!monsters[i].inTokyo || !monsters[i].inBay) {
-        //                 monsters[i].lifePoint -= damage;
-        //             }
-        //             if (monsters[i].lifePoint <= 0) {
-        //                 monsters[i].alive = false;
-        //             }
-        //         }
-        //     }
-        // }
+                if (this.ai) {
+                    for (let i = 0; i < monsters.length; i++) {
+                        if (monsters[i].name != this.name){
+                            if (monsters[i].inTokyo || monsters[i].inBay) {
+                                monsters[i].lifePoint -= damage;
+                            }
+                        }
+                    }
+                } 
+            }
+        }
     }
 
     enterTokyo(bay,tokyo,monsters) {
