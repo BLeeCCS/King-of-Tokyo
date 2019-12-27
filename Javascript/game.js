@@ -134,6 +134,7 @@ class game {
 
                         if (this.playerMonster.count == 3) {
                             $("#yes").off("click");
+                            $("#no").off("click");
                             $("#choice").css("visibility","hidden");
                             $(".button").css("visibility","hidden");
                             enemyStart = setInterval(() => {
@@ -149,6 +150,8 @@ class game {
                                 }
                             }, 4000);
                             
+                            this.playerMonster.resolveDice(this.monsterObj);
+
                             if (!this.tokyoBay) {
                                 if (!this.playerMonster.inBay) {
                                     this.playerMonster.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters,this.next);
@@ -160,8 +163,6 @@ class game {
                                     this.tokyoCity = true;
                                 }
                             }
-                        
-                            //this.playerMonster.resolveDice(this.monsters);
 
                             startAgain = setTimeout(() => {
                                 this.clearDice();
@@ -172,8 +173,8 @@ class game {
                     })
 
                     $("#no").on("click",()=>{
-                  
                         $("#no").off("click");
+                        $("#yes").off("click");
                         $("#choice").css("visibility","hidden");
                         $(".button").css("visibility","hidden");
                         enemyStart = setInterval(() => {
@@ -306,7 +307,8 @@ class game {
                 } else {
                     this.mekadragon.dice = [];
                     this.mekadragon.rollDice();
-    
+                    this.mekadragon.resolveDice(this.monsterObj);
+
                     if (!this.tokyoBay) {
                         this.mekadragon.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
                         this.tokyoBay = true;
@@ -324,6 +326,7 @@ class game {
                 } else {
                     this.alienoid.dice = [];
                     this.alienoid.rollDice();
+                    this.alienoid.resolveDice(this.monsterObj);
     
                     if (!this.tokyoBay) {
                         this.alienoid.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
@@ -342,7 +345,8 @@ class game {
                 } else {
                     this.theking.dice = [];
                     this.theking.rollDice();
-    
+                    this.theking.resolveDice(this.monsterObj);
+
                     if (!this.tokyoBay) {
                         this.theking.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
                         this.tokyoBay = true;
@@ -360,7 +364,8 @@ class game {
                 } else {
                     this.cyberkitty.dice = [];
                     this.cyberkitty.rollDice();
-    
+                    this.cyberkitty.resolveDice(this.monsterObj);
+            
                     if (!this.tokyoBay) {
                         this.cyberkitty.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
                         this.tokyoBay = true;
@@ -378,7 +383,8 @@ class game {
                 } else {
                     this.gigazaur.dice = [];
                     this.gigazaur.rollDice();
-    
+                    this.gigazaur.resolveDice(this.monsterObj);
+
                     if (!this.tokyoBay) {
                         this.gigazaur.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
                         this.tokyoBay = true;
@@ -396,6 +402,7 @@ class game {
                 } else {
                     this.spacepenguin.dice = [];
                     this.spacepenguin.rollDice();
+                    this.spacepenguin.resolveDice(this.monsterObj);
     
                     if (!this.tokyoBay) {
                         this.spacepenguin.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
