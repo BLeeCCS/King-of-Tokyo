@@ -37,55 +37,55 @@ class game {
             switch(this.monsters[i]) {
                 case "mekadragon":
                     if (this.player == "mekadragon") {
-                        this.playerMonster = new monster(this.player);
+                        this.playerMonster = new monster(this.player,true,false);
                         this.monsterObj.push(this.playerMonster);
                     } else {
-                        this.mekadragon = new monster("mekadragon");
+                        this.mekadragon = new monster("mekadragon",false,true);
                         this.monsterObj.push(this.mekadragon);
                     }
                     break;
                 case "alienoid":
                     if (this.player == "alienoid") {
-                        this.playerMonster = new monster(this.player);
+                        this.playerMonster = new monster(this.player,true,false);
                         this.monsterObj.push(this.playerMonster);
                     } else {
-                        this.alienoid = new monster("alienoid");
+                        this.alienoid = new monster("alienoid",false,true);
                         this.monsterObj.push(this.alienoid);
                     }
                     break;
                 case "theking":
                     if (this.player == "theking") {
-                        this.playerMonster = new monster(this.player);
+                        this.playerMonster = new monster(this.player,true,false);
                         this.monsterObj.push(this.playerMonster);
                     } else {
-                        this.theking = new monster("theking");
+                        this.theking = new monster("theking",false,true);
                         this.monsterObj.push(this.theking);
                     }
                     break;
                 case "cyberkitty":
                     if (this.player == "cyberkitty") {
-                        this.playerMonster = new monster(this.player);
+                        this.playerMonster = new monster(this.player,true,false);
                         this.monsterObj.push(this.playerMonster);
                     } else {
-                        this.cyberkitty = new monster("cyberkitty");
+                        this.cyberkitty = new monster("cyberkitty",false,true);
                         this.monsterObj.push(this.cyberkitty);
                     }
                     break;
                 case "gigazaur":
                     if (this.player == "gigazaur") {
-                        this.playerMonster = new monster(this.player);
+                        this.playerMonster = new monster(this.player,true,false);
                         this.monsterObj.push(this.playerMonster);
                     } else {
-                        this.gigazaur = new monster("gigazaur");
+                        this.gigazaur = new monster("gigazaur",false,true);
                         this.monsterObj.push(this.gigazaur);
                     }
                     break;
                 case "spacepenguin":
                     if (this.player == "spacepenguin") {
-                        this.playerMonster = new monster(this.player);
+                        this.playerMonster = new monster(this.player,true,false);
                         this.monsterObj.push(this.playerMonster);
                     } else {
-                        this.spacepenguin = new monster("spacepenguin");
+                        this.spacepenguin = new monster("spacepenguin",false,true);
                         this.monsterObj.push(this.spacepenguin);
                     }
                     break;
@@ -106,43 +106,25 @@ class game {
         this.renderMonsterStat();
         clearTimeout(startAgain);
 
-        $("#choice").css("visibility","visible");
         $("#textChoice").text("Round " + this.round);
+        $("#choice").css("visibility","visible");
+
         start = setInterval(() => {
             if (this.player === this.monsters[this.next]) {
                 clearInterval(start);
                 clearTimeout(startAgain);
-                $("#choice").css("visibility","visible");
-                $("#textChoice").text("Player Turn!");
-                this.monsterTurn(this.player);
                 
-                var speed = null;
-                switch(this.next) {
-                    case 0:
-                        speed = 45000;
-                        break;
-                    case 1:
-                        speed = 37500;
-                        break;
-                    case 2:
-                        speed = 30000;
-                        break;
-                    case 3:
-                        speed = 22500;
-                        break;
-                    case 4:
-                        speed = 15000;
-                        break;
-                    case 5:
-                        speed = 7500;
-                        break;
-                }
+                $("#textChoice").text("Player Turn!");
+                $("#choice").css("visibility","visible");
+                
+                this.monsterTurn(this.player);
+                let speed = this.determineSpeed();
 
                 if (this.playerMonster.count < 3) {
                     setTimeout(() => {
+                        $("#textChoice").text("Roll again?");
                         $("#choice").css("visibility","visible");
                         $(".button").css("visibility","visible");
-                        $("#textChoice").text("Roll again?");
                     }, 3500);
 
                     $("#yes").on("click",()=>{
@@ -151,22 +133,21 @@ class game {
                         this.playerMonster.count++;
 
                         if (this.playerMonster.count == 3) {
-                                $("#choice").css("visibility","hidden");
-                                $(".button").css("visibility","hidden");
-                                enemyStart = setInterval(() => {
-                                    $("#choice").css("visibility","visible");
+                            $("#yes").off("click");
+                            $("#choice").css("visibility","hidden");
+                            $(".button").css("visibility","hidden");
+                            enemyStart = setInterval(() => {
+                                if(this.next <= 5) {
                                     $("#textChoice").text(this.monsters[this.next].toUpperCase());
-                                this.monsterTurn(this.monsters[this.next]);
-                                
-                                if (this.next != this.numOfPlayers) {
-                                    this.next++;
+                                    $("#choice").css("visibility","visible");
+                                    this.monsterTurn(this.monsters[this.next]);
                                 }
-                                
-                                if(this.next == this.numOfPlayers) {
+                                this.next++;
+
+                                if(this.next >= this.numOfPlayers) {
                                     clearInterval(enemyStart);
                                 }
                             }, 4000);
-                            $("#yes").off("click");
                             
                             if (!this.tokyoBay) {
                                 if (!this.playerMonster.inBay) {
@@ -180,7 +161,7 @@ class game {
                                 }
                             }
                         
-                            this.playerMonster.resolveDice(this.monsters);
+                            //this.playerMonster.resolveDice(this.monsters);
 
                             startAgain = setTimeout(() => {
                                 this.clearDice();
@@ -189,25 +170,28 @@ class game {
                             }, speed);
                         }
                     })
+
                     $("#no").on("click",()=>{
-                            $("#choice").css("visibility","hidden");
-                            $(".button").css("visibility","hidden");
-                            enemyStart = setInterval(() => {
-                            $("#choice").css("visibility","visible");
+                  
+                        $("#no").off("click");
+                        $("#choice").css("visibility","hidden");
+                        $(".button").css("visibility","hidden");
+                        enemyStart = setInterval(() => {
+                        
+                        if(this.next <= 5) {
                             $("#textChoice").text(this.monsters[this.next].toUpperCase());
+                            $("#choice").css("visibility","visible");
                             this.monsterTurn(this.monsters[this.next]);
                             
-                            if (this.next != this.numOfPlayers) {
-                                this.next++;
-                            }
-                            
-                            if(this.next == this.numOfPlayers) {
-                                clearInterval(enemyStart);
-                            }
-                        }, 4000);
-                        $("#no").off("click");
-
-                        this.playerMonster.resolveDice(this.monsters);
+                        }
+                        this.next++;
+                           
+                        if(this.next >= this.numOfPlayers) {
+                            clearInterval(enemyStart);
+                        }
+                    }, 4000);
+                        
+                        this.playerMonster.resolveDice(this.monsterObj);
                         
                         if (!this.tokyoBay) {
                             if (!this.playerMonster.inBay) {
@@ -229,8 +213,9 @@ class game {
                     })
                 }
             } else {
-                $("#choice").css("visibility","visible");
                 $("#textChoice").text(this.monsters[this.next].toUpperCase());
+                $("#choice").css("visibility","visible");
+                
                 this.monsterTurn(this.monsters[this.next]);
                 $("#yes").off("click"); 
                 $("#no").off("click");
@@ -246,9 +231,8 @@ class game {
         $("#"+this.player+"_s > #energy").text(this.playerMonster.energyPoint);
         $("#"+this.player+"_s > #heart").text(this.playerMonster.lifePoint);
         
-        
         for (var i = 0; i < this.turnOrder.length; i++) {
-            switch(this.turnOrder[i].name) {
+            switch(this.turnOrder[i]) {
                 case "mekadragon":
                     $("#mekadragon_s > #victory").text(this.mekadragon.victoryPoint);
                     $("#mekadragon_s > #energy").text(this.mekadragon.energyPoint);
@@ -285,6 +269,31 @@ class game {
     
     clearDice() {
         $(".diceContainer > div").css({"background-image":""});
+    }
+
+    determineSpeed() {
+        let speed = null;
+        switch(this.next) {
+            case 0:
+                speed = 45000;
+                break;
+            case 1:
+                speed = 37500;
+                break;
+            case 2:
+                speed = 30000;
+                break;
+            case 3:
+                speed = 22500;
+                break;
+            case 4:
+                speed = 15000;
+                break;
+            case 5:
+                speed = 7500;
+                break;
+        }
+        return speed;
     }
 
     monsterTurn(name) {
