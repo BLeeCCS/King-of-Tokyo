@@ -1,6 +1,8 @@
 class monster {
-    constructor(name) {
+    constructor(name,player,ai) {
         this.name = name;
+        this.player = player;
+        this.ai = ai;
         this.lifePoint = 10;
         this.victoryPoint = 0;
         this.energyPoint = 0;
@@ -131,38 +133,127 @@ class monster {
             this.energyPoint += energyPts;
         }
 
-        debugger
-        if (!this.inTokyo || !this.inBay) {
-            for (let i = 0; i < monsters.length; i++) {
-                if (monsters[i] != this.name){
-                    if(monsters[i].inTokyo || monsters[i].inBay) {
-                        monsters[i].lifePoint -= damage;
-                    }
-                    if (this.monsters[i].lifePoint <= 0) {
-                        this.monsters[i].alive = false;
-                    }
+        if (this.alive && this.lifePoint < 10) {
+            for (let i = heal; i > 0; i--) {
+                if (this.lifePoint < 10) {
+                    this.lifePoint++;
                 }
             }
-        } else {
-            for (let i = 0; i < this.monsters.length; i++) {
-                if (monsters[i] != this.name){
-                    if(!monsters[i].inTokyo || !this.monsters[i].inBay) {
-                        monsters[i].lifePoint -= damage;
+        }
+
+        debugger
+        if (damage > 0) {
+            if (this.inBay) {
+                for (let i = 0; i < monsters.length; i++) {
+                    if (monsters[i] != this.name){
+                        if(monsters[i].inTokyo || monsters[i].inBay) {
+                            monsters[i].lifePoint -= damage;
+                        }
+                        if (monsters[i].lifePoint <= 0) {
+                            monsters[i].alive = false;
+                        }
                     }
-                    if (monsters[i].lifePoint <= 0) {
-                        monsters[i].alive = false;
+                }
+            } else if (this.inTokyo) {
+                for (let i = 0; i < monsters.length; i++) {
+                    if (monsters[i] != this.name){
+                        if(monsters[i].inTokyo || monsters[i].inBay) {
+                            monsters[i].lifePoint -= damage;
+                        }
+                        if (monsters[i].lifePoint <= 0) {
+                            monsters[i].alive = false;
+                        }
+                    }
+                }
+            } else {
+                for (let i = 0; i < monsters.length; i++) {
+                    if (this.name == monsters[i].name && this.player) {
+                        if (monsters[i].inBay || monsters[i].inTokyo) {
+                            for(let i = 0; i < monsters.length; i++) {
+                                if (monsters[i].name != this.name){
+                                    if(!monsters[i].inTokyo || !monsters[i].inBay) {
+                                        monsters[i].lifePoint -= damage;
+                                    }
+                                }
+                            }
+                        } else {
+                            for(let i = 0; i < monsters.length; i++) {
+                                if (monsters[i].name != this.name){
+                                    if(monsters[i].inTokyo || monsters[i].inBay) {
+                                        monsters[i].lifePoint -= damage;
+                                    }
+                                }
+                            }
+                        }
+                    }
+    
+                    if (monsters[i].name != this.name){
+                        if(!monsters[i].inTokyo || !monsters[i].inBay) {
+                            monsters[i].lifePoint -= damage;
+                        }
+                        if (monsters[i].lifePoint <= 0) {
+                            monsters[i].alive = false;
+                        }
                     }
                 }
             }
         }
 
-        if (this.alive && this.lifePoint < 10) {
-            for (let i = heal; i > 0; i--) {
-                if (this.lifePoint != 10) {
-                    this.life++;
-                }
-            }
-        }
+
+        // if (this.inBay) {
+        //     for (let i = 0; i < monsters.length; i++) {
+        //         if (monsters[i] != this.name){
+        //             if(monsters[i].inTokyo || monsters[i].inBay) {
+        //                 monsters[i].lifePoint -= damage;
+        //             }
+        //             if (monsters[i].lifePoint <= 0) {
+        //                 monsters[i].alive = false;
+        //             }
+        //         }
+        //     }
+        // } else if (this.inTokyo) {
+        //     for (let i = 0; i < monsters.length; i++) {
+        //         if (monsters[i] != this.name){
+        //             if(monsters[i].inTokyo || monsters[i].inBay) {
+        //                 monsters[i].lifePoint -= damage;
+        //             }
+        //             if (monsters[i].lifePoint <= 0) {
+        //                 monsters[i].alive = false;
+        //             }
+        //         }
+        //     }
+        // } else {
+        //     for (let i = 0; i < monsters.length; i++) {
+        //         if (this.name == monsters[i].name && this.player) {
+        //             if (monsters[i].inBay || monsters[i].inTokyo) {
+        //                 for(let i = 0; i < monsters.length; i++) {
+        //                     if (monsters[i].name != this.name){
+        //                         if(!monsters[i].inTokyo || !monsters[i].inBay) {
+        //                             monsters[i].lifePoint -= damage;
+        //                         }
+        //                     }
+        //                 }
+        //             } else {
+        //                 for(let i = 0; i < monsters.length; i++) {
+        //                     if (monsters[i].name != this.name){
+        //                         if(monsters[i].inTokyo || monsters[i].inBay) {
+        //                             monsters[i].lifePoint -= damage;
+        //                         }
+        //                     }
+        //                 }
+        //             }
+        //         }
+
+        //         if (monsters[i].name != this.name){
+        //             if(!monsters[i].inTokyo || !monsters[i].inBay) {
+        //                 monsters[i].lifePoint -= damage;
+        //             }
+        //             if (monsters[i].lifePoint <= 0) {
+        //                 monsters[i].alive = false;
+        //             }
+        //         }
+        //     }
+        // }
     }
 
     enterTokyo(bay,tokyo,monsters) {
