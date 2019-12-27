@@ -2,7 +2,7 @@ class monster {
     constructor(name,player,ai) {
         this.name = name;
         this.player = player;
-        this.ai = ai;
+        this.AI = ai;
         this.lifePoint = 10;
         this.victoryPoint = 0;
         this.energyPoint = 0;
@@ -160,7 +160,7 @@ class monster {
                     }
                 } 
 
-                if (this.ai) {
+                if (this.AI) {
                     for (let i = 0; i < monsters.length; i++) {
                         if (monsters[i].name != this.name){
                             if (!monsters[i].inTokyo || !monsters[i].inBay) {
@@ -180,7 +180,7 @@ class monster {
                     }
                 } 
 
-                if (this.ai) {
+                if (this.AI) {
                     for (let i = 0; i < monsters.length; i++) {
                         if (monsters[i].name != this.name){
                             if (monsters[i].inTokyo || monsters[i].inBay) {
@@ -190,6 +190,40 @@ class monster {
                     }
                 } 
             }
+        }
+    }
+
+    yield() {
+        if (this.player && this.lifePoint < 10) {
+            $("#textChoice").text("Yield?");
+            $("#choice").css("visibility","visible");
+            $(".button").css("visibility","visible");
+
+            $("#yes").on("click",()=>{
+                $("#yes").off("click");
+                this.inBay = false;
+                this.inTokyo = false;
+                $("#tokyoBay").css({"background-image": ""});
+                $("#textChoice").text("");
+                $("#choice").css("visibility","hidden");
+                $(".button").css("visibility","hidden");
+                return false;
+            })
+
+            $("#no").on("click",()=>{
+                $("#no").off("click");
+                $("#textChoice").text("");
+                $("#choice").css("visibility","hidden");
+                $(".button").css("visibility","hidden");
+                return true;
+            })
+        }
+
+        if (this.AI && this.lifePoint < 6) {
+            this.inBay = false;
+            this.inTokyo = false;
+            $("#tokyoBay").css({"background-image": ""});
+            return false;
         }
     }
 
