@@ -193,22 +193,22 @@ html,body {
     left:56.2%;
 }
 
-#spacepenquin_s > #victory {
+#spacepenguin_s > #victory {
     top:65.8%;
     left: 31.8%;
 }
 
-#spacepenquin_s > #energy {
+#spacepenguin_s > #energy {
     top:86.3%;
     left: 71.8%;
 }
 
-#spacepenquin_s > #heart {
+#spacepenguin_s > #heart {
     top:92.8%;
     left:73.2%;
 }
 
-#spacepenquin_s > #diceContainer {
+#spacepenguin_s > #diceContainer {
     top:76.5%;
     left:18%;
 }
@@ -301,14 +301,14 @@ html,body {
 #cyberkitty_s {background-image: url(./assets/M_Stat/Cyber_kitty_Stats.png);}
 #gigazaur_s {background-image: url(./assets/M_Stat/Gigazaur_Stats.png);}
 #mekadragon_s {background-image: url(./assets/M_Stat/Meka_Dragon_Stats.png);}
-#spacepenquin_s {background-image: url(./assets/M_Stat/Space_Penguin_Stats.png);}
+#spacepenguin_s {background-image: url(./assets/M_Stat/Space_Penguin_Stats.png);}
 #theking_s {background-image: url(./assets/M_Stat/The_king_Stats.png);}
 
 #alienoid {background-image: url(./assets/M_Fig/Alienoid.png);}
 #cyberkitty {background-image: url(./assets/M_Fig/CyberKitty.png);}
 #gigazaur {background-image: url(./assets/M_Fig/Gigazaur.png);}
 #mekadragon {background-image: url(./assets/M_Fig/MekaDragon.png);}
-#spacepenquin {background-image: url(./assets/M_Fig/SpacePenguin.png);}
+#spacepenguin {background-image: url(./assets/M_Fig/SpacePenguin.png);}
 #theking {background-image: url(./assets/M_Fig/TheKing.png);}
 
 #card1 {background-image: url(./assets/Cards/card.png);}

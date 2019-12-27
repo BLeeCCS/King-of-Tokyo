@@ -16,7 +16,7 @@ function selectionScreen() {
     $("#theking").hover(moveLeft,moveCenter);
     $("#cyberkitty").hover(moveRight,moveCenter);
     $("#gigazaur").hover(moveRight,moveCenter);
-    $("#spacepenquin").hover(moveRight,moveCenter);
+    $("#spacepenguin").hover(moveRight,moveCenter);
 
     $("#mekadragon").on("click",()=>{
         $("#modal").css("display","none");
@@ -48,10 +48,10 @@ function selectionScreen() {
         newGame = new game("gigazaur");
         newGame.gameStart();
     })
-    $("#spacepenquin").on("click",()=>{
+    $("#spacepenguin").on("click",()=>{
         $("#modal").css("display","none");
         clearInterval(changefont);
-        newGame = new game("spacepenquin");
+        newGame = new game("spacepenguin");
         newGame.gameStart();
     })
 
