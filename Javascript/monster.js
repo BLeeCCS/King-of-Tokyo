@@ -10,7 +10,6 @@ class monster {
         this.count = 1;
         this.inTokyo = false;
         this.inBay = false;
-        this.monsters = [];
     }
 
     rollDice() {
@@ -21,6 +20,14 @@ class monster {
         for (let i = 0; i < 6; i++) {
             var random = Math.floor(Math.random(6) * 6 + 1);
             this.dice.push(diceSet[random-1]);
+        }
+
+        if (this.count > 1) {
+            this.dice = [];
+            for (let i = 0; i < 6; i++) {
+                var random = Math.floor(Math.random(6) * 6 + 1);
+                this.dice.push(diceSet[random-1]);
+            }
         }
 
         var animation = setInterval(()=>{
@@ -76,11 +83,6 @@ class monster {
         let twoCount = 0;
         let threeCount = 0;
 
-        console.log(monsters);
-        this.monsters = monsters;
-
-        console.log(this.monsters);
-
         for (let i = 0; i < this.dice.length; i++) {
             switch(this.dice[i]) {
                 case "one":
@@ -129,11 +131,12 @@ class monster {
             this.energyPoint += energyPts;
         }
 
+        debugger
         if (!this.inTokyo || !this.inBay) {
-            for (let i = 0; i < this.monsters.length; i++) {
-                if (this.monsters[i] != this.name){
-                    if(this.monsters[i].inTokyo || this.monsters[i].inBay) {
-                        this.monsters[i].lifePoint -= damage;
+            for (let i = 0; i < monsters.length; i++) {
+                if (monsters[i] != this.name){
+                    if(monsters[i].inTokyo || monsters[i].inBay) {
+                        monsters[i].lifePoint -= damage;
                     }
                     if (this.monsters[i].lifePoint <= 0) {
                         this.monsters[i].alive = false;
@@ -142,12 +145,12 @@ class monster {
             }
         } else {
             for (let i = 0; i < this.monsters.length; i++) {
-                if (this.monsters[i] != this.name){
-                    if(!this.monsters[i].inTokyo || !this.monsters[i].inBay) {
-                        this.monsters[i].lifePoint -= damage;
+                if (monsters[i] != this.name){
+                    if(!monsters[i].inTokyo || !this.monsters[i].inBay) {
+                        monsters[i].lifePoint -= damage;
                     }
-                    if (this.monsters[i].lifePoint <= 0) {
-                        this.monsters[i].alive = false;
+                    if (monsters[i].lifePoint <= 0) {
+                        monsters[i].alive = false;
                     }
                 }
             }
@@ -162,15 +165,13 @@ class monster {
         }
     }
 
-    enterTokyo(inCity,monsters) {
-        debugger
-        if (!inCity && (monsters.length >= 5) ) {
+    enterTokyo(bay,tokyo,monsters) {
+        if (!bay && monsters.length >= 5) {
             this.inBay = true;
             $("#tokyoBay").css({"background-image": "url(./assets/M_Fig/"+ this.name +".png)"});
             return;
         }
-
-        if(!inCity) {
+        if(!tokyo) {
             this.inTokyo = true;
             $("#tokyoCity").css({"background-image": "url(./assets/M_Fig/"+ this.name +".png)"});
         }
