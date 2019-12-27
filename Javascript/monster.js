@@ -2,7 +2,7 @@ class monster {
     constructor(name,player,ai) {
         this.name = name;
         this.player = player;
-        this.ai = ai;
+        this.AI = ai;
         this.lifePoint = 10;
         this.victoryPoint = 0;
         this.energyPoint = 0;
@@ -158,9 +158,10 @@ class monster {
                             }
                         }
                     }
+                    this.yield();
                 } 
 
-                if (this.ai) {
+                if (this.AI) {
                     for (let i = 0; i < monsters.length; i++) {
                         if (monsters[i].name != this.name){
                             if (!monsters[i].inTokyo || !monsters[i].inBay) {
@@ -180,7 +181,7 @@ class monster {
                     }
                 } 
 
-                if (this.ai) {
+                if (this.AI) {
                     for (let i = 0; i < monsters.length; i++) {
                         if (monsters[i].name != this.name){
                             if (monsters[i].inTokyo || monsters[i].inBay) {
@@ -191,6 +192,10 @@ class monster {
                 } 
             }
         }
+    }
+
+    yield() {
+
     }
 
     enterTokyo(bay,tokyo,monsters) {
