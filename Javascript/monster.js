@@ -229,14 +229,36 @@ class monster {
 
     enterTokyo(bay,tokyo,monsters) {
         console.log(this.name);
+        let name = null;
+        switch(this.name) {
+            case "alienoid":
+                name = "Alienoid";
+                break;
+            case "cyberkitty":
+                name = "CyberKitty"
+                break;
+            case "gigazaur":
+                name = "Gigazaur"
+                break;
+            case "mekadragon":
+                name = "MekaDragon"
+                break;
+            case "spacepenguin":
+                name = "SpacePenguin"
+                break;
+            case "theking":
+                name = "TheKing"
+                break;
+        }
+        console.log(name);
         if (!bay && monsters.length >= 5) {
             this.inBay = true;
-            $("#tokyoBay").css({"background-image": "url(./assets/M_Fig/"+ this.name +".png)"});
+            $("#tokyoBay").css({"background-image": "url(./assets/M_Fig/"+ name +".png)"});
             return;
         }
         if(!tokyo) {
             this.inTokyo = true;
-            $("#tokyoCity").css({"background-image": "url(./assets/M_Fig/"+ this.name +".png)"});
+            $("#tokyoCity").css({"background-image": "url(./assets/M_Fig/"+ name +".png)"});
         }
     }
 
