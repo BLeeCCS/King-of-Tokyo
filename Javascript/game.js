@@ -113,10 +113,10 @@ class game {
             if (this.player === this.monsters[this.next]) {
                 clearInterval(start);
                 clearTimeout(startAgain);
-                
+
                 $("#textChoice").text("Player Turn!");
                 $("#choice").css("visibility","visible");
-                
+
                 this.monsterTurn(this.player);
                 let speed = this.determineSpeed();
 
@@ -149,7 +149,7 @@ class game {
                                     clearInterval(enemyStart);
                                 }
                             }, 4000);
-                            
+
                             this.playerMonster.resolveDice(this.monsterObj);
                             this.renderMonsterStat();
                             this.playerMonster.yield();
@@ -180,24 +180,24 @@ class game {
                         $("#choice").css("visibility","hidden");
                         $(".button").css("visibility","hidden");
                         enemyStart = setInterval(() => {
-                        
+
                         if(this.next <= 5) {
                             $("#textChoice").text(this.monsters[this.next].toUpperCase());
                             $("#choice").css("visibility","visible");
                             this.monsterTurn(this.monsters[this.next]);
-                            
+
                         }
                         this.next++;
-                           
+
                         if(this.next >= this.numOfPlayers) {
                             clearInterval(enemyStart);
                         }
                     }, 4000);
-                        
+
                         this.playerMonster.resolveDice(this.monsterObj);
                         this.renderMonsterStat();
                         this.playerMonster.yield();
-                        
+
                         if (!this.tokyoBay) {
                             if (!this.playerMonster.inBay) {
                                 this.playerMonster.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters,this.next);
@@ -220,9 +220,9 @@ class game {
             } else {
                 $("#textChoice").text(this.monsters[this.next].toUpperCase());
                 $("#choice").css("visibility","visible");
-                
+
                 this.monsterTurn(this.monsters[this.next]);
-                $("#yes").off("click"); 
+                $("#yes").off("click");
                 $("#no").off("click");
             }
             this.next++;
@@ -232,11 +232,10 @@ class game {
     }
 
     renderMonsterStat() {
-        debugger
         $("#"+this.player+"_s > #victory").text(this.playerMonster.victoryPoint);
         $("#"+this.player+"_s > #energy").text(this.playerMonster.energyPoint);
         $("#"+this.player+"_s > #heart").text(this.playerMonster.lifePoint);
-        
+
         for (var i = 0; i < this.turnOrder.length; i++) {
             switch(this.turnOrder[i]) {
                 case "mekadragon":
@@ -272,7 +271,7 @@ class game {
             }
         }
     }
-    
+
     clearDice() {
         $(".diceContainer > div").css({"background-image":""});
     }
@@ -341,7 +340,7 @@ class game {
                     this.alienoid.rollDice();
                     this.alienoid.resolveDice(this.monsterObj);
                     this.renderMonsterStat();
-    
+
                     if (!this.tokyoBay) {
                         this.alienoid.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
                         this.tokyoBay = true;
@@ -395,7 +394,7 @@ class game {
                     this.cyberkitty.rollDice();
                     this.cyberkitty.resolveDice(this.monsterObj);
                     this.renderMonsterStat();
-            
+
                     if (!this.tokyoBay) {
                         this.cyberkitty.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
                         this.tokyoBay = true;
@@ -449,7 +448,7 @@ class game {
                     this.spacepenguin.rollDice();
                     this.spacepenguin.resolveDice(this.monsterObj);
                     this.renderMonsterStat();
-    
+
                     if (!this.tokyoBay) {
                         this.spacepenguin.enterTokyo(this.tokyoBay,this.tokyoCity,this.monsters);
                         this.tokyoBay = true;
@@ -468,4 +467,4 @@ class game {
                 break;
         }
     }
-}   
+}
