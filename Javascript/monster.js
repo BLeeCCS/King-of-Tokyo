@@ -18,7 +18,7 @@ class monster {
         const diceSet = ["one","two","three","heart","energy","smash"];
         let diceStart = null;
         let diceCount = 0;
-        
+
         for (let i = 0; i < 6; i++) {
             var random = Math.floor(Math.random(6) * 6 + 1);
             this.dice.push(diceSet[random-1]);
@@ -74,7 +74,7 @@ class monster {
             if (diceCount == this.dice.length){
                 clearInterval(diceStart);
             }
-        }, 500);  
+        }, 500);
     }
 
     resolveDice(monsters) {
@@ -145,7 +145,7 @@ class monster {
         for (let i = 0; i < monsters.length; i++) {
             if (monsters[i].inBay || monsters[i].inTokyo) {
                 firstTurn = false;
-            } 
+            }
         }
 
         if (damage > 0 && !firstTurn) {
@@ -158,7 +158,7 @@ class monster {
                             }
                         }
                     }
-                } 
+                }
 
                 if (this.AI) {
                     for (let i = 0; i < monsters.length; i++) {
@@ -168,7 +168,7 @@ class monster {
                             }
                         }
                     }
-                } 
+                }
             } else {
                 if (this.player) {
                     for (let i = 0; i < monsters.length; i++) {
@@ -178,7 +178,7 @@ class monster {
                             }
                         }
                     }
-                } 
+                }
 
                 if (this.AI) {
                     for (let i = 0; i < monsters.length; i++) {
@@ -188,7 +188,7 @@ class monster {
                             }
                         }
                     }
-                } 
+                }
             }
         }
     }
@@ -228,6 +228,7 @@ class monster {
     }
 
     enterTokyo(bay,tokyo,monsters) {
+        console.log(this.name);
         if (!bay && monsters.length >= 5) {
             this.inBay = true;
             $("#tokyoBay").css({"background-image": "url(./assets/M_Fig/"+ this.name +".png)"});
