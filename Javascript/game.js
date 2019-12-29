@@ -17,21 +17,7 @@ class game {
     }
 
     gameStart() {
-        for (let i = this.monsters.length; i > 0; i--) {
-            var random = Math.floor(Math.random(i) * i);
-            var monsterZ = this.monsters.splice(random,1);
-            this.turnOrder.push(monsterZ + "");
-        }
-
-        for (let i = 0; i < this.turnOrder.length; i++) {
-            this.monsters.push(this.turnOrder[i]);
-        }
-
-        for (let i = 0; i < this.numOfPlayers; i++) {
-            if (this.player == this.turnOrder[i]) {
-                this.turnOrder.splice(i,1);
-            }
-        }
+        this.randomizeTurn();
 
         for (var i = 0; i < 6; i++) {
             switch(this.monsters[i]) {
@@ -152,7 +138,7 @@ class game {
 
                             this.playerMonster.resolveDice(this.monsterObj);
                             this.renderMonsterStat();
-                            this.playerMonster.yield();
+                            this.playerMonster.yield(this.tokyoBay,this.tokyoCity);
 
                             if (!this.tokyoBay) {
                                 if (!this.playerMonster.inBay) {
@@ -196,7 +182,7 @@ class game {
 
                         this.playerMonster.resolveDice(this.monsterObj);
                         this.renderMonsterStat();
-                        this.playerMonster.yield();
+                        this.playerMonster.yield(this.tokyoBay,this.tokyoCity);
 
                         if (!this.tokyoBay) {
                             if (!this.playerMonster.inBay) {
@@ -301,6 +287,24 @@ class game {
         return speed;
     }
 
+    randomizeTurn() {
+        for (let i = this.monsters.length; i > 0; i--) {
+            var random = Math.floor(Math.random(i) * i);
+            var monsterZ = this.monsters.splice(random,1);
+            this.turnOrder.push(monsterZ + "");
+        }
+
+        for (let i = 0; i < this.turnOrder.length; i++) {
+            this.monsters.push(this.turnOrder[i]);
+        }
+
+        for (let i = 0; i < this.numOfPlayers; i++) {
+            if (this.player == this.turnOrder[i]) {
+                this.turnOrder.splice(i,1);
+            }
+        }
+    }
+
     monsterTurn(name) {
         switch(name) {
             case "mekadragon":
@@ -323,10 +327,10 @@ class game {
                     }
 
                     if (this.tokyoBay == true) {
-                        this.tokyoBay = this.mekadragon.yield();
+                        this.tokyoBay = this.mekadragon.yield(this.tokyoBay,this.tokyoCity);
                     }
                     if (this.tokyoCity == true) {
-                        this.tokyoCity = this.mekadragon.yield();
+                        this.tokyoCity = this.mekadragon.yield(this.tokyoBay,this.tokyoCity);
                     }
                 }
                 break;
@@ -350,10 +354,10 @@ class game {
                     }
 
                     if (this.tokyoBay == true) {
-                        this.tokyoBay = this.alienoid.yield();
+                        this.tokyoBay = this.alienoid.yield(this.tokyoBay,this.tokyoCity);
                     }
                     if (this.tokyoCity == true) {
-                        this.tokyoCity = this.alienoid.yield();
+                        this.tokyoCity = this.alienoid.yield(this.tokyoBay,this.tokyoCity);
                     }
                 }
                 break;
@@ -369,10 +373,10 @@ class game {
                     this.renderMonsterStat();
 
                     if (this.tokyoBay == true) {
-                        this.tokyoBay = this.theking.yield();
+                        this.tokyoBay = this.theking.yield(this.tokyoBay,this.tokyoCity);
                     }
                     if (this.tokyoCity == true) {
-                        this.tokyoCity = this.theking.yield();
+                        this.tokyoCity = this.theking.yield(this.tokyoBay,this.tokyoCity);
                     }
 
                     if (!this.tokyoBay) {
@@ -404,10 +408,10 @@ class game {
                     }
 
                     if (this.tokyoBay == true) {
-                        this.tokyoBay = this.cyberkitty.yield();
+                        this.tokyoBay = this.cyberkitty.yield(this.tokyoBay,this.tokyoCity);
                     }
                     if (this.tokyoCity == true) {
-                        this.tokyoCity = this.cyberkitty.yield();
+                        this.tokyoCity = this.cyberkitty.yield(this.tokyoBay,this.tokyoCity);
                     }
                 }
                 break;
@@ -431,10 +435,10 @@ class game {
                     }
 
                     if (this.tokyoBay == true) {
-                        this.tokyoBay = this.gigazaur.yield();
+                        this.tokyoBay = this.gigazaur.yield(this.tokyoBay,this.tokyoCity);
                     }
                     if (this.tokyoCity == true) {
-                        this.tokyoCity = this.gigazaur.yield();
+                        this.tokyoCity = this.gigazaur.yield(this.tokyoBay,this.tokyoCity);
                     }
                 }
                 break;
@@ -458,10 +462,10 @@ class game {
                     }
 
                     if (this.tokyoBay == true) {
-                        this.tokyoBay = this.spacepenguin.yield();
+                        this.tokyoBay = this.spacepenguin.yield(this.tokyoBay,this.tokyoCity);
                     }
                     if (this.tokyoCity == true) {
-                        this.tokyoCity = this.spacepenguin.yield();
+                        this.tokyoCity = this.spacepenguin.yield(this.tokyoBay,this.tokyoCity);
                     }
                 }
                 break;
