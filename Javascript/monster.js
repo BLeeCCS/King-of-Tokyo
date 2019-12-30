@@ -147,7 +147,7 @@ class monster {
                 firstTurn = false;
             }
         }
-   
+        
         if (damage > 0 && !firstTurn) {
             if (this.inBay || this.inTokyo) {
                 for (let i = 0; i < monsters.length; i++) {
@@ -159,19 +159,29 @@ class monster {
                     }
                 }
                 setTimeout(()=>{
-                    $("#textChoice").text(`Everyone outside took ${damage} damage.`);
+                    $("#textChoice").text(`Everyone not in City took ${damage} damage.`);
                     $("#choice").css("visibility","visible");
-                },600);
+                },2800);
             } else {
+                debugger
                 for (let i = 0; i < monsters.length; i++) {
                     if (monsters[i].name != this.name){
-                        if (monsters[i].inTokyo || monsters[i].inBay) {
+                        if (monsters[i].inTokyo) {
                             monsters[i].lifePoint -= damage;
                             setTimeout(()=>{
                                 let name = new nameChange(monsters[i].name);
-                                $("#textChoice").text(`${name.nameConverter()} took ${damage} damage.`);
+                                $("#textChoice").text(`Monsters in City took ${damage} damage.`);
                                 $("#choice").css("visibility","visible");
-                            },700);
+                            },2000);
+                        }
+
+                        if (monsters[i].inBay) {
+                            monsters[i].lifePoint -= damage;
+                            setTimeout(()=>{
+                                let name = new nameChange(monsters[i].name);
+                                $("#textChoice").text(`Monsters in City took ${damage} damage.`);
+                                $("#choice").css("visibility","visible");
+                            },2000);
                         }
                     }
                 }
@@ -209,30 +219,115 @@ class monster {
         
         if (bay || tokyo) {
             if (this.AI && this.lifePoint < 6) {
-                if (this.inBay == true) {this.inBay = false;}
-                if (this.inTokyo == true) {this.inTokyo = false;}
-    
-                $("#tokyoBay").css({"background-image": ""});
+                let name = new nameChange(this.name);
+                $("#textChoice").text(`${name.nameConverter()} ran away.`);
+                $("#choice").css("visibility","visible");
+
+                if (this.inBay == true) {
+                    this.inBay = false;
+                    $("#tokyoBay").css({"background-image": ""});
+                }
+                if (this.inTokyo == true) {
+                    this.inTokyo = false;
+                    $("#tokyoCity").css({"background-image": ""});
+                }
                 return false;
             }
+            return true;
         }
     }
 
-    enterTokyo(bay,tokyo,monsters) {
+    enterTokyo(tokyo,bay,monsters) {
+        setTimeout(()=>{
         let name = new nameChange(this.name);
-        if (!bay && monsters.length >= 5) {
-            this.inBay = true;
-            $("#textChoice").text(`${name.nameConverter()} entered Tokyo Bay!`);
-            $("#choice").css("visibility","visible");
-            $("#tokyoBay").css({"background-image":`url(./assets/M_Fig/${name.nameConverter()}.png)`});
-            return;
-        }
         if(!tokyo) {
             this.inTokyo = true;
             $("#textChoice").text(`${name.nameConverter()} entered Tokyo City!`);
             $("#choice").css("visibility","visible");
+
+            switch(this.name) {
+                case "cyberkitty": 
+                case "gigazaur": 
+                case "spacepenguin":
+                    $("#tokyoCity").css({"transform":"rotateY(0deg)"});
+                    break;
+                case "mekadragon": 
+                case "alienoid":
+                case "theking":
+                    $("#tokyoCity").css({"transform":"rotateY(180deg)"});
+                    break;
+            }
+
             $("#tokyoCity").css({"background-image":`url(./assets/M_Fig/${name.nameConverter()}.png)`});
+            return;
         }
+
+        if (!bay && monsters.length >= 5) {
+            this.inBay = true;
+            $("#textChoice").text(`${name.nameConverter()} entered Tokyo Bay!`);
+            $("#choice").css("visibility","visible");
+
+            switch(this.name) {
+                case "cyberkitty": 
+                case "gigazaur": 
+                case "spacepenguin":
+                    $("#tokyoBay").css({"transform":"rotateY(180deg)"});
+                    break;
+                case "mekadragon": 
+                case "alienoid":
+                case "theking":
+                    $("#tokyoBay").css({"transform":"rotateY(0deg)"});
+                    break;
+            }
+
+            $("#tokyoBay").css({"background-image":`url(./assets/M_Fig/${name.nameConverter()}.png)`});
+        }
+        },3000)
+
+
+        // let name = new nameChange(this.name);
+        // if(!tokyo) {
+        //     this.inTokyo = true;
+        //     $("#textChoice").text(`${name.nameConverter()} entered Tokyo City!`);
+        //     $("#choice").css("visibility","visible");
+
+        //     switch(this.name) {
+        //         case "cyberkitty": 
+        //         case "gigazaur": 
+        //         case "spacepenguin":
+        //             $("#tokyoCity").css({"transform":"rotateY(0deg)"});
+        //             break;
+        //         case "mekadragon": 
+        //         case "alienoid":
+        //         case "theking":
+        //             $("#tokyoCity").css({"transform":"rotateY(180deg)"});
+        //             break;
+        //     }
+
+        //     $("#tokyoCity").css({"background-image":`url(./assets/M_Fig/${name.nameConverter()}.png)`});
+        //     return;
+        // }
+
+        // if (!bay && monsters.length >= 5) {
+        //     this.inBay = true;
+        //     $("#textChoice").text(`${name.nameConverter()} entered Tokyo Bay!`);
+        //     $("#choice").css("visibility","visible");
+
+        //     switch(this.name) {
+        //         case "cyberkitty": 
+        //         case "gigazaur": 
+        //         case "spacepenguin":
+        //             $("#tokyoBay").css({"transform":"rotateY(180deg)"});
+        //             break;
+        //         case "mekadragon": 
+        //         case "alienoid":
+        //         case "theking":
+        //             $("#tokyoBay").css({"transform":"rotateY(0deg)"});
+        //             break;
+        //     }
+
+        //     $("#tokyoBay").css({"background-image":`url(./assets/M_Fig/${name.nameConverter()}.png)`});
+        // }
     }
 
     buyPowerCards() {
