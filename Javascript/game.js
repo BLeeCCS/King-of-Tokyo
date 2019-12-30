@@ -216,7 +216,6 @@ class game {
         },4500);
 
         this.round++;
-        $("#choice").css("visibility","hidden");
     }
 
     renderMonsterStat() {
