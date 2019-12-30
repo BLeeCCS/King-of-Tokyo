@@ -85,13 +85,13 @@ class game {
 
     gameTurn() {
         let start = null;
-        let startAgain = null;
+        //let startAgain = null;
         let enemyStart = null;
         this.next = 0;
 
         console.log(this.monsterObj);
         this.renderMonsterStat();
-        clearTimeout(startAgain);
+        //clearTimeout(startAgain);
 
         $("#textChoice").text("Round " + this.round);
         $("#choice").css("visibility","visible");
@@ -99,7 +99,7 @@ class game {
         start = setInterval(() => {
             if (this.player === this.monsters[this.next]) {
                 clearInterval(start);
-                clearTimeout(startAgain);
+                //clearTimeout(startAgain);
 
                 $("#textChoice").text("Player Turn!");
                 $("#choice").css("visibility","visible");
@@ -143,17 +143,17 @@ class game {
 
                             if (!this.tokyoCity) {
                                 if (!this.playerMonster.inTokyo) {
-                                    this.playerMonster.enterTokyo(this.tokyoCity,this.tokyoBay,this.monsters,this.next);
+                                    this.playerMonster.enterTokyo(this.tokyoCity,this.tokyoBay,this.monsters);
                                     this.tokyoCity = true;
                                 }
                             } else if (!this.tokyoBay) {
                                 if (!this.playerMonster.inBay) {
-                                    this.playerMonster.enterTokyo(this.tokyoCity,this.tokyoBay,this.monsters,this.next);
+                                    this.playerMonster.enterTokyo(this.tokyoCity,this.tokyoBay,this.monsters);
                                     this.tokyoBay = true;
                                 }
                             }
 
-                            startAgain = setTimeout(() => {
+                            setTimeout(() => {
                                 this.clearDice();
                                 this.playerMonster.count = 1;
                                 this.gameTurn();
@@ -187,17 +187,17 @@ class game {
 
                         if (!this.tokyoCity) {
                             if (!this.playerMonster.inTokyo) {
-                                this.playerMonster.enterTokyo(this.tokyoCity,this.tokyoBay,this.monsters,this.next);
+                                this.playerMonster.enterTokyo(this.tokyoCity,this.tokyoBay,this.monsters);
                                 this.tokyoCity = true;
                             }
                         } else if (!this.tokyoBay) {
                             if (!this.playerMonster.inBay) {
-                                this.playerMonster.enterTokyo(this.tokyoCity,this.tokyoBay,this.monsters,this.next);
+                                this.playerMonster.enterTokyo(this.tokyoCity,this.tokyoBay,this.monsters);
                                 this.tokyoBay = true;
                             }
                         }
 
-                        startAgain = setTimeout(() => {
+                        setTimeout(() => {
                             this.clearDice();
                             this.playerMonster.count = 1;
                             this.gameTurn();
@@ -307,6 +307,9 @@ class game {
     }
 
     monsterTurn(name) {
+        console.log("tokyoCity " + this.tokyoCity)
+        console.log("tokyoBay " + this.tokyoBay)
+
         switch(name) {
             case "mekadragon":
                 if (this.player == "mekadragon") {
@@ -327,12 +330,11 @@ class game {
                         this.tokyoBay = true;
                     }
 
-                    if (this.tokyoBay == true) {
-                        this.tokyoBay = this.mekadragon.yield(this.tokyoCity,this.tokyoBay);
-                    }
-                    if (this.tokyoCity == true) {
-                        this.tokyoCity = this.mekadragon.yield(this.tokyoCity,this.tokyoBay);
-                    }
+                    // if (this.tokyoCity) {
+                    //     this.tokyoCity = this.mekadragon.yield(this.tokyoCity,this.tokyoBay);
+                    // } else if (this.tokyoBay) {
+                    //     this.tokyoBay = this.mekadragon.yield(this.tokyoCity,this.tokyoBay);
+                    // }
                 }
                 break;
             case "alienoid":
@@ -354,12 +356,11 @@ class game {
                         this.tokyoBay = true;
                     }
 
-                    if (this.tokyoBay == true) {
-                        this.tokyoBay = this.alienoid.yield(this.tokyoCity,this.tokyoBay);
-                    }
-                    if (this.tokyoCity == true) {
-                        this.tokyoCity = this.alienoid.yield(this.tokyoCity,this.tokyoBay);
-                    }
+                    // if (this.tokyoCity) {
+                    //     this.tokyoCity = this.alienoid.yield(this.tokyoCity,this.tokyoBay);
+                    // } else if (this.tokyoBay) {
+                    //     this.tokyoBay = this.alienoid.yield(this.tokyoCity,this.tokyoBay);
+                    // }
                 }
                 break;
             case "theking":
@@ -381,12 +382,11 @@ class game {
                         this.tokyoBay= true;
                     }
 
-                    if (this.tokyoBay == true) {
-                        this.tokyoBay = this.theking.yield(this.tokyoCity,this.tokyoBay);
-                    }
-                    if (this.tokyoCity == true) {
-                        this.tokyoCity = this.theking.yield(this.tokyoCity,this.tokyoBay);
-                    }
+                    // if (this.tokyoCity) {
+                    //     this.tokyoCity = this.theking.yield(this.tokyoCity,this.tokyoBay);
+                    // } else if (this.tokyoBay) {
+                    //     this.tokyoBay = this.theking.yield(this.tokyoCity,this.tokyoBay);
+                    // }
                 }
                 break;
             case "cyberkitty":
@@ -408,12 +408,11 @@ class game {
                         this.tokyoBay = true;
                     }
 
-                    if (this.tokyoBay == true) {
-                        this.tokyoBay = this.cyberkitty.yield(this.tokyoCity,this.tokyoBay);
-                    }
-                    if (this.tokyoCity == true) {
-                        this.tokyoCity = this.cyberkitty.yield(this.tokyoCity,this.tokyoBay);
-                    }
+                    // if (this.tokyoCity) {
+                    //     this.tokyoCity = this.cyberkitty.yield(this.tokyoCity,this.tokyoBay);
+                    // } else if (this.tokyoBay ) {
+                    //     this.tokyoBay = this.cyberkitty.yield(this.tokyoCity,this.tokyoBay);
+                    // }
                 }
                 break;
             case "gigazaur":
@@ -435,12 +434,11 @@ class game {
                         this.tokyoBay = true;
                     }
 
-                    if (this.tokyoBay == true) {
-                        this.tokyoBay = this.gigazaur.yield(this.tokyoCity,this.tokyoBay);
-                    }
-                    if (this.tokyoCity == true) {
-                        this.tokyoCity = this.gigazaur.yield(this.tokyoCity,this.tokyoBay);
-                    }
+                    // if (this.tokyoCity) {
+                    //     this.tokyoCity = this.gigazaur.yield(this.tokyoCity,this.tokyoBay);
+                    // } else if (this.tokyoBay) {
+                    //     this.tokyoBay = this.gigazaur.yield(this.tokyoCity,this.tokyoBay);
+                    // }
                 }
                 break;
             case "spacepenguin":
@@ -462,14 +460,16 @@ class game {
                         this.tokyoBay = true;
                     }
 
-                    if (this.tokyoBay == true) {
-                        this.tokyoBay = this.spacepenguin.yield(this.tokyoCity,this.tokyoBay);
-                    }
-                    if (this.tokyoCity == true) {
-                        this.tokyoCity = this.spacepenguin.yield(this.tokyoCity,this.tokyoBay);
-                    }
+                    // if (this.tokyoCity) {
+                    //     this.tokyoCity = this.spacepenguin.yield(this.tokyoCity,this.tokyoBay);
+                    // } else if (this.tokyoBay) {
+                    //     this.tokyoBay = this.spacepenguin.yield(this.tokyoCity,this.tokyoBay);
+                    // }
                 }
                 break;
+                
         }
+        
+
     }
 }
