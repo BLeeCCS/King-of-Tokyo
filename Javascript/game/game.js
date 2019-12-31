@@ -16,143 +16,18 @@ export default class game {
 
     gameStart() {
         this.monsterObjectArray = start(this.monsters,this.player);
-        turn(this.monsterObjectArray);
-    }
-
-    gameTurn() {
-
-        start = setInterval(() => {
-            if (this.player === this.monsters[this.next]) {
-                let speed = this.determineSpeed();
-
-                if (this.playerMonster.count < 3) {
-
-                    $("#yes").on("click",()=>{
-                        this.playerMonster.dice = [];
-                        this.playerMonster.rollDice();
-                        this.playerMonster.count++;
-
-                        if (this.playerMonster.count == 3) {
-                            $("#yes").off("click");
-                            $("#no").off("click");
-                            $("#choice").css("visibility","hidden");
-                            $(".button").css("visibility","hidden");
-                            enemyStart = setInterval(() => {
-                                if(this.next <= 5) {
-                                    $("#textChoice").text(this.monsters[this.next].toUpperCase());
-                                    $("#choice").css("visibility","visible");
-                                    this.monsterTurn(this.monsters[this.next]);
-                                }
-                                this.next++;
-
-                                if(this.next >= this.numOfPlayers) {
-                                    clearInterval(enemyStart);
-                                }
-                            }, 4000);
-
-                            this.playerMonster.resolveDice(this.monsterObj);
-                            this.renderMonsterStat();
-                            this.playerMonster.yield(this.tokyoCity,this.tokyoBay);
-
-                            if (!this.tokyoCity) {
-                                if (!this.playerMonster.inTokyo) {
-                                    this.playerMonster.enterTokyo(this.tokyoCity,this.tokyoBay,this.monsters);
-                                    this.tokyoCity = true;
-                                }
-                            } else if (!this.tokyoBay) {
-                                if (!this.playerMonster.inBay) {
-                                    this.playerMonster.enterTokyo(this.tokyoCity,this.tokyoBay,this.monsters);
-                                    this.tokyoBay = true;
-                                }
-                            }
-
-                            setTimeout(() => {
-                                this.clearDice();
-                                this.playerMonster.count = 1;
-                                this.gameTurn();
-                            }, speed);
-                        }
-                    })
-
-                    $("#no").on("click",()=>{
-                        $("#no").off("click");
-                        $("#yes").off("click");
-                        $("#choice").css("visibility","hidden");
-                        $(".button").css("visibility","hidden");
-                        enemyStart = setInterval(() => {
-
-                        if(this.next <= 5) {
-                            $("#textChoice").text(this.monsters[this.next].toUpperCase());
-                            $("#choice").css("visibility","visible");
-                            this.monsterTurn(this.monsters[this.next]);
-
-                        }
-                        this.next++;
-
-                        if(this.next >= this.numOfPlayers) {
-                            clearInterval(enemyStart);
-                        }
-                    }, 4500);
-
-                        this.playerMonster.resolveDice(this.monsterObj);
-                        this.renderMonsterStat();
-                        this.playerMonster.yield(this.tokyoCity,this.tokyoBay);
-
-                        if (!this.tokyoCity) {
-                            if (!this.playerMonster.inTokyo) {
-                                this.playerMonster.enterTokyo(this.tokyoCity,this.tokyoBay,this.monsters);
-                                this.tokyoCity = true;
-                            }
-                        } else if (!this.tokyoBay) {
-                            if (!this.playerMonster.inBay) {
-                                this.playerMonster.enterTokyo(this.tokyoCity,this.tokyoBay,this.monsters);
-                                this.tokyoBay = true;
-                            }
-                        }
-
-                        setTimeout(() => {
-                            this.clearDice();
-                            this.playerMonster.count = 1;
-                            this.gameTurn();
-                        }, speed);
-                    })
-                }
-            }
-        },4500);
-
-        this.round++;
-    }
-
-    clearDice() {
-        $(".diceContainer > div").css({"background-image":""});
-    }
-
-    determineSpeed() {
-        let speed = null;
-        switch(this.next) {
-            case 0:
-                speed = 45000;
-                break;
-            case 1:
-                speed = 37500;
-                break;
-            case 2:
-                speed = 30000;
-                break;
-            case 3:
-                speed = 22500;
-                break;
-            case 4:
-                speed = 15000;
-                break;
-            case 5:
-                speed = 7500;
-                break;
-        }
-        return speed;
+        turn(this.monsterObjectArray,this.round);
     }
 
 
+
+
+
+
+
+
+
+    
     monsterTurn(name) {
         console.log("tokyoCity " + this.tokyoCity)
         console.log("tokyoBay " + this.tokyoBay)
