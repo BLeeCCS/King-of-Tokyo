@@ -4,10 +4,9 @@ import { nameChange } from "./nameChange.js"
 import { enemy } from "./enemyTurn.js"
 import { player } from "./playerTurn.js"
 
-export function turn(monstersArray) {
+export function turn(monstersArray,round) {
     let start = null;
     let next = 0;
-    let round = 1;
 
     renderMonsterStat(monstersArray);
     displayText(`Round ${round}`,"visible");
@@ -16,7 +15,7 @@ export function turn(monstersArray) {
         if(monstersArray[next].player) {
             clearInterval(start);
             displayText("PLAYER TURN","visible");
-            player(monstersArray,next);
+            player(monstersArray,next,round);
         } else {
             $("#yes").off("click");
             $("#no").off("click");
@@ -24,5 +23,7 @@ export function turn(monstersArray) {
             enemy(monstersArray,next);
         }
         next++;
-    }, 4500);
+    }, 4000);
+
+    round++;
 }
