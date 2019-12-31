@@ -23,21 +23,9 @@ export default class game {
 
         start = setInterval(() => {
             if (this.player === this.monsters[this.next]) {
-                clearInterval(start);
-                //clearTimeout(startAgain);
-
-                $("#textChoice").text("Player Turn!");
-                $("#choice").css("visibility","visible");
-
-                this.monsterTurn(this.player);
                 let speed = this.determineSpeed();
 
                 if (this.playerMonster.count < 3) {
-                    setTimeout(() => {
-                        $("#textChoice").text("Roll again?");
-                        $("#choice").css("visibility","visible");
-                        $(".button").css("visibility","visible");
-                    }, 3500);
 
                     $("#yes").on("click",()=>{
                         this.playerMonster.dice = [];
@@ -129,15 +117,7 @@ export default class game {
                         }, speed);
                     })
                 }
-            } else {
-                $("#textChoice").text(this.monsters[this.next].toUpperCase());
-                $("#choice").css("visibility","visible");
-
-                this.monsterTurn(this.monsters[this.next]);
-                $("#yes").off("click");
-                $("#no").off("click");
             }
-            this.next++;
         },4500);
 
         this.round++;
@@ -172,23 +152,6 @@ export default class game {
         return speed;
     }
 
-    // randomizeTurn() {
-    //     for (let i = this.monsters.length; i > 0; i--) {
-    //         var random = Math.floor(Math.random(i) * i);
-    //         var monsterZ = this.monsters.splice(random,1);
-    //         this.turnOrder.push(monsterZ + "");
-    //     }
-
-    //     for (let i = 0; i < this.turnOrder.length; i++) {
-    //         this.monsters.push(this.turnOrder[i]);
-    //     }
-
-    //     for (let i = 0; i < this.numOfPlayers; i++) {
-    //         if (this.player == this.turnOrder[i]) {
-    //             this.turnOrder.splice(i,1);
-    //         }
-    //     }
-    // }
 
     monsterTurn(name) {
         console.log("tokyoCity " + this.tokyoCity)
