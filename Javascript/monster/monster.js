@@ -1,4 +1,4 @@
-class monster {
+export default class monster {
     constructor(name,player,ai) {
         this.name = name;
         this.player = player;

@@ -1,4 +1,4 @@
-function randomizeTurn(monsters) {
+export function randomizeTurn(monsters) {
     let array = [];
 
     for (let i = monsters.length; i > 0; i--) {
@@ -9,4 +9,3 @@ function randomizeTurn(monsters) {
 
     return array;
 }
-export { randomizeTurn };
