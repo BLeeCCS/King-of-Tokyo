@@ -1,9 +1,10 @@
 import { start } from "./start.js"
+import { turn } from "./turn.js";
 
 export default class game {
     constructor(name) {
         this.monsters = ["mekadragon","alienoid","theking","cyberkitty","gigazaur","spacepenguin"];
-        this.monsterObj = [];
+        this.monsterObjectArray = [];
         this.turnOrder = [];                 
         this.numOfPlayers = this.monsters.length;
         this.player = name;
@@ -14,39 +15,17 @@ export default class game {
     }
 
     gameStart() {
-        start(this.monsters);
+        this.monsterObjectArray = start(this.monsters,this.player);
+        turn(this.monsterObjectArray);
     }
 
     gameTurn() {
-        let start = null;
-        //let startAgain = null;
-        let enemyStart = null;
-        this.next = 0;
-
-        console.log(this.monsterObj);
-        this.renderMonsterStat();
-        //clearTimeout(startAgain);
-
-        $("#textChoice").text("Round " + this.round);
-        $("#choice").css("visibility","visible");
 
         start = setInterval(() => {
             if (this.player === this.monsters[this.next]) {
-                clearInterval(start);
-                //clearTimeout(startAgain);
-
-                $("#textChoice").text("Player Turn!");
-                $("#choice").css("visibility","visible");
-
-                this.monsterTurn(this.player);
                 let speed = this.determineSpeed();
 
                 if (this.playerMonster.count < 3) {
-                    setTimeout(() => {
-                        $("#textChoice").text("Roll again?");
-                        $("#choice").css("visibility","visible");
-                        $(".button").css("visibility","visible");
-                    }, 3500);
 
                     $("#yes").on("click",()=>{
                         this.playerMonster.dice = [];
@@ -138,59 +117,10 @@ export default class game {
                         }, speed);
                     })
                 }
-            } else {
-                $("#textChoice").text(this.monsters[this.next].toUpperCase());
-                $("#choice").css("visibility","visible");
-
-                this.monsterTurn(this.monsters[this.next]);
-                $("#yes").off("click");
-                $("#no").off("click");
             }
-            this.next++;
         },4500);
 
         this.round++;
-    }
-
-    renderMonsterStat() {
-        $("#"+this.player+"_s > #victory").text(this.playerMonster.victoryPoint);
-        $("#"+this.player+"_s > #energy").text(this.playerMonster.energyPoint);
-        $("#"+this.player+"_s > #heart").text(this.playerMonster.lifePoint);
-
-        for (var i = 0; i < this.turnOrder.length; i++) {
-            switch(this.turnOrder[i]) {
-                case "mekadragon":
-                    $("#mekadragon_s > #victory").text(this.mekadragon.victoryPoint);
-                    $("#mekadragon_s > #energy").text(this.mekadragon.energyPoint);
-                    $("#mekadragon_s > #heart").text(this.mekadragon.lifePoint);
-                    break;
-                case "alienoid":
-                    $("#alienoid_s > #victory").text(this.alienoid.victoryPoint);
-                    $("#alienoid_s  > #energy").text(this.alienoid.energyPoint);
-                    $("#alienoid_s  > #heart").text(this.alienoid.lifePoint);
-                    break;
-                case "theking":
-                    $("#theking_s > #victory").text(this.theking.victoryPoint);
-                    $("#theking_s > #energy").text(this.theking.energyPoint);
-                    $("#theking_s > #heart").text(this.theking.lifePoint);
-                    break;
-                case "cyberkitty":
-                    $("#cyberkitty_s > #victory").text(this.cyberkitty.victoryPoint);
-                    $("#cyberkitty_s > #energy").text(this.cyberkitty.energyPoint);
-                    $("#cyberkitty_s > #heart").text(this.cyberkitty.lifePoint);
-                    break;
-                case "gigazaur":
-                    $("#gigazaur_s > #victory").text(this.gigazaur.victoryPoint);
-                    $("#gigazaur_s > #energy").text(this.gigazaur.energyPoint);
-                    $("#gigazaur_s > #heart").text(this.gigazaur.lifePoint);
-                    break;
-                case "spacepenguin":
-                    $("#spacepenguin_s > #victory").text(this.spacepenguin.victoryPoint);
-                    $("#spacepenguin_s > #energy").text(this.spacepenguin.energyPoint);
-                    $("#spacepenguin_s > #heart").text(this.spacepenguin.lifePoint);
-                    break;
-            }
-        }
     }
 
     clearDice() {
@@ -222,23 +152,6 @@ export default class game {
         return speed;
     }
 
-    // randomizeTurn() {
-    //     for (let i = this.monsters.length; i > 0; i--) {
-    //         var random = Math.floor(Math.random(i) * i);
-    //         var monsterZ = this.monsters.splice(random,1);
-    //         this.turnOrder.push(monsterZ + "");
-    //     }
-
-    //     for (let i = 0; i < this.turnOrder.length; i++) {
-    //         this.monsters.push(this.turnOrder[i]);
-    //     }
-
-    //     for (let i = 0; i < this.numOfPlayers; i++) {
-    //         if (this.player == this.turnOrder[i]) {
-    //             this.turnOrder.splice(i,1);
-    //         }
-    //     }
-    // }
 
     monsterTurn(name) {
         console.log("tokyoCity " + this.tokyoCity)
