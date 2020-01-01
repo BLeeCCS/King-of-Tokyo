@@ -1,5 +1,6 @@
 import { roll } from "./rollDice.js"
 import { resolve } from "./resolveDice.js"
+import { pickOne } from "./pickOne.js"
 
 export default class monster {
     constructor(name,player,ai) {
@@ -11,7 +12,7 @@ export default class monster {
         this.energyPoint = 0;
         this.alive = true;
         this.dice = [];
-        this.rollAgain = true;
+        this.rollAgainCount = 0;
         this.count = 1;
         this.inTokyo = false;
         this.inBay = false;
@@ -21,10 +22,13 @@ export default class monster {
         roll(this.name,this.dice,this.count);
     }
 
+    pickDie(monster,dicePosition,count) {
+        pickOne(monster,dicePosition,count);   
+    }
+
     resolveDice() {
         resolve(this.dice);
     }
-
 
     // resolveDice(monsters) {
     //     let heal = 0;

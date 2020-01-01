@@ -10,21 +10,34 @@ export function player(monstersArray,next,round) {
 
             if(monstersArray[monster].count < 3) {
                 setTimeout(() => {
-                    displayText("Roll again? You can also click on dice you dont want to remove","visible","visible");
+                    displayText("Click on die you dont want to remove and reroll.","visible","visible");
                 }, 3500);
                 
-                $(`#${monstersArray[monster].name}_s > #diceContainer > :nth-child(1)`).on("click");
+                $(`#${monstersArray[monster].name}_s > #diceContainer > :nth-child(1)`).on("click",monstersArray[monster].pickDie.bind(this,monstersArray[monster],0));
+                $(`#${monstersArray[monster].name}_s > #diceContainer > :nth-child(2)`).on("click",monstersArray[monster].pickDie.bind(this,monstersArray[monster],1));
+                $(`#${monstersArray[monster].name}_s > #diceContainer > :nth-child(3)`).on("click",monstersArray[monster].pickDie.bind(this,monstersArray[monster],2));
+                $(`#${monstersArray[monster].name}_s > #diceContainer > :nth-child(4)`).on("click",monstersArray[monster].pickDie.bind(this,monstersArray[monster],3));
+                $(`#${monstersArray[monster].name}_s > #diceContainer > :nth-child(5)`).on("click",monstersArray[monster].pickDie.bind(this,monstersArray[monster],4));
+                $(`#${monstersArray[monster].name}_s > #diceContainer > :nth-child(6)`).on("click",monstersArray[monster].pickDie.bind(this,monstersArray[monster],5));
 
                 $("#yes").on("click",()=>{
-                    monstersArray[monster].dice = [];
-                    monstersArray[monster].rollDice();
                     monstersArray[monster].count++;
+                    monstersArray[monster].rollDice();
+
+                    $(`#${monstersArray[monster].name}_s > #diceContainer > :nth-child(1)`).on("click",monstersArray[monster].pickDie.bind(this,monstersArray[monster],0));
+                    $(`#${monstersArray[monster].name}_s > #diceContainer > :nth-child(2)`).on("click",monstersArray[monster].pickDie.bind(this,monstersArray[monster],1));
+                    $(`#${monstersArray[monster].name}_s > #diceContainer > :nth-child(3)`).on("click",monstersArray[monster].pickDie.bind(this,monstersArray[monster],2));
+                    $(`#${monstersArray[monster].name}_s > #diceContainer > :nth-child(4)`).on("click",monstersArray[monster].pickDie.bind(this,monstersArray[monster],3));
+                    $(`#${monstersArray[monster].name}_s > #diceContainer > :nth-child(5)`).on("click",monstersArray[monster].pickDie.bind(this,monstersArray[monster],4));
+                    $(`#${monstersArray[monster].name}_s > #diceContainer > :nth-child(6)`).on("click",monstersArray[monster].pickDie.bind(this,monstersArray[monster],5));
 
                     if(monstersArray[monster].count == 3) {
                         $("#yes").off("click");
                         $("#no").off("click");
                         displayText();
                         monstersArray[monster].count = 1;
+
+                        monstersArray[monster].resolveDice();
 
                         let enemyStart = setInterval(() => {
                             if(++next < monstersArray.length) {
@@ -45,6 +58,20 @@ export function player(monstersArray,next,round) {
                     $("#no").off("click");
                     $("#yes").off("click");
                     displayText();
+
+                    let emptyDie = false;
+                    for(let i = 0; i < monstersArray[monster].dice.length; i++) {
+                        if (monstersArray[monster].dice[i] === "") {
+                            emptyDie = true;
+                        }
+                    }
+                    if(emptyDie) { 
+                        monstersArray[monster].count++;
+                        monstersArray[monster].rollDice(); 
+                    }
+
+                    monstersArray[monster].count = 1;
+
                     monstersArray[monster].resolveDice();
 
                     let enemyStart = setInterval(() => {

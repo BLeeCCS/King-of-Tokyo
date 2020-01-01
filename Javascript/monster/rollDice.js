@@ -1,24 +1,32 @@
 export function roll(name,dice,count) {
     const diceSet = ["one","two","three","heart","energy","smash"];
+    let anotherDiceSet = [];
     let diceStart = null;
     let diceCount = 0;
 
-    for (let i = 0; i < 6; i++) {
-        var random = Math.floor(Math.random(6) * 6 + 1);
-        dice.push(diceSet[random-1]);
-    }
-
-    if (count > 1) {
-        dice = [];
+    if (dice.length == 0) {
         for (let i = 0; i < 6; i++) {
-            var random = Math.floor(Math.random(6) * 6 + 1);
+            let random = Math.floor(Math.random(6) * 6 + 1);
             dice.push(diceSet[random-1]);
         }
     }
 
-    var animation = setInterval(()=>{
+    for (let i = 0; i < dice.length; i++) {
+        anotherDiceSet[i] = dice[i];
+    }
+
+    if (count > 1) {
+        for (let i = 0; i < dice.length; i++) {
+            if (dice[i] === "" ) {
+                let random = Math.floor(Math.random(6) * 6 + 1);
+                dice[i] = diceSet[random-1];
+            }
+        }
+    }
+
+    let animation = setInterval(()=>{
         let random = Math.floor(Math.random(6) * 6);
-        $("#"+name+"_s > #diceContainer > :nth-child(1)").css({"background-image":"url(./assets/Dice/"+ diceSet[random] +".png)"});
+        $(`#${name}_s > #diceContainer > :nth-child(1)`).css({"background-image":"url(./assets/Dice/"+ diceSet[random] +".png)"});
     },50);
 
     diceStart = setInterval(() => {

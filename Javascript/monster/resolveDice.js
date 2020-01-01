@@ -7,4 +7,5 @@ export function resolve(dice) {
     let threeCount = 0;
     let firstTurn = true;
     var occupied = null;
+    console.log(dice);
 }
