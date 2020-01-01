@@ -37,7 +37,7 @@ export function player(monstersArray,next,round) {
                         displayText();
                         monstersArray[monster].count = 1;
 
-                        monstersArray[monster].resolveDice();
+                        monstersArray[monster].resolveDice(monstersArray[monster]);
 
                         let enemyStart = setInterval(() => {
                             if(++next < monstersArray.length) {
@@ -72,7 +72,7 @@ export function player(monstersArray,next,round) {
 
                     monstersArray[monster].count = 1;
 
-                    monstersArray[monster].resolveDice();
+                    monstersArray[monster].resolveDice(monstersArray[monster]);
 
                     let enemyStart = setInterval(() => {
                         if(++next < monstersArray.length) {
