@@ -23,7 +23,7 @@ export function turn(monstersArray,round) {
             enemy(monstersArray,next);
         }
         next++;
-    }, 4000);
+    }, 5000);
 
     round++;
 }

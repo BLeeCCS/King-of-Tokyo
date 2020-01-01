@@ -1,7 +1,8 @@
 import { monsterHeal } from "./monsterHeal.js";
 import { monsterGainVictoryPoints } from "./monsterVictory.js";
+import { monsterGainEnergy } from "./monsterEnergy.js"
 
-export function resolve(dice,monster) {
+export function resolve(dice,monster,monsterArray) {
     let heal = 0;
     let damage = 0;
     let energyPts = 0;
@@ -32,6 +33,7 @@ export function resolve(dice,monster) {
         }
     }
 
-    monsterHeal(heal,monster);
-    monsterGainVictoryPoints(oneCount,twoCount,threeCount,monster);
+    monsterHeal(heal,monster,monsterArray);
+    monsterGainVictoryPoints(oneCount,twoCount,threeCount,monster,monsterArray);
+    monsterGainEnergy(energyPts,monster,monsterArray)
 }
