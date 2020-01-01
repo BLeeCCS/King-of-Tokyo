@@ -26,8 +26,8 @@ export default class monster {
         pickOne(monster,dicePosition,count);   
     }
 
-    resolveDice(monster) {
-        resolve(this.dice,monster);
+    resolveDice(monster,monsterArray) {
+        resolve(this.dice,monster,monsterArray);
     }
 
     // resolveDice(monsters) {

@@ -37,7 +37,7 @@ export function player(monstersArray,next,round) {
                         displayText();
                         monstersArray[monster].count = 1;
 
-                        monstersArray[monster].resolveDice(monstersArray[monster]);
+                        monstersArray[monster].resolveDice(monstersArray[monster],monstersArray);
 
                         let enemyStart = setInterval(() => {
                             if(++next < monstersArray.length) {
@@ -50,7 +50,7 @@ export function player(monstersArray,next,round) {
                                 $(".diceContainer > div").css({"background-image":""});
                                 turn(monstersArray,round);
                             }
-                        }, 4000);
+                        }, 5000);
                     }
                 })
 
@@ -72,7 +72,7 @@ export function player(monstersArray,next,round) {
 
                     monstersArray[monster].count = 1;
 
-                    monstersArray[monster].resolveDice(monstersArray[monster]);
+                    monstersArray[monster].resolveDice(monstersArray[monster],monstersArray);
 
                     let enemyStart = setInterval(() => {
                         if(++next < monstersArray.length) {
@@ -85,7 +85,7 @@ export function player(monstersArray,next,round) {
                             $(".diceContainer > div").css({"background-image":""});
                             turn(monstersArray,round);
                         }
-                    }, 4000);
+                    }, 5000);
                 })
             }
             
