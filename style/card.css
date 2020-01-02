@@ -1,8 +1,8 @@
 #cardContainer {
-    width: 32%;
+    width: 60%;
     height:96%;
     position: absolute;
-    top:5%;
+    top:1%;
     right: 0%;
     display: flex;
     flex-direction: row;
@@ -10,34 +10,37 @@
 }
 
 #bigCard {
-    width: 100%;
+    width: 30%;
     height: 68%;
-    bottom:0%;
+    top:1%;
     right:0%;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     visibility: hidden;
+    position: absolute;
 }
 
 #smallCard {
     display: flex;
     flex-direction: row;
-    width: 72%;
-    height: 30%;
+    width: 40%;
+    height: 18%;
     position: absolute;
     bottom: 0%;
-    left:16%;
+    left:14%;
 }
 
 .card {
     width: 30%;
-    height: 69%;
-    margin:1%;
+    height: 99%;
+    margin:auto;
     background-size: cover;
+    background-position: center;
     bottom:0%;
     background-size: contain;
     background-repeat: no-repeat;
+    align-items: center;
 }
 
 #bigCard {background-image: url(../assets/Cards/card.png);}

@@ -1,16 +1,16 @@
 #mapContainer {
-    width: 60%;
-    height:100%;
+    width: 40%;
+    height:80%;
     position: absolute;
-    right:0%;
-    top:0%;
+    left:40%;
+    top:1%;
 }
 
 #map {
     width:99%;
     height: 96%;
     position: absolute;
-    top:2%;
+    top:1%;
     right:1%;
 
     background-image: url("../assets/Map/Map.jpg");
