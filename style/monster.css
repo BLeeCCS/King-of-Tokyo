@@ -19,6 +19,166 @@
     visibility: visible;
 }
 
+.victory, .energy, .heart {
+    width: 6.5%;
+    height: 3.5%;
+    position: absolute;
+    text-align: center;
+    font-size: 100%;
+}
+
+.diceContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 26%;
+    height:10%;
+    position: absolute;
+}
+
+.diceContainer > * {
+    width: 20%;
+    height: 30%;
+    margin:5%;
+    background-size: cover;
+}
+
+/***********
+ Cyber Kitty
+ ***********/
+#cyberkitty_s > #victory {
+    top:0.6%;
+    left: 32%;
+}
+
+#cyberkitty_s > #energy {
+    top:11.9%;
+    left: 39.5%;
+}
+
+#cyberkitty_s > #heart {
+    top:28%;
+    left:73.5%;
+}
+
+#cyberkitty_s > #diceContainer {
+    top:16.6%;
+    left:56%;
+}
+
+/********
+ GIGAZAUR
+ ********/
+#gigazaur_s > #victory {
+    top:33.2%;
+    left: 32.5%;
+}
+
+#gigazaur_s > #energy {
+    top:43.8%;
+    left: 36%;
+}
+
+#gigazaur_s > #heart {
+    top:60.3%;
+    left:73%;
+}
+
+#gigazaur_s > #diceContainer {
+    top:49.2%;
+    left:56.2%;
+}
+
+/*************
+ SPACE PENGUIN
+ *************/
+#spacepenguin_s > #victory {
+    top:65.8%;
+    left: 31.8%;
+}
+
+#spacepenguin_s > #energy {
+    top:86.3%;
+    left: 71.8%;
+}
+
+#spacepenguin_s > #heart {
+    top:92.8%;
+    left:73.2%;
+}
+
+#spacepenguin_s > #diceContainer {
+    top:76.5%;
+    left:18%;
+}
+/***********
+ MEKA DRAGON
+************/
+#mekadragon_s > #victory {
+    top:0.6%;
+    left: 32%;
+}
+
+#mekadragon_s > #energy {
+    top:11.8%;
+    left: 37.5%;
+}
+
+#mekadragon_s > #heart {
+    top:28%;
+    left:72.4%;
+}
+
+#mekadragon_s > #diceContainer {
+    top:17%;
+    left:56%;
+}
+
+/********
+ ALIENOID
+*********/
+#alienoid_s > #victory {
+    top:33.4%;
+    left: 31%;
+}
+
+#alienoid_s > #energy {
+    top:43.8%;
+    left: 37.5%;
+}
+
+#alienoid_s > #heart {
+    top:60.4%;
+    left:73.5%;
+}
+
+#alienoid_s > #diceContainer {
+    top:49%;
+    left:56.2%;
+}
+
+/********
+ THE KING
+*********/
+#theking_s > #victory {
+    top:65.8%;
+    left: 33%;
+}
+
+#theking_s > #energy {
+    top:86%;
+    left: 71.8%;
+}
+
+#theking_s > #heart {
+    top:92.6%;
+    left:74%;
+}
+
+#theking_s > #diceContainer {
+    top:76%;
+    left:18%;
+}
+
 #alienoid_s {background-image: url(../assets/M_Stat/Alienoid_Stats.png);}
 #cyberkitty_s {background-image: url(../assets/M_Stat/Cyber_kitty_Stats.png);}
 #gigazaur_s {background-image: url(../assets/M_Stat/Gigazaur_Stats.png);}
