@@ -1,0 +1,75 @@
+#monsterTurn {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 10%;
+    height:100%;
+    top:1.2%;
+    left:30.5%;
+}
+
+#alienoidIcon {
+    position: relative;
+    background-image: url("../assets/Icon/alienoidIcon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80%;
+    height: 15%;
+    top:1%;
+    left:10%;
+}
+
+#cyberkittyIcon {
+    position: relative;
+    background-image: url("../assets/Icon/cyberkittyIcon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80%;
+    height: 15%;
+    top:2%;
+    left:10%;
+}
+
+#gigazaurIcon {
+    position: relative;
+    background-image: url("../assets/Icon/gigazaurIcon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80%;
+    height: 15%;
+    top:3%;
+    left:10%;
+}
+
+#mekadragonIcon {
+    position: relative;
+    background-image: url("../assets/Icon/mekadragonIcon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80%;
+    height: 15%;
+    top:4%;
+    left:10%;
+}
+
+#spacepenguinIcon {
+    position: relative;
+    background-image: url("../assets/Icon/spacepenguinIcon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80%;
+    height: 15%;
+    top:5%;
+    left:10%;
+}
+
+#thekingIcon {
+    position: relative;
+    background-image: url("../assets/Icon/thekingIcon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80%;
+    height: 15%;
+    top:6%;
+    left:10%;
+}
