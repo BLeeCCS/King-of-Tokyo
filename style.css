@@ -20,44 +20,6 @@ html,body {
     left:0;
 }
 
-#map {
-    width:35%;
-    height: 64%;
-    position: absolute;
-    top:1%;
-    left:32.5%;
-    background-image: url(./assets/Map/Map.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: top;
-    margin: auto;
-}
-
-#map > :first-child{
-    width:40%;
-    height: 40%;
-    position: absolute;
-    margin: 0;
-}
-
-#map > :nth-child(2){
-    width:40%;
-    height: 40%;
-    position: absolute;
-    margin: 0;
-    left:60%;
-    top:60%;
-}
-
-.monster {
-    width:100%;
-    height: 32%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    margin-bottom:1%;
-}
-
 #leftContainer,#rightContainer, #leftContainerSelection, #rightContainerSelection {
     width:30%;
     height: 100%;
@@ -74,44 +36,6 @@ html,body {
 
 #rightContainer, #rightContainerSelection {
     right:0;
-}
-
-#cardContainer {
-    width: 32%;
-    height:30%;
-    background-color: white;
-    position: absolute;
-    bottom:1.5%;
-    left: 34%;
-    display: flex;
-    flex-direction: row;
-}
-
-.card {
-    border: solid black 2px;
-    width: 32%;
-    height: 93%;
-    margin:1%;
-    background-size: cover;
-}
-
-.tokyo {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    width: 100px;
-    height: 100px;
-    position:relative;
-    border-radius: 50%;
-    margin: auto;
-}
-
-#tokyoCity {
-    top:40%;
-}
-
-#tokyoBay {
-    top:20%;
 }
 
 #leftContainerSelection, #rightContainerSelection {
@@ -273,45 +197,3 @@ html,body {
     left:18%;
 }
 
-#choice {
-    width:10%;
-    height:10%;
-    background-color: white;
-    z-index: 2;
-    position: absolute;
-    border: black solid 2px;
-    left:45%;
-    top:28%;
-    text-align: center;
-    visibility: hidden;
-}
-
-.button {
-    visibility: hidden;
-}
-
-#textChoice {
-    overflow-wrap: break-word;
-    color: black;
-    width: 100%;
-    height: 100%;
-    font-size: 90%;
-}
-
-#alienoid_s {background-image: url(./assets/M_Stat/Alienoid_Stats.png);}
-#cyberkitty_s {background-image: url(./assets/M_Stat/Cyber_kitty_Stats.png);}
-#gigazaur_s {background-image: url(./assets/M_Stat/Gigazaur_Stats.png);}
-#mekadragon_s {background-image: url(./assets/M_Stat/Meka_Dragon_Stats.png);}
-#spacepenguin_s {background-image: url(./assets/M_Stat/Space_Penguin_Stats.png);}
-#theking_s {background-image: url(./assets/M_Stat/The_king_Stats.png);}
-
-#alienoid {background-image: url(./assets/M_Fig/Alienoid.png);}
-#cyberkitty {background-image: url(./assets/M_Fig/CyberKitty.png);}
-#gigazaur {background-image: url(./assets/M_Fig/Gigazaur.png);}
-#mekadragon {background-image: url(./assets/M_Fig/MekaDragon.png);}
-#spacepenguin {background-image: url(./assets/M_Fig/SpacePenguin.png);}
-#theking {background-image: url(./assets/M_Fig/TheKing.png);}
-
-#card1 {background-image: url(./assets/Cards/card.png);}
-#card2 {background-image: url(./assets/Cards/card.png);}
-#card3 {background-image: url(./assets/Cards/card.png);}

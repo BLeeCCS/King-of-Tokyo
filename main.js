@@ -3,7 +3,7 @@ $(document).ready(appStart);
 import game from "./Javascript/game/game.js"
 
 function appStart() {
-    selectionScreen();
+    //selectionScreen();
 }
 
 function selectionScreen() {
