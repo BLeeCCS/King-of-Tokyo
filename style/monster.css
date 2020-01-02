@@ -1,0 +1,32 @@
+#monsterContainer {
+    width:68%;
+    height: 100%;
+    position: absolute;
+    left:0%;
+}
+
+.monster {
+    position: absolute;
+    width:40%;
+    height: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: 1%;
+    right:1%;
+    z-index: 1;
+    visibility: hidden;
+}
+
+#alienoid_s {background-image: url(../assets/M_Stat/Alienoid_Stats.png);}
+#cyberkitty_s {background-image: url(../assets/M_Stat/Cyber_kitty_Stats.png);}
+#gigazaur_s {background-image: url(../assets/M_Stat/Gigazaur_Stats.png);}
+#mekadragon_s {background-image: url(../assets/M_Stat/Meka_Dragon_Stats.png);}
+#spacepenguin_s {background-image: url(../assets/M_Stat/Space_Penguin_Stats.png);}
+#theking_s {background-image: url(../assets/M_Stat/The_king_Stats.png);}
+
+#alienoid {background-image: url(../assets/M_Fig/Alienoid.png);}
+#cyberkitty {background-image: url(../assets/M_Fig/CyberKitty.png);}
+#gigazaur {background-image: url(../assets/M_Fig/Gigazaur.png);}
+#mekadragon {background-image: url(../assets/M_Fig/MekaDragon.png);}
+#spacepenguin {background-image: url(../assets/M_Fig/SpacePenguin.png);}
+#theking {background-image: url(../assets/M_Fig/TheKing.png);}
