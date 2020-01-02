@@ -1,12 +1,12 @@
 #choice {
-    width:50%;
-    height:25%;
+    width:30%;
+    height:45%;
     background-color: white;
     z-index: 2;
     position: absolute;
     border: black solid 2px;
-    left:1%;
-    bottom:2.5%;
+    left:0%;
+    bottom:2%;
     visibility: visible;
 }
 

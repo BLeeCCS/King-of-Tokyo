@@ -1,36 +1,21 @@
 #mapContainer {
     width: 60%;
-    height:98%;
+    height:100%;
     position: absolute;
-    right:1%;
-    top:1%;
+    right:0%;
+    top:0%;
 }
 
 #map {
-    width:100%;
-    height: 100%;
+    width:99%;
+    height: 96%;
     position: absolute;
-    top:0%;
-    right:0%;
+    top:2%;
+    right:1%;
+
     background-image: url("../assets/Map/Map.jpg");
     background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-#map > :first-child {
-    width:40%;
-    height: 40%;
-    position: absolute;
-    margin: 0;
-}
-
-#map > :nth-child(2){
-    width:40%;
-    height: 40%;
-    position: absolute;
-    margin: 0;
-    left:60%;
-    top:60%;
+    background-size: 100% 100%;
 }
 
 .tokyo {
