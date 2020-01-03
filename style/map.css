@@ -3,7 +3,7 @@
     height:100%;
     position: absolute;
     left:30%;
-    top:1%;
+    top:0.86%;
 }
 
 #map {
@@ -16,7 +16,7 @@
     background-image: url("../assets/Map/Map.jpg");
     background-repeat: no-repeat;
     background-position-y: 40%;
-    background-size: 100% 160%;
+    background-size: 100% 150%;
 }
 
 .tokyo {

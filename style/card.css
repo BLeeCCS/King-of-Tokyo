@@ -11,10 +11,10 @@
 
 #bigCard {
     width: 20%;
-    height: 68%;
+    height: 50%;
     bottom: 2%;
     left: 26.5%;
-    background-size: contain;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: bottom;
     position: absolute;
