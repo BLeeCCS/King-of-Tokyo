@@ -171,8 +171,8 @@
 }
 
 #theking_s > #heart {
-    top:86.3%;
-    left:85.7%;
+    top:86.2%;
+    left:85.2%;
 }
 
 #theking_s > #diceContainer {
@@ -186,10 +186,3 @@
 #mekadragon_s {background-image: url(../assets/M_Stat/Meka_Dragon_Stats.png);}
 #spacepenguin_s {background-image: url(../assets/M_Stat/Space_Penguin_Stats.png);}
 #theking_s {background-image: url(../assets/M_Stat/The_king_Stats.png);}
-
-#alienoid {background-image: url(../assets/M_Fig/Alienoid.png);}
-#cyberkitty {background-image: url(../assets/M_Fig/CyberKitty.png);}
-#gigazaur {background-image: url(../assets/M_Fig/Gigazaur.png);}
-#mekadragon {background-image: url(../assets/M_Fig/MekaDragon.png);}
-#spacepenguin {background-image: url(../assets/M_Fig/SpacePenguin.png);}
-#theking {background-image: url(../assets/M_Fig/TheKing.png);}
