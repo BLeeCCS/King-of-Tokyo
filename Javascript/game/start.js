@@ -1,8 +1,12 @@
 import monster from "../monster/monster.js"
 import { randomizeTurn } from "./randomizeTurnOrder.js";
+import { setUpTurnIcons } from "./setUpTurnIcons.js"
 
-export function start(monsters,player) {
+export function start(monsters,player) { 
     const randomizeMonsters = randomizeTurn(monsters);
+
+    setUpTurnIcons(randomizeMonsters);
+
     let monsterObjects = [];
 
     for (let i = 0; i < 6; i++) {

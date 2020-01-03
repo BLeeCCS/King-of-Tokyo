@@ -4,6 +4,8 @@ import { nameChange } from "./nameChange.js"
 import { turn } from "./turn.js"
 
 export function player(monstersArray,next,round) {
+    $(`#${monstersArray[next].name}Icon`).css({"border":"solid 3px green"});
+    
     for (var monster in monstersArray) {
         if (monstersArray[monster].player) {
             monstersArray[monster].rollDice();
@@ -86,6 +88,8 @@ export function player(monstersArray,next,round) {
                             turn(monstersArray,round);
                         }
                     }, 5000);
+
+                    $(`#${monstersArray[next].name}Icon`).css({"border":""});
                 })
             }
             

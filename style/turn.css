@@ -4,46 +4,35 @@
     position: absolute;
     width: 10%;
     height:100%;
-    top:1.5%;
+    top:4%;
     left:30%;
     z-index: 2;
 }
 
 #alienoidIcon {
     background-image: url("../assets/Icon/alienoidIcon.png");
-    top:1%;
-    left:10%;
 }
 
 #cyberkittyIcon {
     background-image: url("../assets/Icon/cyberkittyIcon.png");
-    top:2%;
-    left:10%;
 }
 
 #gigazaurIcon {
     background-image: url("../assets/Icon/gigazaurIcon.png");
-    top:3%;
+    top:1%;
     left:10%;
 }
 
 #mekadragonIcon {
     background-image: url("../assets/Icon/mekadragonIcon.png");
-    top:4%;
-    left:10%;
 }
 
 #spacepenguinIcon {
     background-image: url("../assets/Icon/spacepenguinIcon.png");
-    top:5%;
-    left:10%;
 }
 
 #thekingIcon {
     background-image: url("../assets/Icon/thekingIcon.png");
-    top:6%;
-    left:10%;
-   
 }
 
 #monsterTurn > * {
@@ -52,4 +41,6 @@
     background-repeat: no-repeat;
     width: 70%;
     height: 15%;
+    top:1%;
+    left:10%;
 }
