@@ -1,35 +1,66 @@
 #choice {
-    width:30%;
+    background-image: url("../assets/Reporter/reporter.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width:29.7%;
     height:45%;
-    background-color: white;
     z-index: 2;
     position: absolute;
     border: black solid 2px;
     left:0%;
-    bottom:2%;
-    visibility: hidden;
+    bottom:1.8%;
+    visibility: visible;
 }
 
-#textChoice {
+#bubble {
+    background-image: url("../assets/Reporter/text.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     position: absolute;
     overflow-wrap: break-word;
     color: black;
+    width: 40%;
+    height: 50%;
+    top:12%;
+}
+
+#textChoice {
+    overflow-wrap: break-word;
+    overflow: hidden;
+    color: black;
     width: 80%;
-    height: 100%;
-    font-size: 90%;
+    height: 70%;
+    margin: 5% 10% 5% 10%;
 }
 
 #buttonContainer {
-    width:20%;
-    height:100%;
+    width:34%;
+    height:22%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     position: absolute;
-    right:0%;
+    left:5%;
+    bottom: 16%;
 }
 
 .button {
-    width: 100%;
-    height: 100%;
-    visibility: hidden;
+    width: 40%;
+    height: 80%;
+    background-repeat: no-repeat;
+    
+    transition: all 0.5s;
+    margin:1%;
+    outline:0;
+}
+
+#yes {
+    background-image: url(../assets/Reporter/yes.png);
+    background-size: 100% 100%;
+    border-radius: 50%;
+}
+
+#no {
+    background-image: url(../assets/Reporter/no.png);
+    background-size: 100% 100%;
+    border-radius: 50%;
 }
