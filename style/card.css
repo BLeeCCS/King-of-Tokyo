@@ -12,11 +12,11 @@
 #bigCard {
     width: 20%;
     height: 68%;
-    top:2%;
-    right:2%;
+    bottom: 2%;
+    left: 26.5%;
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: top;
+    background-position: bottom;
     position: absolute;
     visibility: visible;
 }
@@ -40,7 +40,7 @@
     background-size: cover;
     background-position: center;
     bottom:0%;
-    background-size: contain;
+    background-size: 100% 92%;
     background-repeat: no-repeat;
     align-items: center;
 }
