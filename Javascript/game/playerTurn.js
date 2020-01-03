@@ -2,10 +2,11 @@ import { displayText } from "./displayText.js"
 import { enemy } from "./enemyTurn.js"
 import { nameChange } from "./nameChange.js"
 import { turn } from "./turn.js"
+import { renderTurnMonster } from "./renderTurnMonster.js"
 
 export function player(monstersArray,next,round) {
-    $(`#${monstersArray[next].name}Icon`).css({"border":"solid 3px green"});
-    
+    renderTurnMonster(next,true);
+
     for (var monster in monstersArray) {
         if (monstersArray[monster].player) {
             monstersArray[monster].rollDice();

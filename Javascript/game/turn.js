@@ -3,6 +3,7 @@ import { displayText } from "./displayText.js"
 import { nameChange } from "./nameChange.js"
 import { enemy } from "./enemyTurn.js"
 import { player } from "./playerTurn.js"
+import { renderTurnMonster } from "./renderTurnMonster.js"
 
 export function turn(monstersArray,round) {
     let start = null;
