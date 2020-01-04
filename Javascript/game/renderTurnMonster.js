@@ -1,4 +1,4 @@
-export function renderTurnMonster(next,player = false) {
+export function renderTurnMonster(next,player) {
     var top = null;
 
     switch(next) {
@@ -51,46 +51,4 @@ export function renderTurnMonster(next,player = false) {
         top++;
         
     },50);
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // if (display) {
-    //     let render = null;
-    //     switch(next) {
-    //         case 0:
-    //             render = {"top":"5%","left":"30.99%","visibility":"visible"};
-    //             break;
-    //         case 1:
-    //             render = {"top":"20%","left":"30.99%","visibility":"visible"};
-    //             break;
-    //         case 2:
-    //             render = {"top":"35%","left":"30.99%","visibility":"visible"};
-    //             break;
-    //         case 3:
-    //             render = {"top":"50%","left":"30.99%","visibility":"visible"};
-    //             break;
-    //         case 4:
-    //             render = {"top":"65%","left":"30.99%","visibility":"visible"};
-    //             break;
-    //         case 5:
-    //             render = {"top":"80%","left":"30.99%","visibility":"visible"};
-    //             break;
-    
-    //     }
-    //     $("#select").css(render);
-        
-        
-    // } else {
-    //     $("#select").css({"visibility":"hidden"});
-    // }
 }

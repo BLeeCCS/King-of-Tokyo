@@ -1,4 +1,3 @@
-import { renderMonsterStat}  from "./renderStats.js"
 import { displayText } from "./displayText.js"
 import { nameChange } from "./nameChange.js"
 import { enemy } from "./enemyTurn.js"
@@ -8,11 +7,10 @@ import { renderTurnMonster } from "./renderTurnMonster.js"
 export function turn(monstersArray,round) {
     let start = null;
     let next = 0;
-
-    renderMonsterStat(monstersArray);
-    displayText(`Round ${round}`,"visible");
-
+    
     start = setInterval(() => {
+        renderTurnMonster(next,monstersArray[next].player);
+    
         if(monstersArray[next].player) {
             clearInterval(start);
             displayText("PLAYER TURN","visible");
@@ -23,6 +21,7 @@ export function turn(monstersArray,round) {
             displayText(`${nameChange(monstersArray[next].name)}`,"visible");
             enemy(monstersArray,next);
         }
+
         next++;
     }, 5000);
 

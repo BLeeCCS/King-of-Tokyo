@@ -36,6 +36,5 @@ export function monsterGainVictoryPoints(oneCount,twoCount,threeCount,monster,mo
             let text = `${nameChange(monster.name)} gains ${gainVictoryPoints} victory point${(gainVictoryPoints > 1) ? "s." : "."}`;
             displayText(text,"visible");
         }
-        renderMonsterStat(monsterArray);
     },4000)
 }

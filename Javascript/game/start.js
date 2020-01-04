@@ -8,7 +8,6 @@ export function start(monsters,player) {
     setUpTurnIcons(randomizeMonsters);
 
     let monsterObjects = [];
-
     for (let i = 0; i < 6; i++) {
         switch(randomizeMonsters[i]) {
             case "mekadragon":

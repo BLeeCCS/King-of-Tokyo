@@ -186,3 +186,4 @@
 #mekadragon_s {background-image: url(../assets/M_Stat/Meka_Dragon_Stats.png);}
 #spacepenguin_s {background-image: url(../assets/M_Stat/Space_Penguin_Stats.png);}
 #theking_s {background-image: url(../assets/M_Stat/The_king_Stats.png);}
+#intro {background-image: url(../assets/M_Stat/intro.png); z-index: 2;}
