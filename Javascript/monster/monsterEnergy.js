@@ -8,7 +8,6 @@ export function monsterGainEnergy(energyPts,monster,monsterArray) {
         setTimeout(()=>{
             let text = `${nameChange(monster.name)} gains ${energyPts} energy point${(energyPts > 1) ? "s." : "."}`;
             displayText(text,"visible");
-            renderMonsterStat(monsterArray);
         },5000)
     }
 }

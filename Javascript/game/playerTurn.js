@@ -2,10 +2,13 @@ import { displayText } from "./displayText.js"
 import { enemy } from "./enemyTurn.js"
 import { nameChange } from "./nameChange.js"
 import { turn } from "./turn.js"
-import { renderTurnMonster } from "./renderTurnMonster.js"
+import { renderMonsterStat}  from "./renderStats.js"
 
 export function player(monstersArray,next,round) {
-    renderTurnMonster(next,true);
+
+    $(`#${monstersArray[next].name}_s`).css("z-index",`${1}`);
+    
+    renderMonsterStat(monstersArray,next);
 
     for (var monster in monstersArray) {
         if (monstersArray[monster].player) {
@@ -37,12 +40,19 @@ export function player(monstersArray,next,round) {
                     if(monstersArray[monster].count == 3) {
                         $("#yes").off("click");
                         $("#no").off("click");
-                        displayText();
+                        
+                        $(".button").css("visibility","hidden");
+                        setTimeout(() => {
+                            $("#bubble").css("visibility","hidden");
+                        }, 500);
+                        
                         monstersArray[monster].count = 1;
 
                         monstersArray[monster].resolveDice(monstersArray[monster],monstersArray);
 
                         let enemyStart = setInterval(() => {
+                            $(`#${monstersArray[next].name}_s`).css("z-index",`${1}`);
+
                             if(++next < monstersArray.length) {
                                 displayText(`${nameChange(monstersArray[next].name)}`,"visible");
                                 enemy(monstersArray,next);
@@ -60,7 +70,10 @@ export function player(monstersArray,next,round) {
                 $("#no").on("click",()=>{
                     $("#no").off("click");
                     $("#yes").off("click");
-                    displayText();
+                    $(".button").css("visibility","hidden");
+                    setTimeout(() => {
+                        $("#bubble").css("visibility","hidden");
+                    }, 500);
 
                     let emptyDie = false;
                     for(let i = 0; i < monstersArray[monster].dice.length; i++) {
@@ -78,6 +91,8 @@ export function player(monstersArray,next,round) {
                     monstersArray[monster].resolveDice(monstersArray[monster],monstersArray);
 
                     let enemyStart = setInterval(() => {
+                        $(`#${monstersArray[next].name}_s`).css("z-index",`${1}`);
+
                         if(++next < monstersArray.length) {
                             displayText(`${nameChange(monstersArray[next].name)}`,"visible");
                             enemy(monstersArray,next);
@@ -89,8 +104,6 @@ export function player(monstersArray,next,round) {
                             turn(monstersArray,round);
                         }
                     }, 5000);
-
-                    $(`#${monstersArray[next].name}Icon`).css({"border":""});
                 })
             }
             

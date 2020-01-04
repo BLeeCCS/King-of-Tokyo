@@ -14,5 +14,4 @@ export function monsterHeal(heal,monster,monsterArray) {
         let text = `${nameChange(monster.name)} gains ${gainLp} heart` + (gainLP > 1) ? "s." : "."
         displayText(text,"visible")
     }
-    renderMonsterStat(monsterArray);
 }
