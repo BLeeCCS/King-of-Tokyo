@@ -3,14 +3,17 @@ export function displayText(text = "",display = "hidden",button = "hidden") {
     $(".button").css("visibility",button);
     $("#bubble").css("visibility",display);
 
-    var textCount = 0;
-    var speed = 20;
+    if (text !== "") {
+        $("#choice").css("background-image","url(../assets/Reporter/reporterSpeaks.gif)");
+    }
 
+    var textCount = 0;
     let textAnimation = setInterval(() => {
         $("#textChoice").text($("#textChoice").text() + text.charAt(textCount));
         textCount++;
         if (textCount == text.length) {
             clearInterval(textAnimation);
+            $("#choice").css("background-image","url(../assets/Reporter/reporter.gif)");
         }
-    }, speed);
+    }, 40);
 }

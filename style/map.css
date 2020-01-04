@@ -32,13 +32,13 @@
 }
 
 #tokyoCity {
-    background-image: url(../assets/M_Fig/CyberKitty.png);
+    background-color:rgb(243, 66, 66);
     top:5%;
     left:20%;
 }
 
 #tokyoBay {
-    background-image: url(../assets/M_Fig/TheKing.png);
+    background-color: rgb(76, 76, 221);
     bottom:5%;
     right:10%;
 }

@@ -1,8 +1,6 @@
-import { renderMonsterStat }from "../game/renderStats.js"
-import { displayText } from "../game/displayText.js"
 import { nameChange } from "../game/nameChange.js"
 
-export function monsterGainVictoryPoints(oneCount,twoCount,threeCount,monster,monsterArray) {
+export function monsterGainVictoryPoints(oneCount,twoCount,threeCount,monster) {
     let gainVictoryPoints = 0;
     if (oneCount >= 3) {
         monster.victoryPoint += 1;
@@ -31,10 +29,10 @@ export function monsterGainVictoryPoints(oneCount,twoCount,threeCount,monster,mo
         }
     }
 
-    setTimeout(()=>{
-        if(gainVictoryPoints > 0) {
-            let text = `${nameChange(monster.name)} gains ${gainVictoryPoints} victory point${(gainVictoryPoints > 1) ? "s." : "."}`;
-            displayText(text,"visible");
-        }
-    },4000)
+    let text = "";
+    if(gainVictoryPoints > 0) {
+        text = `${nameChange(monster.name)} gains ${gainVictoryPoints} victory point${(gainVictoryPoints > 1) ? "s." : "."}`;
+    }
+
+    return text;
 }
