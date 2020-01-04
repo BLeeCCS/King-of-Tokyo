@@ -5,9 +5,6 @@ import { turn } from "./turn.js"
 import { renderMonsterStat}  from "./renderStats.js"
 
 export function player(monstersArray,next,round) {
-
-    $(`#${monstersArray[next].name}_s`).css("z-index",`${1}`);
-    
     renderMonsterStat(monstersArray,next);
 
     for (var monster in monstersArray) {
@@ -49,9 +46,9 @@ export function player(monstersArray,next,round) {
                         monstersArray[monster].count = 1;
 
                         monstersArray[monster].resolveDice(monstersArray[monster],monstersArray);
+                        renderMonsterStat(monstersArray,next);
 
                         let enemyStart = setInterval(() => {
-                            $(`#${monstersArray[next].name}_s`).css("z-index",`${1}`);
 
                             if(++next < monstersArray.length) {
                                 displayText(`${nameChange(monstersArray[next].name)}`,"visible");
@@ -59,6 +56,10 @@ export function player(monstersArray,next,round) {
                             }
                             if(next >= monstersArray.length) {
                                 clearInterval(enemyStart);
+
+                                for(let i = 0; i < monstersArray.length; i++) {
+                                    $(`#${monstersArray[i].name}_s`).css("z-index",`${1}`);
+                                }
 
                                 $(".diceContainer > div").css({"background-image":""});
                                 turn(monstersArray,round);
@@ -89,16 +90,20 @@ export function player(monstersArray,next,round) {
                     monstersArray[monster].count = 1;
 
                     monstersArray[monster].resolveDice(monstersArray[monster],monstersArray);
+                    renderMonsterStat(monstersArray,next);
 
                     let enemyStart = setInterval(() => {
-                        $(`#${monstersArray[next].name}_s`).css("z-index",`${1}`);
-
                         if(++next < monstersArray.length) {
                             displayText(`${nameChange(monstersArray[next].name)}`,"visible");
                             enemy(monstersArray,next);
                         }
+                        
                         if(next >= monstersArray.length) {
                             clearInterval(enemyStart);
+
+                            for(let i = 0; i < monstersArray.length; i++) {
+                                $(`#${monstersArray[i].name}_s`).css("z-index",`${1}`);
+                            }
 
                             $(".diceContainer > div").css({"background-image":""});
                             turn(monstersArray,round);
@@ -106,7 +111,6 @@ export function player(monstersArray,next,round) {
                     }, 5000);
                 })
             }
-            
             break;
         };
     }
