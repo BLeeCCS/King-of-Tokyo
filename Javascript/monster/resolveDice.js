@@ -55,7 +55,7 @@ export function resolve(dice,monster,monsterArray) {
             setTimeout(()=>{
                 displayText(textArray[i],"visible");
             },speed);
-            speed += 1600;
+            speed += 1800;
         }
     }
 }

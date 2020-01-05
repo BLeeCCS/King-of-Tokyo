@@ -12,7 +12,7 @@ export function monsterHeal(heal,monster) {
             }
         }
 
-        text = `${nameChange(monster.name)} gains ${gainLp} heart` + (gainLP > 1) ? "s." : "."
+        text = `${nameChange(monster.name)} gains ${gainLP} heart${(gainLP > 1) ? "s." : "."}`;
     }
 
     return text;

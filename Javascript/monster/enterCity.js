@@ -1,24 +1,31 @@
 export function enterCity(monster,monsterArray) {
+    let namePNG = "";
     let name = "";
 
     switch(monster.name) {
         case "mekadragon":
-            name = "MekaDragon";
+            namePNG = "MekaDragon";
+            name = "MEKA DRAGON";
             break;
         case "alienoid":
-            name = "Alienoid";
+            namePNG = "Alienoid";
+            name = "ALIENOID";
             break;
         case "theking":
-            name = "TheKing";
+            namePNG = "TheKing";
+            name = "THE KING";
             break;
         case "cyberkitty":
-            name = "CyberKitty";
+            namePNG = "CyberKitty";
+            name = "CYBER KITTY";
             break;
         case "gigazaur":
-            name = "Gigazaur";
+            namePNG = "Gigazaur";
+            name = "GIGAZAUR";
             break;
         case "spacepenguin":
-            name = "SpacePenguin";
+            namePNG = "SpacePenguin";
+            name = "SPACE PENGUIN";
             break;
     }
 
@@ -27,21 +34,32 @@ export function enterCity(monster,monsterArray) {
             monsterArray[i].firstTurn = false;
         }
         
-        $("#tokyoCity").css("background-image",`url(../assets/M_Fig/${name}.png)`);
+        $("#tokyoCity").css("background-image",`url(../assets/M_Fig/${namePNG}.png)`);
         monster.inTokyo = true;
-
-        return `${monster.name} entered Tokyo.`;
+        return `${name} entered Tokyo.`;
     }
 
-    if(!monster.inBay) {
-        $("#tokyoBay").css("background-image",`url(../assets/M_Fig/${name}.png)`);
+    let monsterInTokyo = false;
+    let monsterInBay = false;
+
+    for (let i = 0; i < monsterArray.length; i++) {
+        if(monsterArray[i].inTokyo) {
+            monsterInTokyo = true;
+        }
+        if(monsterArray[i].inBay) {
+            monsterInBay = true;
+        }
+    }
+
+    if(!monster.inBay && !monsterInBay) {
+        $("#tokyoBay").css("background-image",`url(../assets/M_Fig/${namePNG}.png)`);
         monster.inBay = true;
-        return `${monster.name} entered Bay.`;
+        return `${name} entered Bay.`;
     } else {
-        if(!monster.inTokyo) {
+        if(!monster.inTokyo && !monsterInTokyo) {
             $("#tokyoCity").css("background-image",`url(../assets/M_Fig/${name}.png)`);
             monster.inTokyo = true;
-            return `${monster.name} entered Tokyo.`;
+            return `${name} entered Tokyo.`;
         }
     }
 
