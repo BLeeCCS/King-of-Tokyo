@@ -1,6 +1,9 @@
 import { monsterHeal } from "./monsterHeal.js";
 import { monsterGainVictoryPoints } from "./monsterVictory.js";
 import { monsterGainEnergy } from "./monsterEnergy.js"
+import { displayText } from "../game/displayText.js"
+import { monsterDamage } from "./monsterDamage.js"
+import { enterCity } from "./enterCity.js";
 
 export function resolve(dice,monster,monsterArray) {
     let heal = 0;
@@ -33,7 +36,26 @@ export function resolve(dice,monster,monsterArray) {
         }
     }
 
-    monsterHeal(heal,monster,monsterArray);
-    monsterGainVictoryPoints(oneCount,twoCount,threeCount,monster,monsterArray);
-    monsterGainEnergy(energyPts,monster,monsterArray)
+    let textHeal = monsterHeal(heal,monster);
+    let textVP = monsterGainVictoryPoints(oneCount,twoCount,threeCount,monster);
+    let textE = monsterGainEnergy(energyPts,monster);
+    let textDmg = monsterDamage(damage,monster,monsterArray);
+    let textEnterCity = enterCity(monster,monsterArray);
+
+    let textArray = [];
+    let speed = 510;
+    textArray.push(textHeal);
+    textArray.push(textVP);
+    textArray.push(textE);
+    textArray.push(textDmg);
+    textArray.push(textEnterCity);
+
+    for (let i = 0; i < textArray.length; i++) {
+        if (textArray[i] !== "") {
+            setTimeout(()=>{
+                displayText(textArray[i],"visible");
+            },speed);
+            speed += 1800;
+        }
+    }
 }

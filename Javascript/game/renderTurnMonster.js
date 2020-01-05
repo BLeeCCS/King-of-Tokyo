@@ -25,30 +25,13 @@ export function renderTurnMonster(next,player) {
     let startTurn = setInterval(()=>{
         let render = {"top": top+"%","left":"30.99%","visibility":"visible"};
         $("#select").css(render);
-
+        
+        if (!player) {
+            clearInterval(startTurn);
+        }
         if (player) {
             clearInterval(startTurn);
         }
-
-        switch(next) {
-            case 1:
-                if (top == 20) {clearInterval(startTurn);}
-                break;
-            case 2:
-                if (top == 35) {clearInterval(startTurn);}
-                break;
-            case 3:
-                if (top == 50) {clearInterval(startTurn);}
-                break;
-            case 4:
-                if (top == 65) {clearInterval(startTurn);}
-                break;
-            case 5:
-                if (top == 80) {clearInterval(startTurn);}
-                break;
-        }
-
-        top++;
         
     },50);
 }

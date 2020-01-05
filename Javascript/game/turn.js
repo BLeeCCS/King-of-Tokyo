@@ -18,12 +18,13 @@ export function turn(monstersArray,round) {
         } else {
             $("#yes").off("click");
             $("#no").off("click");
-            displayText(`${nameChange(monstersArray[next].name)}`,"visible");
+            displayText();
             enemy(monstersArray,next);
         }
 
         next++;
-    }, 5000);
+        
+    }, 6000);
 
     round++;
 }

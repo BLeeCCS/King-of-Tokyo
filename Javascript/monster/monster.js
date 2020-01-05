@@ -12,10 +12,10 @@ export default class monster {
         this.energyPoint = 0;
         this.alive = true;
         this.dice = [];
-        this.rollAgainCount = 0;
         this.count = 1;
         this.inTokyo = false;
         this.inBay = false;
+        this.firstTurn = true;
     }
 
     rollDice() {
@@ -29,6 +29,8 @@ export default class monster {
     resolveDice(monster,monsterArray) {
         resolve(this.dice,monster,monsterArray);
     }
+
+
 
     // resolveDice(monsters) {
     //     let heal = 0;

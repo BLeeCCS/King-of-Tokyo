@@ -1,5 +1,5 @@
 #choice {
-    background-image: url("../assets/Reporter/reporter.png");
+    background-image: url("../assets/Reporter/reporter.gif");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     width:29.7%;
@@ -17,7 +17,6 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
     position: absolute;
-    overflow-wrap: break-word;
     color: black;
     width: 40%;
     height: 50%;
@@ -27,11 +26,11 @@
 
 #textChoice {
     overflow-wrap: break-word;
-    overflow: hidden;
     color: black;
     width: 80%;
     height: 70%;
     margin: 5% 10% 5% 10%;
+    font-size: 90%;
 }
 
 #buttonContainer {
