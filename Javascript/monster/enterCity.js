@@ -5,7 +5,7 @@ export function enterCity(monster,monsterArray) {
     switch(monster.name) {
         case "mekadragon":
             namePNG = "MekaDragon";
-            name = "MEKA DRAGON";
+            name = "MEKADRAGON";
             break;
         case "alienoid":
             namePNG = "Alienoid";
@@ -13,11 +13,11 @@ export function enterCity(monster,monsterArray) {
             break;
         case "theking":
             namePNG = "TheKing";
-            name = "THE KING";
+            name = "THEKING";
             break;
         case "cyberkitty":
             namePNG = "CyberKitty";
-            name = "CYBER KITTY";
+            name = "CYBERKITTY";
             break;
         case "gigazaur":
             namePNG = "Gigazaur";
@@ -25,7 +25,7 @@ export function enterCity(monster,monsterArray) {
             break;
         case "spacepenguin":
             namePNG = "SpacePenguin";
-            name = "SPACE PENGUIN";
+            name = "SPACEPENGUIN";
             break;
     }
 
@@ -34,9 +34,27 @@ export function enterCity(monster,monsterArray) {
             monsterArray[i].firstTurn = false;
         }
         
-        $("#tokyoCity").css("background-image",`url(../assets/M_Fig/${namePNG}.png)`);
+        switch(monster.name) {
+            case "cyberkitty": 
+            case "gigazaur": 
+            case "spacepenguin":
+                $("#tokyoCity").css({"transform":"rotateY(0deg)"});
+                $("#tokyoBay").css({"transform":"rotateY(180deg)"});
+                break;
+            case "mekadragon": 
+            case "alienoid":
+            case "theking":
+                $("#tokyoCity").css({"transform":"rotateY(180deg)"});
+                $("#tokyoBay").css({"transform":"rotateY(0deg)"});
+                break;
+        }
+
+        setTimeout(() => {
+            $("#tokyoCity").css("background-image",`url(../assets/M_Fig/${namePNG}.png)`);
+        }, 18000);
+
         monster.inTokyo = true;
-        return `${name} entered Tokyo.`;
+        return `${name} entered Tokyo City.`;
     }
 
     let monsterInTokyo = false;
@@ -52,16 +70,50 @@ export function enterCity(monster,monsterArray) {
     }
 
     if(!monster.inBay && !monsterInBay) {
-        $("#tokyoBay").css("background-image",`url(../assets/M_Fig/${namePNG}.png)`);
+        
+        switch(monster.name) {
+            case "cyberkitty": 
+            case "gigazaur": 
+            case "spacepenguin":
+                $("#tokyoBay").css({"transform":"rotateY(180deg)"});
+                break;
+            case "mekadragon": 
+            case "alienoid":
+            case "theking":
+                $("#tokyoBay").css({"transform":"rotateY(0deg)"});
+                break;
+        }
+
+        setTimeout(() => {
+            $("#tokyoBay").css("background-image",`url(../assets/M_Fig/${namePNG}.png)`);            
+        }, 18000);
+
         monster.inBay = true;
-        return `${name} entered Bay.`;
+        return `${name} entered Tokyo Bay.`;
     } else {
         if(!monster.inTokyo && !monsterInTokyo) {
-            $("#tokyoCity").css("background-image",`url(../assets/M_Fig/${name}.png)`);
+            
+            switch(monster.name) {
+                case "cyberkitty": 
+                case "gigazaur": 
+                case "spacepenguin":
+                    $("#tokyoCity").css({"transform":"rotateY(0deg)"});
+                    break;
+                case "mekadragon": 
+                case "alienoid":
+                case "theking":
+                    $("#tokyoCity").css({"transform":"rotateY(180deg)"});
+                    break;
+            }
+        
+            setTimeout(() => {
+                $("#tokyoCity").css("background-image",`url(../assets/M_Fig/${namePNG}.png)`);            
+            }, 18000);
+
             monster.inTokyo = true;
-            return `${name} entered Tokyo.`;
+            return `${name} entered Tokyo City.`;
         }
     }
 
-    return "";
+    return "Tokyo City and Tokyo Bay are taken.";
 }
