@@ -3,7 +3,7 @@ import { renderMonsterStat}  from "./renderStats.js"
 import { turnStartAgain } from "./turnStartAgain.js"
 import { removeDie } from "./removeDie.js"
 
-export function player(monstersArray,next,round) {
+export function player(monstersArray,next,round,start) {
     renderMonsterStat(monstersArray,next);
 
     for (var monster in monstersArray) {
@@ -12,7 +12,10 @@ export function player(monstersArray,next,round) {
 
             if(monstersArray[monster].count < 3) {
                 setTimeout(() => {
-                    displayText("Click on die you dont want to remove and reroll.","visible","visible");
+                    displayText("Click on die you dont want to remove and reroll.","visible");
+                    setTimeout(()=>{
+                        $(".button").css("visibility","visible");
+                    },2200);
                 }, 3500);
                 
                 removeDie(monstersArray,monster);
@@ -57,7 +60,7 @@ export function player(monstersArray,next,round) {
                         monstersArray[monster].count++;
                         monstersArray[monster].rollDice(); 
                     }
-
+                    
                     monstersArray[monster].count = 1;
                     monstersArray[monster].resolveDice(monstersArray[monster],monstersArray);
                     renderMonsterStat(monstersArray,next);

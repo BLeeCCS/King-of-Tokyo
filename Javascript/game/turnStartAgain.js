@@ -1,6 +1,5 @@
 import { turn } from "./turn.js"
 import { displayText } from "./displayText.js"
-import { nameChange } from "./nameChange.js"
 import { enemy } from "./enemyTurn.js"
 
 export function turnStartAgain(monstersArray,next,round) {
@@ -23,5 +22,5 @@ export function turnStartAgain(monstersArray,next,round) {
             turn(monstersArray,round);
         }
         
-    }, 6000);
+    }, 20000);
 }

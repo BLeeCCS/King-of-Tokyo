@@ -29,10 +29,9 @@ export function monsterGainVictoryPoints(oneCount,twoCount,threeCount,monster) {
         }
     }
 
-    let text = "";
     if(gainVictoryPoints > 0) {
-        text = `${nameChange(monster.name)} gains ${gainVictoryPoints} victory point${(gainVictoryPoints > 1) ? "s." : "."}`;
+        return `${nameChange(monster.name)} gains ${gainVictoryPoints} victory point${(gainVictoryPoints > 1) ? "s." : "."}`;
     }
 
-    return text;
+    return `${nameChange(monster.name)} is far from winning.`;
 }

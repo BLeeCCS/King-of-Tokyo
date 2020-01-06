@@ -6,19 +6,19 @@ export function nameChange(name) {
             newName = "ALIENOID";
             break;
         case "cyberkitty":
-            newName = "CYBER KITTY"
+            newName = "CYBERKITTY"
             break;
         case "gigazaur":
             newName = "GIGAZAUR"
             break;
         case "mekadragon":
-            newName = "MEKA DRAGON"
+            newName = "MEKADRAGON"
             break;
         case "spacepenguin":
-            newName = "SPACE PENGUIN"
+            newName = "SPACEPENGUIN"
             break;
         case "theking":
-            newName = "THE KING"
+            newName = "THEKING"
             break;
     }
     return newName;
