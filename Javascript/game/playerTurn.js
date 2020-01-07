@@ -1,8 +1,9 @@
 import { displayText } from "./displayText.js"
 import { renderMonsterStat}  from "./renderStats.js"
 import { removeDie } from "./removeDie.js"
+import { turnStartAgain } from "./turnStartAgain.js"
 
-export function player(monstersArray,next,round,start) {
+export function player(monstersArray,next) {
     renderMonsterStat(monstersArray,next);
 
     for (var monster in monstersArray) {
@@ -37,6 +38,7 @@ export function player(monstersArray,next,round,start) {
                         monstersArray[monster].count = 1;
                         monstersArray[monster].resolveDice(monstersArray[monster],monstersArray);
                         renderMonsterStat(monstersArray,next);
+                        turnStartAgain(monstersArray,next);
                     }
                 })
 
@@ -62,6 +64,7 @@ export function player(monstersArray,next,round,start) {
                     monstersArray[monster].count = 1;
                     monstersArray[monster].resolveDice(monstersArray[monster],monstersArray);
                     renderMonsterStat(monstersArray,next);
+                    turnStartAgain(monstersArray,next);
                 })
             }
             break;
