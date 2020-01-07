@@ -2,7 +2,7 @@ import { turn } from "./turn.js"
 import { displayText } from "./displayText.js"
 import { enemy } from "./enemyTurn.js"
 
-export function turnStartAgain(monstersArray,next,round) {
+export function turnStartAgain(monstersArray,next) {
     let enemyStart = setInterval(() => {
 
         if(++next < monstersArray.length) {
@@ -19,7 +19,7 @@ export function turnStartAgain(monstersArray,next,round) {
 
             displayText();
             $(".diceContainer > div").css({"background-image":""});
-            turn(monstersArray,round);
+            turn(monstersArray,next);
         }
         
     }, 20000);

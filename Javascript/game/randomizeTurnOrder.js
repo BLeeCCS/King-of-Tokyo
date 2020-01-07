@@ -8,6 +8,6 @@ export function randomizeTurn(monsters) {
         array.push(monsterZ + "");
     }
 
-    return array;
+    //return array;
     return testArray;
 }

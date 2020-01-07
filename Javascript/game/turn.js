@@ -3,10 +3,10 @@ import { enemy } from "./enemyTurn.js"
 import { player } from "./playerTurn.js"
 import { renderTurnMonster } from "./renderTurnMonster.js"
 
-export function turn(monstersArray,round) {
+export function turn(monstersArray) {
     var start = null;
     let next = 0;
-    
+
     let clock = null;
 
     let clockCount = 0;
@@ -20,21 +20,18 @@ export function turn(monstersArray,round) {
 
     start = setInterval(() => {
         renderTurnMonster(next,monstersArray[next].player);
-    
+
         if(monstersArray[next].player) {
             clearInterval(start);
             displayText("PLAYER TURN","visible");
-            player(monstersArray,next,round);
+            player(monstersArray,next);
         } else {
             $("#yes").off("click");
             $("#no").off("click");
             displayText();
             enemy(monstersArray,next);
         }
-
         next++;
-        
-    }, 20000);
 
-    round++;
+    }, 20000);
 }
