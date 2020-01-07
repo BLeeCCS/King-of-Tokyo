@@ -115,5 +115,5 @@ export function enterCity(monster,monsterArray) {
         }
     }
 
-    return "Tokyo City and Tokyo Bay are taken.";
+    return "Tokyo and Bay are taken.";
 }

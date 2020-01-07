@@ -22,5 +22,6 @@ export function monsterHeal(heal,monster) {
         return `In Bay, ${nameChange(monster.name)} can't regain heart.`;
     }
 
-    return `${nameChange(monster.name)} feels strong!`;
+    return `${nameChange(monster.name)} gains hearts test!`;
+    //return "";
 }

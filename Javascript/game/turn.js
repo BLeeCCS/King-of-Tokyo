@@ -23,6 +23,7 @@ export function turn(monstersArray) {
 
         if(monstersArray[next].player) {
             clearInterval(start);
+            console.log("player's turn");
             displayText("PLAYER TURN","visible");
             player(monstersArray,next);
         } else {

@@ -15,5 +15,5 @@ export function displayText(text = "",display = "hidden",button = "hidden") {
             clearInterval(textAnimation);
             $("#choice").css("background-image","url(../assets/Reporter/reporter.gif)");
         }
-    }, 40);
+    }, 20);
 }
