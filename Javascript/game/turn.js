@@ -2,11 +2,13 @@ import { displayText } from "./displayText.js"
 import { enemy } from "./enemyTurn.js"
 import { player } from "./playerTurn.js"
 import { renderTurnMonster } from "./renderTurnMonster.js"
+import { turnStartAgain } from "./turnStartAgain.js"
 
 export function turn(monstersArray,round) {
     var start = null;
     let next = 0;
-    
+    let speed = 20000;
+
     let clock = null;
 
     let clockCount = 0;
@@ -25,6 +27,7 @@ export function turn(monstersArray,round) {
             clearInterval(start);
             displayText("PLAYER TURN","visible");
             player(monstersArray,next,round);
+            turnStartAgain(monstersArray,next,round);
         } else {
             $("#yes").off("click");
             $("#no").off("click");
@@ -34,7 +37,7 @@ export function turn(monstersArray,round) {
 
         next++;
         
-    }, 20000);
+    }, speed);
 
     round++;
 }
