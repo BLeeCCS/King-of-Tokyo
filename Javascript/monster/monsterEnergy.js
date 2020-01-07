@@ -6,5 +6,6 @@ export function monsterGainEnergy(energyPts,monster) {
         return `${nameChange(monster.name)} gains ${energyPts} energy point${(energyPts > 1) ? "s." : "."}`;
     }
 
-    return `${nameChange(monster.name)}'s energy is rising!`;
+    return `${nameChange(monster.name)} gains energy point test!`;
+    //return "";
 }

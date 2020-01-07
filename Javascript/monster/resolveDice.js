@@ -73,15 +73,27 @@ export function resolve(dice,monster,monsterArray,start) {
     }, 1000);
 
     for (let i = 0; i < textArray.length; i++) {
-        setTimeout(()=>{
-            console.log(textArray[i]);
-            displayText(textArray[i],"visible");
-        },speed);
-        speed += 2000;
+
+        if(textArray[i] == "") {
+            setTimeout(()=>{
+                console.log("No text.");
+                displayText(textArray[i],"hidden");
+            },speed);
+        } else {
+            setTimeout(()=>{
+                console.log(textArray[i]);
+                displayText(textArray[i],"visible");
+            },speed);
+        }
+
+        // setTimeout(()=>{
+        //     console.log(textArray[i]);
+        //     displayText(textArray[i],"visible");
+        // },speed);
+        speed += 1000;
     }
     
     setTimeout(()=>{
-        console.log(textEnterCity);
         displayText(textEnterCity,"visible");
     },18000);
 

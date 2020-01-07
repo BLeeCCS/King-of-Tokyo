@@ -3,10 +3,9 @@ import { exitCity } from "./exitCity.js"
 import { enterCity } from "./enterCity.js";
 
 export function monsterDamage(damage,monster,monsterArray) {
-    var monsterExitText = "";
-
+ 
     if (monster.firstTurn) {
-        return "No monsters is taking damage.";
+        return "Monster on first turn can't attack.";
     }
 
     damage = 1
@@ -36,7 +35,8 @@ export function monsterDamage(damage,monster,monsterArray) {
                         $("#yes").on("click",()=>{
                             $("#yes").off("click");
                             $("#no").off("click");
-                            monsterExitText = exitCity(monsterArray[i]);
+                            
+                            exitCity(monsterArray[i]);
 
                             if(!monster.inBay && !monster.inTokyo){
                                 enterCity(monster,monsterArray);
@@ -60,13 +60,15 @@ export function monsterDamage(damage,monster,monsterArray) {
                         },16000);
                         
                         setTimeout(()=>{
+                            console.log("Buttons hidden");
                             $("#bubble").css("visibility","hidden");
                         },16500);
 
                     } else {
                         let random = Math.floor(Math.random(9) * 9 + 1);
                         if(monsterArray[i].lifePoint < random) {
-                            monsterExitText = exitCity(monsterArray[i]);
+                            
+                            exitCity(monsterArray[i]);
 
                             if(!monster.inBay && !monster.inTokyo){
                                 enterCity(monster,monsterArray);
@@ -76,8 +78,9 @@ export function monsterDamage(damage,monster,monsterArray) {
                 }
             }
 
-            return `Monsters inside of City loses ${damage} heart${(damage > 1) ? "s." : ". "}${monsterExitText}`;
+            return `Monsters inside of City loses ${damage} heart${(damage > 1) ? "s." : ". "}`;
         }
     }
-    return "No monster is losing heart.";
+
+    return "No monster is taking damage.";
 }
