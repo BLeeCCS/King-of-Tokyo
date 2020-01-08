@@ -18,21 +18,25 @@ export function turn(monstersArray) {
         }
     }, 1000);
 
-    start = setInterval(() => {
-        renderTurnMonster(next,monstersArray[next].player);
+    $("#nameIcon").text("gains 5");
 
-        if(monstersArray[next].player) {
-            clearInterval(start);
-            console.log("player's turn");
-            displayText("PLAYER TURN","visible");
-            player(monstersArray,next);
-        } else {
-            $("#yes").off("click");
-            $("#no").off("click");
-            displayText();
-            enemy(monstersArray,next);
-        }
-        next++;
+    //displayText(" gains 5 victory points","visible");
 
-    }, 20000);
+    // start = setInterval(() => {
+    //     renderTurnMonster(next,monstersArray[next].player);
+
+    //     if(monstersArray[next].player) {
+    //         clearInterval(start);
+    //         console.log("player's turn");
+    //         displayText("PLAYER TURN","visible");
+    //         player(monstersArray,next);
+    //     } else {
+    //         $("#yes").off("click");
+    //         $("#no").off("click");
+    //         displayText();
+    //         enemy(monstersArray,next);
+    //     }
+    //     next++;
+
+    // }, 1000);
 }

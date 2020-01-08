@@ -7,6 +7,9 @@ export function displayText(text = "",display = "hidden",button = "hidden") {
         $("#choice").css("background-image","url(../assets/Reporter/reporterSpeaks.gif)");
     }
 
+    let name = text.search("CYBERKITTY");
+    console.log("name is ", name);
+
     let textCount = 0;
     let textAnimation = setInterval(() => {
         $("#textChoice").text($("#textChoice").text() + text.charAt(textCount));
