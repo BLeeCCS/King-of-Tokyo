@@ -1,14 +1,17 @@
 import { displayText } from "../game/displayText.js"
 import { exitCity } from "./exitCity.js"
-import { enterCity } from "./enterCity.js";
 
 export function monsterDamage(damage,monster,monsterArray) {
  
     if (monster.firstTurn) {
-        return "Monster on first turn can't attack.";
-    }
-
-    damage = 1
+        return (
+            setTimeout(()=>{
+                let text = "Monster on first turn can't attack.";
+                console.log(text);
+                displayText(text,"visible");
+            },9000)
+        );
+    };
 
     if (damage > 0) {
         if (monster.inTokyo || monster.inBay) {
@@ -17,7 +20,21 @@ export function monsterDamage(damage,monster,monsterArray) {
                     monsterArray[i].lifePoint -= damage;
                 }
             }
-            return `Monsters outside of City loses ${damage} heart${(damage > 1) ? "s." : "."}`;
+
+            return (
+                setTimeout(()=>{
+                    let text = `Monsters uses Attack Animation!!!}`;
+                    console.log(text);
+                    displayText(text,"visible");
+                },9000),
+
+                setTimeout(()=>{
+                    let text = `Monsters outside of City loses ${damage} heart${(damage > 1) ? "s." : "."}`;
+                    console.log(text);
+                    displayText(text,"visible");
+                },11000)
+            )
+
         } else {
             for (let i = 0; i < monsterArray.length; i++) {
                 if (monsterArray[i].inTokyo || monsterArray[i].inBay) {
@@ -30,17 +47,13 @@ export function monsterDamage(damage,monster,monsterArray) {
                             setTimeout(()=>{
                                 $(".button").css("visibility","visible");
                             },1500);
-                        },12000);
+                        },13000);
 
                         $("#yes").on("click",()=>{
                             $("#yes").off("click");
                             $("#no").off("click");
                             
                             exitCity(monsterArray[i]);
-
-                            if(!monster.inBay && !monster.inTokyo){
-                                enterCity(monster,monsterArray);
-                            }
 
                             $(".button").css("visibility","hidden");
                         });
@@ -57,30 +70,37 @@ export function monsterDamage(damage,monster,monsterArray) {
 
                         setTimeout(()=>{
                             $(".button").css("visibility","hidden");
-                        },16000);
+                        },17000);
                         
                         setTimeout(()=>{
-                            console.log("Buttons hidden");
                             $("#bubble").css("visibility","hidden");
-                        },16500);
+                        },17500);
 
                     } else {
                         let random = Math.floor(Math.random(9) * 9 + 1);
                         if(monsterArray[i].lifePoint < random) {
-                            
-                            exitCity(monsterArray[i]);
-
-                            if(!monster.inBay && !monster.inTokyo){
-                                enterCity(monster,monsterArray);
-                            }
+                            console.log(monsterArray[i].name + " wants to exit city.");
+                            setTimeout(()=>{
+                                exitCity(monsterArray[i]);
+                            },13000)
                         }
                     }
                 }
             }
 
-            return `Monsters inside of City loses ${damage} heart${(damage > 1) ? "s." : ". "}`;
+            return(
+                setTimeout(()=>{
+                    let text = `Monsters took damage Animation!!!`;
+                    console.log(text);
+                    displayText(text,"visible");
+                },9000),
+
+                setTimeout(()=>{
+                    let text = `Monsters inside of City loses ${damage} heart${(damage > 1) ? "s." : ". "}`;
+                    console.log(text);
+                    displayText(text,"visible");
+                },11000)
+            )
         }
     }
-
-    return "No monster is taking damage.";
 }

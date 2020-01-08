@@ -4,8 +4,9 @@ import { monsterGainEnergy } from "./monsterEnergy.js"
 import { displayText } from "../game/displayText.js"
 import { monsterDamage } from "./monsterDamage.js"
 import { enterCity } from "./enterCity.js";
+import { renderMonsterStat } from "../game/renderStats.js"
 
-export function resolve(dice,monster,monsterArray,start) {
+export function resolve(dice,monster,monsterArray,next) {
     let heal = 0;
     let damage = 0;
     let energyPts = 0;
@@ -36,33 +37,8 @@ export function resolve(dice,monster,monsterArray,start) {
         }
     }
 
-    let textHeal = monsterHeal(heal,monster);
-    let textVP = monsterGainVictoryPoints(oneCount,twoCount,threeCount,monster);
-    let textE = monsterGainEnergy(energyPts,monster);
-    let textDmg = monsterDamage(damage,monster,monsterArray);
-    let textEnterCity = enterCity(monster,monsterArray);
-
-    let textArray = [];
-    let speed = 3000;
-
-    // let textHealtest = "MEKA DRAGON gains 3 hearts."
-    // let textVPtest = "MEKA DRAGON gains 5 victory points."
-    // let textEtest = "MEKA DRAGON gains 5 energy points."
-    // let textEnterCitytest = "MEKA DRAGON entered TOKYO."
-    // textArray.push(textHealtest);
-    // textArray.push(textVPtest);
-    // textArray.push(textEtest);
-    // textArray.push(textDmg);
-    // textArray.push(textEnterCitytest);
-
-    textArray.push(textHeal);
-    textArray.push(textVP);
-    textArray.push(textE);
-    textArray.push(textDmg);
-    // textArray.push(textEnterCity);
-
+    // Clock Start
     let clock = null;
-
     let clockCount = 0;
     clock = setInterval(() => {
         clockCount++;
@@ -72,29 +48,32 @@ export function resolve(dice,monster,monsterArray,start) {
         }
     }, 1000);
 
-    for (let i = 0; i < textArray.length; i++) {
-
-        if(textArray[i] == "") {
-            setTimeout(()=>{
-                console.log("No text.");
-                displayText(textArray[i],"hidden");
-            },speed);
-        } else {
-            setTimeout(()=>{
-                console.log(textArray[i]);
-                displayText(textArray[i],"visible");
-            },speed);
-        }
-
-        // setTimeout(()=>{
-        //     console.log(textArray[i]);
-        //     displayText(textArray[i],"visible");
-        // },speed);
-        speed += 1000;
-    }
-    
     setTimeout(()=>{
-        displayText(textEnterCity,"visible");
-    },18000);
+        let text = monsterGainVictoryPoints(oneCount,twoCount,threeCount,monster);
+        console.log(text);
+        displayText(text,"visible");
+        renderMonsterStat(monsterArray,next);
+    },3000)
 
+    setTimeout(()=>{
+        let text = monsterGainEnergy(energyPts,monster);
+        console.log(text);
+        displayText(text,"visible");
+        renderMonsterStat(monsterArray,next);
+    },5000)
+
+    setTimeout(()=>{
+        let text = monsterHeal(heal,monster);
+        console.log(text);
+        displayText(text,"visible");
+        renderMonsterStat(monsterArray,next);
+    },7000)
+
+    monsterDamage(damage,monster,monsterArray);
+
+    if(!monster.inBay && !monster.inTokyo){
+        setTimeout(()=>{
+            enterCity(monster,monsterArray);
+        },18000)
+    }
 }

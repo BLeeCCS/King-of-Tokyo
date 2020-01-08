@@ -7,7 +7,7 @@ export function displayText(text = "",display = "hidden",button = "hidden") {
         $("#choice").css("background-image","url(../assets/Reporter/reporterSpeaks.gif)");
     }
 
-    var textCount = 0;
+    let textCount = 0;
     let textAnimation = setInterval(() => {
         $("#textChoice").text($("#textChoice").text() + text.charAt(textCount));
         textCount++;
@@ -15,5 +15,5 @@ export function displayText(text = "",display = "hidden",button = "hidden") {
             clearInterval(textAnimation);
             $("#choice").css("background-image","url(../assets/Reporter/reporter.gif)");
         }
-    }, 20);
+    }, 35);
 }
