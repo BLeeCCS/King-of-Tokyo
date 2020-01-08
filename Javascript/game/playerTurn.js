@@ -1,10 +1,18 @@
 import { displayText } from "./displayText.js"
+import { nameChange } from "./nameChange.js"
 import { renderMonsterStat}  from "./renderStats.js"
 import { removeDie } from "./removeDie.js"
 import { turnStartAgain } from "./turnStartAgain.js"
 
 export function player(monstersArray,next) {
-    renderMonsterStat(monstersArray,next);
+    if(monstersArray[next].inTokyo || monstersArray[next].inTokyo) {
+        console.log("monster in tokyo or bay gains 2 VP.")
+        monstersArray[next].victoryPoint += 2;
+        displayText(`${nameChange(monstersArray[next].name)} gainst 2 Victory points for being in City/.`)
+        renderMonsterStat(monstersArray,next);
+    } else {
+        renderMonsterStat(monstersArray,next);
+    }
 
     for (var monster in monstersArray) {
         if (monstersArray[monster].player) {
@@ -36,8 +44,7 @@ export function player(monstersArray,next) {
                         }, 500);
                         
                         monstersArray[monster].count = 1;
-                        monstersArray[monster].resolveDice(monstersArray[monster],monstersArray);
-                        renderMonsterStat(monstersArray,next);
+                        monstersArray[monster].resolveDice(monstersArray[monster],monstersArray,next);
                         turnStartAgain(monstersArray,next);
                     }
                 })
@@ -62,8 +69,7 @@ export function player(monstersArray,next) {
                     }
                     
                     monstersArray[monster].count = 1;
-                    monstersArray[monster].resolveDice(monstersArray[monster],monstersArray);
-                    renderMonsterStat(monstersArray,next);
+                    monstersArray[monster].resolveDice(monstersArray[monster],monstersArray,next);
                     turnStartAgain(monstersArray,next);
                 })
             }

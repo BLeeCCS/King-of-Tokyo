@@ -1,3 +1,5 @@
+import { displayText } from "../game/displayText.js";
+
 export function enterCity(monster,monsterArray) {
     let namePNG = "";
     let name = "";
@@ -49,12 +51,14 @@ export function enterCity(monster,monsterArray) {
                 break;
         }
 
-        setTimeout(() => {
-            $("#tokyoCity").css("background-image",`url(../assets/M_Fig/${namePNG}.png)`);
-        }, 18000);
-
         monster.inTokyo = true;
-        return `${name} entered Tokyo City.`;
+
+        return ( 
+            console.log(`${name} entered Tokyo City. Gained 1 Victory Point.`),
+            monster.victoryPoint += 1,
+            $("#tokyoCity").css("background-image",`url(../assets/M_Fig/${namePNG}.png)`),
+            displayText(`${name} entered Tokyo City. Gained 1 VP.`,"visible")
+        );
     }
 
     let monsterInTokyo = false;
@@ -69,28 +73,6 @@ export function enterCity(monster,monsterArray) {
         }
     }
 
-    if(!monster.inBay && !monsterInBay) {
-        
-        switch(monster.name) {
-            case "cyberkitty": 
-            case "gigazaur": 
-            case "spacepenguin":
-                $("#tokyoBay").css({"transform":"rotateY(180deg)"});
-                break;
-            case "mekadragon": 
-            case "alienoid":
-            case "theking":
-                $("#tokyoBay").css({"transform":"rotateY(0deg)"});
-                break;
-        }
-
-        setTimeout(() => {
-            $("#tokyoBay").css("background-image",`url(../assets/M_Fig/${namePNG}.png)`);            
-        }, 18000);
-
-        monster.inBay = true;
-        return `${name} entered Tokyo Bay.`;
-    } else {
         if(!monster.inTokyo && !monsterInTokyo) {
             
             switch(monster.name) {
@@ -104,16 +86,41 @@ export function enterCity(monster,monsterArray) {
                 case "theking":
                     $("#tokyoCity").css({"transform":"rotateY(180deg)"});
                     break;
-            }
-        
-            setTimeout(() => {
-                $("#tokyoCity").css("background-image",`url(../assets/M_Fig/${namePNG}.png)`);            
-            }, 18000);
+            }           
 
             monster.inTokyo = true;
-            return `${name} entered Tokyo City.`;
+            
+            return ( 
+                console.log(`${name} entered Tokyo City. Gained 1 Victory Point.`),
+                monster.victoryPoint += 1,
+                $("#tokyoCity").css("background-image",`url(../assets/M_Fig/${namePNG}.png)`),
+                displayText(`${name} entered Tokyo City. Gained 1 VP.`,"visible")
+            );
+        } else {
+
+        if(!monster.inBay && !monsterInBay) {
+        
+            switch(monster.name) {
+                case "cyberkitty": 
+                case "gigazaur": 
+                case "spacepenguin":
+                    $("#tokyoBay").css({"transform":"rotateY(180deg)"});
+                    break;
+                case "mekadragon": 
+                case "alienoid":
+                case "theking":
+                    $("#tokyoBay").css({"transform":"rotateY(0deg)"});
+                    break;
+            }          
+    
+            monster.inBay = true;
+            
+            return ( 
+                console.log(`${name} entered Tokyo Bay. Gained 1 Victory Point.`),
+                monster.victoryPoint += 1,
+                $("#tokyoBay").css("background-image",`url(../assets/M_Fig/${namePNG}.png)`),
+                displayText(`${name} entered Tokyo Bay. Gained 1 VP.`,"visible")
+            );
         }
     }
-
-    return "Tokyo and Bay are taken.";
 }
