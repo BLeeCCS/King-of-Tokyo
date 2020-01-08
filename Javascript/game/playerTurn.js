@@ -5,7 +5,8 @@ import { removeDie } from "./removeDie.js"
 import { turnStartAgain } from "./turnStartAgain.js"
 
 export function player(monstersArray,next) {
-    if(monstersArray[next].inTokyo || monstersArray[next].inTokyo) {
+    if(monstersArray[next].inTokyo || monstersArray[next].inBay) {
+        debugger
         console.log("monster in tokyo or bay gains 2 VP.")
         monstersArray[next].victoryPoint += 2;
         displayText(`${nameChange(monstersArray[next].name)} gainst 2 Victory points for being in City/.`)
