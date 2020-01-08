@@ -74,6 +74,7 @@ export function resolve(dice,monster,monsterArray,next) {
     if(!monster.inBay && !monster.inTokyo){
         setTimeout(()=>{
             enterCity(monster,monsterArray);
+            renderMonsterStat(monsterArray,next);
         },18000)
     }
 }
