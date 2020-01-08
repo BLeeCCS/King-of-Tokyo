@@ -1,5 +1,6 @@
 import { renderTurnMonster } from "./renderTurnMonster.js";
 import { renderMonsterStat}  from "./renderStats.js"
+import { displayText } from "./displayText.js";
 
 export function enemy(monstersArray,next) {
     console.log(monstersArray[next].name + "'s turn")
