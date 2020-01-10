@@ -18,7 +18,7 @@ export function turn(monstersArray) {
         }
     }, 1000);
 
-    // $("#nameIcon").text("gains 5");
+    $("#nameIcon").text("gains 5");
 
     //displayText(" gains 5 victory points","visible");
 

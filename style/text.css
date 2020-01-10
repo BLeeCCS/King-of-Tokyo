@@ -27,27 +27,29 @@
 #nameIcon {
     background-image: url("../assets/NameIcon/cyberkittyName.png");
     background-repeat: no-repeat;
-    background-size:40% 30%;
+    background-size:60% 40%;
     width:80%;
     height:70%;
-    top: 10%;
+    top: 5%;
     position: absolute;
-    float: left;
+    display: inline-block;
     visibility: visible;
-    text-align:right;
-    font-size: 100%;
-    margin: 10% 5% 5% 10%;
+    text-align:center;
+    line-height: 16vh;
+    font-size: 1.5rem;
+    margin: 5% 10% 5% 10%;
 }
 
 #icon {
-    background-image: url("../assets/Dice/heart.png");
+    background-image: url("../assets/Icon/VictoryIcon.png");
     background-repeat: no-repeat;
-    background-size:40% 40%;
-    width: 30%;
-    height: 30%;
+    background-size:80% 80%;
+    background-position: center;
+    width: 35%;
+    height: 35%;
     position: absolute;
-    right:4%;
-    top:12%;
+    right:0%;
+    top:27%;
 }
 
 #textChoice {
