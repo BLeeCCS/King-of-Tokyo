@@ -1,6 +1,7 @@
 import { roll } from "./rollDice.js"
 import { resolve } from "./resolveDice.js"
 import { pickOne } from "./pickOne.js"
+import { buyCards } from "./buyCards.js"
 
 export default class monster {
     constructor(name,player,ai) {
@@ -30,10 +31,8 @@ export default class monster {
         resolve(this.dice,monster,monsterArray,next);
     }
 
-
-
     buyPowerCards() {
-
+        buyCards();
     }
 
     endOfTurn() {
