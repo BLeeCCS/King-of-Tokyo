@@ -25,9 +25,9 @@
 }
 
 #nameIcon {
-    background-image: url("../assets/NameIcon/cyberkittyName.png");
+    background-image: url("../assets/NameIcon/thekingName.png");
     background-repeat: no-repeat;
-    background-size:60% 40%;
+    background-size: 70% 50%;
     width:80%;
     height:70%;
     top: 5%;
@@ -35,13 +35,13 @@
     display: inline-block;
     visibility: visible;
     text-align:center;
-    line-height: 16vh;
+    line-height: 20vh;
     font-size: 1.5rem;
     margin: 5% 10% 5% 10%;
 }
 
 #icon {
-    background-image: url("../assets/Icon/VictoryIcon.png");
+    background-image: url("../assets/Icon/HeartIcon.png");
     background-repeat: no-repeat;
     background-size:80% 80%;
     background-position: center;
@@ -49,7 +49,7 @@
     height: 35%;
     position: absolute;
     right:0%;
-    top:27%;
+    top:38%;
 }
 
 #textChoice {

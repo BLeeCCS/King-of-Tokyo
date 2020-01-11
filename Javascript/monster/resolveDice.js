@@ -5,6 +5,7 @@ import { displayText } from "../game/displayText.js"
 import { monsterDamage } from "./monsterDamage.js"
 import { enterCity } from "./enterCity.js";
 import { renderMonsterStat } from "../game/renderStats.js"
+import { displayTextWithIcon } from "../game/displayTextWithIcon.js"
 
 export function resolve(dice,monster,monsterArray,next) {
     let heal = 0;
