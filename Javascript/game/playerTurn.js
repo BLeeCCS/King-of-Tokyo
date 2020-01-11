@@ -46,7 +46,12 @@ export function player(monstersArray,next) {
                         
                         monstersArray[monster].count = 1;
                         monstersArray[monster].resolveDice(monstersArray[monster],monstersArray,next);
-                        turnStartAgain(monstersArray,next);
+                        
+                        setTimeout(()=>{
+                            monstersArray[monster].buyPowerCards();
+                        },20000)
+
+                        //turnStartAgain(monstersArray,next);
                     }
                 })
 
@@ -71,7 +76,12 @@ export function player(monstersArray,next) {
                     
                     monstersArray[monster].count = 1;
                     monstersArray[monster].resolveDice(monstersArray[monster],monstersArray,next);
-                    turnStartAgain(monstersArray,next);
+
+                    setTimeout(()=>{
+                        monstersArray[monster].buyPowerCards();
+                    },20000)
+                    
+                    //turnStartAgain(monstersArray,next);
                 })
             }
             break;
