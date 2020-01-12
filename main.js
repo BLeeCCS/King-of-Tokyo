@@ -1,7 +1,8 @@
 $(document).ready(appStart);
 
+import game from "./Javascript/game/game.js"
+
 function appStart() {
-    var newGame = null;
     selectionScreen();
 }
 
@@ -21,37 +22,37 @@ function selectionScreen() {
     $("#mekadragon").on("click",()=>{
         $("#modal").css("display","none");
         clearInterval(changefont);
-        newGame = new game("mekadragon");
+        let newGame = new game("mekadragon");
         newGame.gameStart();
     })
     $("#alienoid").on("click",()=>{
         $("#modal").css("display","none");
         clearInterval(changefont);
-        newGame = new game("alienoid");
+        let newGame = new game("alienoid");
         newGame.gameStart();
     })
     $("#theking").on("click",()=>{
         $("#modal").css("display","none");
         clearInterval(changefont);
-        newGame = new game("theking");
+        let newGame = new game("theking");
         newGame.gameStart();
     })
     $("#cyberkitty").on("click",()=>{
         $("#modal").css("display","none");
         clearInterval(changefont);
-        newGame = new game("cyberkitty");
+        let newGame = new game("cyberkitty");
         newGame.gameStart();
     })
     $("#gigazaur").on("click",()=>{
         $("#modal").css("display","none");
         clearInterval(changefont);
-        newGame = new game("gigazaur");
+        let newGame = new game("gigazaur");
         newGame.gameStart();
     })
     $("#spacepenguin").on("click",()=>{
         $("#modal").css("display","none");
         clearInterval(changefont);
-        newGame = new game("spacepenguin");
+        let newGame = new game("spacepenguin");
         newGame.gameStart();
     })
 

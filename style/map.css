@@ -1,0 +1,44 @@
+#mapContainer {
+    width: 70%;
+    height:100%;
+    position: absolute;
+    left:30%;
+    top:0.86%;
+}
+
+#map {
+    width:99%;
+    height: 96%;
+    position: absolute;
+    top:1%;
+    right:1%;
+
+    background-image: url("../assets/Map/Map.jpg");
+    background-repeat: no-repeat;
+    background-position-y: 40%;
+    background-size: 100% 150%;
+}
+
+.tokyo {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    border-radius: 50%;
+    margin: auto;
+    border:solid 2px black;
+}
+
+#tokyoCity {
+    background-color:rgb(243, 66, 66);
+    top:5%;
+    left:20%;
+}
+
+#tokyoBay {
+    background-color: rgb(76, 76, 221);
+    bottom:5%;
+    right:10%;
+}

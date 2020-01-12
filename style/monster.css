@@ -1,0 +1,189 @@
+#monsterContainer {
+    width:30%;
+    height: 50%;
+    position: absolute;
+    left:0%;
+    top:0%;
+}
+
+.monster {
+    position: absolute;
+    width:99%;
+    height: 97%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    top: 3%;
+    right:1%;
+    left:1%;
+    z-index: 1;
+    visibility: visible;
+}
+
+.victory, .energy, .heart {
+    width: 8%;
+    height: 10%;
+    position: absolute;
+    text-align: center;
+    line-height: 100%;
+    font-size: 2em;
+}
+
+.diceContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 38.2%;
+    height:30.8%;
+    position: absolute;
+}
+
+.diceContainer > * {
+    width: 20%;
+    height: 30%;
+    margin:5%;
+    background-size: cover;
+}
+
+/***********
+ Cyber Kitty
+ ***********/
+#cyberkitty_s > #victory {
+    top:2.5%;
+    left: 24%;
+}
+
+#cyberkitty_s > #energy {
+    top:37.8%;
+    left: 35.2%;
+}
+
+#cyberkitty_s > #heart {
+    top:87.8%;
+    left:85.1%;
+}
+
+#cyberkitty_s > #diceContainer {
+    top:52%;
+    left:59%;
+}
+
+/********
+ GIGAZAUR
+ ********/
+#gigazaur_s > #victory {
+    top:2.2%;
+    left: 25%;
+}
+
+#gigazaur_s > #energy {
+    top:35.1%;
+    left: 30%;
+}
+
+#gigazaur_s > #heart {
+    top:86.8%;
+    left:84%;
+}
+
+#gigazaur_s > #diceContainer {
+    top:51.5%;
+    left:59.2%;
+}
+
+/*************
+ SPACE PENGUIN
+ *************/
+#spacepenguin_s > #victory {
+    top:2.4%;
+    left: 24%;
+}
+
+#spacepenguin_s > #energy {
+    top:66.2%;
+    left: 82.6%;
+}
+
+#spacepenguin_s > #heart {
+    top:86.6%;
+    left:85.1%;
+}
+
+#spacepenguin_s > #diceContainer {
+    top:35.9%;
+    left:2.5%;
+}
+/***********
+ MEKA DRAGON
+************/
+#mekadragon_s > #victory {
+    top:2.6%;
+    left: 24%;
+}
+
+#mekadragon_s > #energy {
+    top:37.5%;
+    left: 32.1%;
+}
+
+#mekadragon_s > #heart {
+    top:87.8%;
+    left:83.8%;
+}
+
+#mekadragon_s > #diceContainer {
+    top:52.8%;
+    left:59%;
+}
+
+/********
+ ALIENOID
+*********/
+#alienoid_s > #victory {
+    top:2.7%;
+    left: 22.5%;
+}
+
+#alienoid_s > #energy {
+    top:35.1%;
+    left: 32.1%;
+}
+
+#alienoid_s > #heart {
+    top:87.2%;
+    left:85.5%;
+}
+
+#alienoid_s > #diceContainer {
+    top:51%;
+    left:59.2%;
+}
+
+/********
+ THE KING
+*********/
+#theking_s > #victory {
+    top:2.5%;
+    left: 25.6%;
+}
+
+#theking_s > #energy {
+    top:65.2%;
+    left: 83%;
+}
+
+#theking_s > #heart {
+    top:86.2%;
+    left:85.2%;
+}
+
+#theking_s > #diceContainer {
+    top:34%;
+    left:2.5%;
+}
+
+#alienoid_s {background-image: url(../assets/M_Stat/Alienoid_Stats.png);}
+#cyberkitty_s {background-image: url(../assets/M_Stat/Cyber_kitty_Stats.png);}
+#gigazaur_s {background-image: url(../assets/M_Stat/Gigazaur_Stats.png);}
+#mekadragon_s {background-image: url(../assets/M_Stat/Meka_Dragon_Stats.png);}
+#spacepenguin_s {background-image: url(../assets/M_Stat/Space_Penguin_Stats.png);}
+#theking_s {background-image: url(../assets/M_Stat/The_king_Stats.png);}
+#intro {background-image: url(../assets/M_Stat/intro.png); z-index: 2;}

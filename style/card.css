@@ -1,0 +1,51 @@
+#cardContainer {
+    width: 82%;
+    height:96%;
+    position: absolute;
+    top:1%;
+    right: 0%;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+#bigCard {
+    width: 20%;
+    height: 50%;
+    bottom: 2%;
+    left: 26.5%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    position: absolute;
+    visibility: hidden;
+}
+
+#smallCard {
+    display: flex;
+    flex-direction: row;
+    width: 13.5%;
+    height: 11%;
+    position: absolute;
+    bottom: 29%;
+    left:0.5%;
+    z-index: 2;
+    background-color:black;
+}
+
+.card {
+    width: 30%;
+    height: 99%;
+    margin:auto;
+    background-size: cover;
+    background-position: center;
+    bottom:0%;
+    background-size: 100% 92%;
+    background-repeat: no-repeat;
+    align-items: center;
+}
+
+#bigCard {background-image: url(../assets/Cards/card.png);}
+#card1 {background-image: url(../assets/Cards/card.png);}
+#card2 {background-image: url(../assets/Cards/card.png);}
+#card3 {background-image: url(../assets/Cards/card.png);}
