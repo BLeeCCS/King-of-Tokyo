@@ -31,8 +31,8 @@ export default class monster {
         resolve(this.dice,monster,monsterArray,next);
     }
 
-    buyPowerCards() {
-        buyCards();
+    buyPowerCards(monster) {
+        buyCards(monster);
     }
 
     endOfTurn() {
