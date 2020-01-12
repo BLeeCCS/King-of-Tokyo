@@ -13,7 +13,7 @@
     width: 20%;
     height: 50%;
     bottom: 2%;
-    left: 26.5%;
+    left: 31.5%;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: bottom;
@@ -45,7 +45,6 @@
     align-items: center;
 }
 
-#bigCard {background-image: url(../assets/Cards/card.png);}
-#card1 {background-image: url(../assets/Cards/card.png);}
-#card2 {background-image: url(../assets/Cards/card.png);}
-#card3 {background-image: url(../assets/Cards/card.png);}
+#card1 {background-image: url(../assets/Cards/rootingForTheUnderDog.png);}
+#card2 {background-image: url(../assets/Cards/backgroundDweller.png);}
+#card3 {background-image: url(../assets/Cards/EvacuationOrders.png);}

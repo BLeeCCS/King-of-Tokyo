@@ -78,7 +78,7 @@ export function player(monstersArray,next) {
                     monstersArray[monster].resolveDice(monstersArray[monster],monstersArray,next);
 
                     setTimeout(()=>{
-                        monstersArray[monster].buyPowerCards();
+                        monstersArray[monster].buyPowerCards(monstersArray[monster]);
                     },20000)
                     
                     //turnStartAgain(monstersArray,next);
