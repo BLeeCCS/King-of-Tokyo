@@ -39,8 +39,8 @@
 .diceContainer > * {
     width: 20%;
     height: 30%;
-    margin:5%;
-    background-size: cover;
+    margin:6% 3% 6% 3%;
+    background-size: 100% 100%;
 }
 
 /***********
@@ -126,7 +126,7 @@
 
 #mekadragon_s > #heart {
     top:87.8%;
-    left:83.8%;
+    left:83.2%;
 }
 
 #mekadragon_s > #diceContainer {
