@@ -4,9 +4,8 @@ import { renderMonsterStat}  from "./renderStats.js"
 import { removeDie } from "./removeDie.js"
 import { turnStartAgain } from "./turnStartAgain.js"
 
-export function player(monstersArray,next) {
+export function player(monstersArray,next,card1,card2,card3) {
     if(monstersArray[next].inTokyo || monstersArray[next].inBay) {
-        debugger
         console.log("monster in tokyo or bay gains 2 VP.")
         monstersArray[next].victoryPoint += 2;
         displayText(`${nameChange(monstersArray[next].name)} gainst 2 Victory points for being in City/.`)
@@ -48,7 +47,7 @@ export function player(monstersArray,next) {
                         monstersArray[monster].resolveDice(monstersArray[monster],monstersArray,next);
                         
                         setTimeout(()=>{
-                            monstersArray[monster].buyPowerCards();
+                            monstersArray[monster].buyPowerCards(monstersArray[monster],card1,card2,card3);
                         },20000)
 
                         //turnStartAgain(monstersArray,next);
@@ -78,7 +77,7 @@ export function player(monstersArray,next) {
                     monstersArray[monster].resolveDice(monstersArray[monster],monstersArray,next);
 
                     setTimeout(()=>{
-                        monstersArray[monster].buyPowerCards(monstersArray[monster]);
+                        monstersArray[monster].buyPowerCards(monstersArray[monster],card1,card2,card3);
                     },20000)
                     
                     //turnStartAgain(monstersArray,next);

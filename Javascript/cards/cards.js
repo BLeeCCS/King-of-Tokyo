@@ -1,3 +1,5 @@
+import { shuffleCards } from "./shuffleCards.js"
+
 export default class cards {
     constructor() {
         this.cardArray = [
@@ -68,5 +70,9 @@ export default class cards {
             "skyScrapper",
             "tank"
         ]
+    }
+
+    shuffle() {
+        return shuffleCards(this.cardArray);;
     }
 }

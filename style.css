@@ -1,3 +1,9 @@
+@import url("./style/monster.css");
+@import url("./style/map.css");
+@import url("./style/text.css");
+@import url("./style/card.css");
+@import url("./style/turn.css");
+
 html,body {
     width: 100vw;
     height: 100vh;
