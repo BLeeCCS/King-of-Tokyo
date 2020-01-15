@@ -3,8 +3,6 @@ import { viewCardOn } from "../cards/viewCardOn.js"
 import { viewCardOff } from "../cards/viewCardOff.js"
 
 export function buyCards(monster,card1,card2,card3) {
-    console.log(card1,card2,card3);
-    console.log(monster);
     if (monster.player) {
         displayText("Do you want to buy power cards? Click to Select\nHover to View","visible");
         setTimeout(()=>{

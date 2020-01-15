@@ -7,7 +7,6 @@ export function monsterDamage(damage,monster,monsterArray) {
         return (
             setTimeout(()=>{
                 let text = "Monster on first turn can't attack.";
-                console.log(text);
                 displayText(text,"visible");
             },9000)
         );
@@ -24,13 +23,11 @@ export function monsterDamage(damage,monster,monsterArray) {
             return (
                 setTimeout(()=>{
                     let text = `Monsters uses Attack Animation!!!}`;
-                    console.log(text);
                     displayText(text,"visible");
                 },9000),
 
                 setTimeout(()=>{
                     let text = `Monsters outside of City loses ${damage} heart${(damage > 1) ? "s." : "."}`;
-                    console.log(text);
                     displayText(text,"visible");
                 },11000)
             )
@@ -42,7 +39,6 @@ export function monsterDamage(damage,monster,monsterArray) {
 
                     if (monsterArray[i].player) {
                         setTimeout(()=>{
-                            console.log("Do you want to move out of City?");
                             displayText("Do you want to move out of City?","visible");
                             setTimeout(()=>{
                                 $(".button").css("visibility","visible");
@@ -79,7 +75,6 @@ export function monsterDamage(damage,monster,monsterArray) {
                     } else {
                         let random = Math.floor(Math.random(9) * 9 + 1);
                         if(monsterArray[i].lifePoint < random) {
-                            console.log(monsterArray[i].name + " wants to exit city.");
                             setTimeout(()=>{
                                 exitCity(monsterArray[i]);
                             },13000)
@@ -91,13 +86,11 @@ export function monsterDamage(damage,monster,monsterArray) {
             return(
                 setTimeout(()=>{
                     let text = `Monsters took damage Animation!!!`;
-                    console.log(text);
                     displayText(text,"visible");
                 },9000),
 
                 setTimeout(()=>{
                     let text = `Monsters inside of City loses ${damage} heart${(damage > 1) ? "s." : ". "}`;
-                    console.log(text);
                     displayText(text,"visible");
                 },11000)
             )

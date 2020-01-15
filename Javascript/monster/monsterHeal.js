@@ -23,5 +23,4 @@ export function monsterHeal(heal,monster) {
     }
 
     return `${nameChange(monster.name)} gains hearts test!`;
-    //return "";
 }

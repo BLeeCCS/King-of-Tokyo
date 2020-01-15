@@ -1,6 +1,5 @@
 export function randomizeTurn(monsters) {
     let array = [];
-    let testArray = ["mekadragon","alienoid","theking","cyberkitty","gigazaur","spacepenguin"];
 
     for (let i = monsters.length; i > 0; i--) {
         let random = Math.floor(Math.random(i) * i);
@@ -8,6 +7,5 @@ export function randomizeTurn(monsters) {
         array.push(monsterZ + "");
     }
 
-    //return array;
-    return testArray;
+    return array;
 }

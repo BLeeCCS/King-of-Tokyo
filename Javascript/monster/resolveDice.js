@@ -37,34 +37,20 @@ export function resolve(dice,monster,monsterArray,next) {
         }
     }
 
-    // Clock Start
-    let clock = null;
-    let clockCount = 0;
-    clock = setInterval(() => {
-        clockCount++;
-        console.log(clockCount);
-        if(clockCount == 20) {
-            clearInterval(clock);
-        }
-    }, 1000);
-
     setTimeout(()=>{
         let text = monsterGainVictoryPoints(oneCount,twoCount,threeCount,monster);
-        console.log(text);
         displayText(text,"visible");
         renderMonsterStat(monsterArray,next);
     },3000)
 
     setTimeout(()=>{
         let text = monsterGainEnergy(energyPts,monster);
-        console.log(text);
         displayText(text,"visible");
         renderMonsterStat(monsterArray,next);
     },5000)
 
     setTimeout(()=>{
         let text = monsterHeal(heal,monster);
-        console.log(text);
         displayText(text,"visible");
         renderMonsterStat(monsterArray,next);
     },7000)

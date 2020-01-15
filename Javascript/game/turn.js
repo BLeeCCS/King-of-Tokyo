@@ -15,24 +15,13 @@ export function turn(monstersArray,deck) {
     $("#card2").css({"background-image":`url(../assets/Cards/${card2}.png`});
     $("#card3").css({"background-image":`url(../assets/Cards/${card3}.png`});
 
-    let clock = null;
-    let clockCount = 0;
-    clock = setInterval(() => {
-        clockCount++;
-        console.log(clockCount);
-        if(clockCount == 20) {
-            clearInterval(clock);
-        }
-    }, 1000);
-
     start = setInterval(() => {
         renderTurnMonster(next,monstersArray[next].player);
 
         if(monstersArray[next].player) {
             clearInterval(start);
-            console.log("player's turn");
             displayText("PLAYER TURN","visible");
-            player(monstersArray,next,card1,card2,card3);
+            player(monstersArray,next,card1,card2,card3,deck);
         } else {
             $("#yes").off("click");
             $("#no").off("click");
