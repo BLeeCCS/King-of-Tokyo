@@ -54,7 +54,6 @@ export function enterCity(monster,monsterArray) {
         monster.inTokyo = true;
 
         return ( 
-            console.log(`${name} entered Tokyo City. Gained 1 Victory Point.`),
             monster.victoryPoint += 1,
             $("#tokyoCity").css("background-image",`url(../assets/M_Fig/${namePNG}.png)`),
             displayText(`${name} entered Tokyo City. Gained 1 VP.`,"visible")
@@ -91,7 +90,6 @@ export function enterCity(monster,monsterArray) {
             monster.inTokyo = true;
             
             return ( 
-                console.log(`${name} entered Tokyo City. Gained 1 Victory Point.`),
                 monster.victoryPoint += 1,
                 $("#tokyoCity").css("background-image",`url(../assets/M_Fig/${namePNG}.png)`),
                 displayText(`${name} entered Tokyo City. Gained 1 VP.`,"visible")
@@ -116,7 +114,6 @@ export function enterCity(monster,monsterArray) {
             monster.inBay = true;
             
             return ( 
-                console.log(`${name} entered Tokyo Bay. Gained 1 Victory Point.`),
                 monster.victoryPoint += 1,
                 $("#tokyoBay").css("background-image",`url(../assets/M_Fig/${namePNG}.png)`),
                 displayText(`${name} entered Tokyo Bay. Gained 1 VP.`,"visible")

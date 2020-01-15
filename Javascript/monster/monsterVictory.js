@@ -34,5 +34,4 @@ export function monsterGainVictoryPoints(oneCount,twoCount,threeCount,monster) {
     }
 
     return `${nameChange(monster.name)} gains victory points test.`;
-    //return "";
 }
