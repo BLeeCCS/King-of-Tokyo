@@ -32,7 +32,7 @@ export function turn(monstersArray,deck) {
             clearInterval(start);
             console.log("player's turn");
             displayText("PLAYER TURN","visible");
-            player(monstersArray,next,card1,card2,card3);
+            player(monstersArray,next,card1,card2,card3,deck);
         } else {
             $("#yes").off("click");
             $("#no").off("click");
