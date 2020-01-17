@@ -16,8 +16,8 @@ export function buyCards(monster,card1,card2,card3,deck) {
         $("#card3").hover(viewCardOn.bind(this,`../assets/Cards/${card3}.png`),viewCardOff);
 
         console.log(deck);
-        $("#card1").on("click",)
-        $("#card2").
-        $("#card3").
+        $("#card1").on("click",()=>{});
+        $("#card2").on("click",()=>{});
+        $("#card3").on("click",()=>{});
     }
 }
