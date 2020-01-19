@@ -18,12 +18,15 @@ export function buyCards(monster,card1,card2,card3,deck) {
         console.log(deck);
         $("#card1").on("click",()=>{
             console.log("this work!");
+            $("#card1").css({"border":"solid 2px green"});
         });
         $("#card2").on("click",()=>{
             console.log("this work!");
+            $("#card1").css({"border":"solid 2px green"});
         });
         $("#card3").on("click",()=>{
             console.log("this work!");
+            $("#card1").css({"border":"solid 2px green"});
         });
     }
 }
