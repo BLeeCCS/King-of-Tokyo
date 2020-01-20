@@ -1,6 +1,7 @@
 import { displayText } from "../game/displayText.js"
 import { viewCardOn } from "../cards/viewCardOn.js"
 import { viewCardOff } from "../cards/viewCardOff.js"
+import { checkAndBuyCard } from "../cards/checkAndBuyCard.js"
 
 export function buyCards(monster,card1,card2,card3,deck) {
     console.log(card1,card2,card3);
@@ -17,16 +18,13 @@ export function buyCards(monster,card1,card2,card3,deck) {
 
         console.log(deck);
         $("#card1").on("click",()=>{
-            console.log("this work!");
-            $("#card1").css({"border":"solid 2px green"});
+            checkAndBuyCard(monster,card1);
         });
         $("#card2").on("click",()=>{
-            console.log("this work!");
-            $("#card1").css({"border":"solid 2px green"});
+            checkAndBuyCard(monster,card2);
         });
         $("#card3").on("click",()=>{
-            console.log("this work!");
-            $("#card1").css({"border":"solid 2px green"});
+            checkAndBuyCard(monster,card3);
         });
     }
 }
