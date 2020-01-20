@@ -73,6 +73,9 @@ export default class cards {
     }
 
     shuffle() {
-        return shuffleCards(this.cardArray);;
+        return ["backgroundDweller",
+                "batteryMonster",
+                "evacuationOrders"];
+        return shuffleCards(this.cardArray);
     }
 }

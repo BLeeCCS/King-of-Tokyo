@@ -23,7 +23,7 @@ export function player(monstersArray,next,card1,card2,card3,deck) {
                     displayText("Click on die you dont want to remove and reroll.","visible");
                     setTimeout(()=>{
                         $(".button").css("visibility","visible");
-                    },2200);
+                    },1800);
                 }, 3500);
                 
                 removeDie(monstersArray,monster);
