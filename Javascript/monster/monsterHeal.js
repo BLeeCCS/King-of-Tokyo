@@ -11,17 +11,21 @@ export function monsterHeal(heal,monster) {
             }
         }
 
-        return `${nameChange(monster.name)} gains ${gainLP} heart${(gainLP > 1) ? "s." : "."}`;
+        //return `${nameChange(monster.name)} gains ${gainLP} heart${(gainLP > 1) ? "s." : "."}`;
     }
 
     if(monster.inTokyo) {
-        return `In Tokyo, ${nameChange(monster.name)} can't regain heart.`;
+        return `can't regain heart in Tokyo.`;
     }
 
     if(monster.inBay) {
-        return `In Bay, ${nameChange(monster.name)} can't regain heart.`;
+        return `can't regain heart in Bay.`;
     }
 
-    return `${nameChange(monster.name)} gains hearts test!`;
-    //return "";
+    if (gainLP > 0) {
+        return "" + gainLP + " hearts.";
+    }
+
+    //return `${nameChange(monster.name)} gains hearts test!`;
+    return "";
 }

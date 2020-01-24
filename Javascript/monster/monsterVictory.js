@@ -30,9 +30,10 @@ export function monsterGainVictoryPoints(oneCount,twoCount,threeCount,monster) {
     }
 
     if(gainVictoryPoints > 0) {
-        return `${nameChange(monster.name)} gains ${gainVictoryPoints} victory point${(gainVictoryPoints > 1) ? "s." : "."}`;
+        return "" + gainVictoryPoints;
+        //return `${nameChange(monster.name)} gains ${gainVictoryPoints} victory point${(gainVictoryPoints > 1) ? "s." : "."}`;
     }
 
-    return `${nameChange(monster.name)} gains victory points test.`;
-    //return "";
+    //return `${nameChange(monster.name)} gains victory points test.`;
+    return "";
 }
