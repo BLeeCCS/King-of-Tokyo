@@ -61,7 +61,7 @@ export default class cards {
             "vastStorm",
             "apartmentBuilding",
             "commuterTrain",
-            "cornereStore",
+            "cornerStore",
             "deathFromAbove",
             "gasRefinery",
             "jetFighters",
