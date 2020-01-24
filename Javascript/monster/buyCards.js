@@ -5,7 +5,7 @@ import { checkAndBuyCard } from "../cards/checkAndBuyCard.js"
 
 export function buyCards(monster,card1,card2,card3,deck) {
     if (monster.player) {
-        displayText("Do you want to buy power cards? Click to Buy\nHover to View","visible");
+        displayText("Do you want to buy power cards? Click on card to Purchase.","visible");
         setTimeout(()=>{
             $(".button").css("visibility","visible");
         },2200);
