@@ -9,7 +9,11 @@ export function monsterDamage(damage,monster,monsterArray) {
                 let text = "Monster on first turn can't attack.";
                 console.log(text);
                 displayText(text,"visible");
-            },9000)
+            },5000),
+            
+            setTimeout(()=> {
+                displayText();
+            },7000)
         );
     };
 

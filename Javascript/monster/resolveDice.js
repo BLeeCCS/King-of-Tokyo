@@ -55,11 +55,6 @@ export function resolve(dice,monster,monsterArray,next) {
         let monsterGainEnergyText = monsterGainEnergy(energyPts,monster);
         let monsterHealText = monsterHeal(heal,monster);
 
-        //test
-        monsterGainVpText = "";
-        monsterGainEnergyText = "3";
-        monsterHealText = `can't regain heart in Tokyo.`;
-
         if (monsterGainVpText !== "" || monsterGainEnergyText !== "" || monsterHealText  !== "") {
             
             if (monsterGainVpText === "" && monsterGainEnergyText === "") {
@@ -87,20 +82,6 @@ export function resolve(dice,monster,monsterArray,next) {
             renderMonsterStat(monsterArray,next);
         }
     },3000)
-
-    // setTimeout(()=>{
-    //     let text = monsterGainEnergy(energyPts,monster);
-    //     console.log(text);
-    //     displayText(text,"visible");
-    //     renderMonsterStat(monsterArray,next);
-    // },5000)
-
-    // setTimeout(()=>{
-    //     let text = monsterHeal(heal,monster);
-    //     console.log(text);
-    //     displayText(text,"visible");
-    //     renderMonsterStat(monsterArray,next);
-    // },7000)
 
     monsterDamage(damage,monster,monsterArray);
 
