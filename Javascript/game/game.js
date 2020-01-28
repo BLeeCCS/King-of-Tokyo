@@ -21,6 +21,6 @@ export default class game {
         this.deck = this.deck.shuffle();
 
         this.monsterObjectArray = start(this.monsters,this.player);
-        turn(this.monsterObjectArray,this.deck);
+        turn(this.monsterObjectArray,this.deck,this.round);
     }
 }

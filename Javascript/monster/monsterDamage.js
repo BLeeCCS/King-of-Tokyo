@@ -30,13 +30,13 @@ export function monsterDamage(damage,monster,monsterArray) {
                     let text = `Monsters uses Attack Animation!!!}`;
                     console.log(text);
                     displayText(text,"visible");
-                },9000),
+                },7000),
 
                 setTimeout(()=>{
                     let text = `Monsters outside of City loses ${damage} heart${(damage > 1) ? "s." : "."}`;
                     console.log(text);
                     displayText(text,"visible");
-                },11000)
+                },9000)
             )
 
         } else {
@@ -51,7 +51,7 @@ export function monsterDamage(damage,monster,monsterArray) {
                             setTimeout(()=>{
                                 $(".button").css("visibility","visible");
                             },1500);
-                        },13000);
+                        },11000);
 
                         $("#yes").on("click",()=>{
                             $("#yes").off("click");
@@ -74,11 +74,11 @@ export function monsterDamage(damage,monster,monsterArray) {
 
                         setTimeout(()=>{
                             $(".button").css("visibility","hidden");
-                        },17000);
+                        },15000);
                         
                         setTimeout(()=>{
                             $("#bubble").css("visibility","hidden");
-                        },17500);
+                        },15500);
 
                     } else {
                         let random = Math.floor(Math.random(9) * 9 + 1);
@@ -86,7 +86,7 @@ export function monsterDamage(damage,monster,monsterArray) {
                             console.log(monsterArray[i].name + " wants to exit city.");
                             setTimeout(()=>{
                                 exitCity(monsterArray[i]);
-                            },13000)
+                            },11000)
                         }
                     }
                 }
@@ -97,13 +97,13 @@ export function monsterDamage(damage,monster,monsterArray) {
                     let text = `Monsters took damage Animation!!!`;
                     console.log(text);
                     displayText(text,"visible");
-                },9000),
+                },7000),
 
                 setTimeout(()=>{
                     let text = `Monsters inside of City loses ${damage} heart${(damage > 1) ? "s." : ". "}`;
                     console.log(text);
                     displayText(text,"visible");
-                },11000)
+                },9000)
             )
         }
     }
