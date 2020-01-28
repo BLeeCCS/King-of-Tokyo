@@ -44,7 +44,7 @@ export function resolve(dice,monster,monsterArray,next) {
     clock = setInterval(() => {
         clockCount++;
         console.log(clockCount);
-        if(clockCount == 20) {
+        if(clockCount == 18) {
             clearInterval(clock);
         }
     }, 1000);
@@ -89,6 +89,6 @@ export function resolve(dice,monster,monsterArray,next) {
         setTimeout(()=>{
             enterCity(monster,monsterArray);
             renderMonsterStat(monsterArray,next);
-        },18000)
+        },16000)
     }
 }
