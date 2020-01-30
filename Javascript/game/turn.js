@@ -45,5 +45,5 @@ export function turn(monstersArray,deck,round) {
         }
         next++;
 
-    }, 18000);
+    }, 1000);
 }

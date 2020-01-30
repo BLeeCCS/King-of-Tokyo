@@ -17,6 +17,8 @@ export default class monster {
         this.inTokyo = false;
         this.inBay = false;
         this.firstTurn = true;
+
+        this.backgroundDweller = false;
     }
 
     rollDice() {
