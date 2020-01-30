@@ -3,7 +3,6 @@ import { displayText } from "./displayText.js"
 import { enemy } from "./enemyTurn.js"
 
 export function turnStartAgain(monstersArray,next,deck,round) {
-    console.log("round inside turn start again ", round);
     let enemyStart = setInterval(() => {
 
         if(++next < monstersArray.length) {
