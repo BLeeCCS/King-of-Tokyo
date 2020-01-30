@@ -52,14 +52,12 @@ export function player(monstersArray,next,card1,card2,card3,deck,round) {
                                 $("#yes").off("click");
                                 $("#no").off("click");
                                 displayText();
-                                console.log("round after buy card", round);
                                 turnStartAgain(monstersArray,next,deck,round);
                             });
                             $("#no").on("click",()=>{
                                 $("#yes").off("click");
                                 $("#no").off("click");
                                 displayText();
-                                console.log("round after buy card", round);
                                 turnStartAgain(monstersArray,next,deck,round);
                             });
                         },18000)
@@ -93,15 +91,23 @@ export function player(monstersArray,next,card1,card2,card3,deck,round) {
                         $("#yes").on("click",()=>{
                             $("#yes").off("click");
                             $("#no").off("click");
-                            displayText();
-                            console.log("round after buy card", round);
+                           
+                            $(".button").css("visibility","hidden");
+                            setTimeout(() => {
+                                $("#bubble").css("visibility","hidden");
+                            }, 500);
+                            
                             turnStartAgain(monstersArray,next,deck,round);
                         });
                         $("#no").on("click",()=>{
                             $("#yes").off("click");
                             $("#no").off("click");
-                            displayText();
-                            console.log("round after buy card", round);
+                            
+                            $(".button").css("visibility","hidden");
+                            setTimeout(() => {
+                                $("#bubble").css("visibility","hidden");
+                            }, 500);
+
                             turnStartAgain(monstersArray,next,deck,round);
                         });
                     },18000)
