@@ -6,9 +6,8 @@ import { turnStartAgain } from "./turnStartAgain.js"
 
 export function player(monstersArray,next,card1,card2,card3,deck,round) {
     if(monstersArray[next].inTokyo || monstersArray[next].inBay) {
-        console.log("monster in tokyo or bay gains 2 VP.")
         monstersArray[next].victoryPoint += 2;
-        displayText(`${nameChange(monstersArray[next].name)} gainst 2 Victory points for being in City/.`)
+        displayText(`${nameChange(monstersArray[next].name)} gained 2 Victory points for being in City.`,"visible");
         renderMonsterStat(monstersArray,next);
     } else {
         renderMonsterStat(monstersArray,next);
@@ -96,7 +95,8 @@ export function player(monstersArray,next,card1,card2,card3,deck,round) {
                             setTimeout(() => {
                                 $("#bubble").css("visibility","hidden");
                             }, 500);
-                            
+                            renderMonsterStat(monstersArray,next);
+
                             turnStartAgain(monstersArray,next,deck,round);
                         });
                         $("#no").on("click",()=>{
@@ -107,6 +107,7 @@ export function player(monstersArray,next,card1,card2,card3,deck,round) {
                             setTimeout(() => {
                                 $("#bubble").css("visibility","hidden");
                             }, 500);
+                            renderMonsterStat(monstersArray,next);
 
                             turnStartAgain(monstersArray,next,deck,round);
                         });

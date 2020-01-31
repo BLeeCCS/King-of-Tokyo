@@ -1,23 +1,21 @@
 import { checkCost } from "./checkCost.js"
+import { displayText } from "../game/displayText.js"
+import { activateCardEffect } from "./activeCardEffect.js"
 
-export function checkAndBuyCard(monster,card,deck) {
-    console.log("monster energy point",monster.energyPoint);
-    console.log(card);
-    console.log(deck);
-    console.log(monster);
+export function checkAndBuyCard(monster,card) {
 
-    monster.energyPoint = 10;
     let cost = checkCost(card);
+    monster.energyPoint = 10;
 
     if (monster.energyPoint >= cost){
-        console.log("you can buy card");
-        console.log(monster.energyPoint);
-
+        displayText("Sold!!!Check to continue ...","visible","visible");
         monster.energyPoint -= cost;
-        console.log("energy after bought card ", monster.energyPoint);
-
-        console.log(monster);
+        activateCardEffect(monster,card);
+        return true;
     } else {
-        console.log("you dont have enough energy point");
+        displayText("Sorry, you dont have enough energy point.","visible","visible");
+        setTimeout(()=>{
+            displayText("Do you want to buy power cards? Click on card to Purchase.","visible","visible");
+        },2000);
     };
 }

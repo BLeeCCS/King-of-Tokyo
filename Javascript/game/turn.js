@@ -13,7 +13,7 @@ export function turn(monstersArray,deck,round) {
         var card1 = "" + deck.splice(0,1);
         var card2 = "" + deck.splice(0,1);
         var card3 = "" + deck.splice(0,1);
-    
+
         $("#card1").css({"background-image":`url(../assets/Cards/${card1}.png`});
         $("#card2").css({"background-image":`url(../assets/Cards/${card2}.png`});
         $("#card3").css({"background-image":`url(../assets/Cards/${card3}.png`});

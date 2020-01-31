@@ -75,7 +75,10 @@ export default class cards {
     shuffle() {
         return ["backgroundDweller",
                 "batteryMonster",
-                "evacuationOrders"];
+                "evacuationOrders",
+                "extraHead",
+                "metamorph",
+                "opportunist"];
         return shuffleCards(this.cardArray);
     }
 }
