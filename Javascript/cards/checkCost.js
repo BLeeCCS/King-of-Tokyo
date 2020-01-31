@@ -4,6 +4,7 @@ export function checkCost(card) {
     switch(card) {
         case "backgroundDweller":
             cost = 4;
+            break;
     }
 
     return cost;
