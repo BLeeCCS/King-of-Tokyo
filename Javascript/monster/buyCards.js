@@ -22,7 +22,11 @@ export function buyCards(monster,card1,card2,card3,deck) {
             };
         });
         $("#card2").on("click",()=>{
-            checkAndBuyCard(monster,card2,deck);
+            if (checkAndBuyCard(monster,card2)) {
+                card2 = "" + deck.splice(0,1);
+                $("#card2").css({"background-image":`url(../assets/Cards/${card2}.png`});
+                $("#card2").hover(viewCardOn.bind(this,`../assets/Cards/${card2}.png`),viewCardOff);
+            };
         });
         $("#card3").on("click",()=>{
             checkAndBuyCard(monster,card3,deck);
