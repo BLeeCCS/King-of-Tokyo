@@ -5,6 +5,9 @@ export function checkCost(card) {
         case "backgroundDweller":
             cost = 4;
             break;
+        case "batteryMonster":
+            cost = 3;
+            break;
     }
 
     return cost;

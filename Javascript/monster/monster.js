@@ -19,6 +19,7 @@ export default class monster {
         this.firstTurn = true;
 
         this.backgroundDweller = false;
+        this.batteryMonster = false;
     }
 
     rollDice() {
