@@ -1,4 +1,4 @@
-export function renderTurnMonster(next,player) {
+export function renderTurnMonster(next) {
     var top = null;
 
     switch(next) {
@@ -22,16 +22,8 @@ export function renderTurnMonster(next,player) {
             break;
     }
 
-    let startTurn = setInterval(()=>{
-        let render = {"top": top+"%","left":"30.99%","visibility":"visible"};
+    setTimeout(()=>{
+        let render = {"top": `${top}%`,"left":"30.99%","visibility":"visible"};
         $("#select").css(render);
-        
-        if (!player) {
-            clearInterval(startTurn);
-        }
-        if (player) {
-            clearInterval(startTurn);
-        }
-        
     },50);
 }
