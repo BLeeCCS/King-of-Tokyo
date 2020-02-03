@@ -1,5 +1,5 @@
 import monster from "../monster/monster.js"
-import { randomizeTurn } from "./randomizeTurnOrder.js";
+import { randomizeTurn } from "./randomizeTurn.js";
 import { setUpTurnIcons } from "./setUpTurnIcons.js"
 
 export function start(monsters,player) { 
@@ -7,7 +7,7 @@ export function start(monsters,player) {
 
     setUpTurnIcons(randomizeMonsters);
 
-    let monsterObjects = [];
+    const monsterObjects = [];
     for (let i = 0; i < 6; i++) {
         switch(randomizeMonsters[i]) {
             case "mekadragon":

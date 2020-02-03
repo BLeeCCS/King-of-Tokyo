@@ -3,11 +3,12 @@ import { enemy } from "./enemyTurn.js"
 import { player } from "./playerTurn.js"
 import { renderTurnMonster } from "./renderTurnMonster.js"
 
-export function turn(monstersArray,deck,round) {
-    var start = null;
-    let next = 0;
+//For Testing
+import { clock } from "../test/clock.js"
 
-    console.log("game round ", round);
+export function turn(monstersArray,deck,round) {
+    let start = null;
+    let next = 0;
 
     if (round == 1) {
         var card1 = "" + deck.splice(0,1);
@@ -19,22 +20,13 @@ export function turn(monstersArray,deck,round) {
         $("#card3").css({"background-image":`url(../assets/Cards/${card3}.png`});
     }
 
-    let clock = null;
-    let clockCount = 0;
-    clock = setInterval(() => {
-        clockCount++;
-        console.log(clockCount);
-        if(clockCount == 18) {
-            clearInterval(clock);
-        }
-    }, 1000);
+    clock(18);
 
     start = setInterval(() => {
-        renderTurnMonster(next,monstersArray[next].player);
+        renderTurnMonster(next);
 
         if(monstersArray[next].player) {
             clearInterval(start);
-            console.log("player's turn");
             displayText("PLAYER TURN","visible");
             player(monstersArray,next,card1,card2,card3,deck,round);
         } else {
@@ -45,5 +37,5 @@ export function turn(monstersArray,deck,round) {
         }
         next++;
 
-    }, 1000);
+    }, 18000);
 }
